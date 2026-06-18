@@ -66,7 +66,6 @@
                 <p class="text-xs text-red-500 mt-1">* ৪০% ডিসকাউন্ট অন্তর্ভুক্ত করা হয়েছে</p>
             </div>
 
-            <!-- আপনার SheetDB ফর্ম, কলামের নামগুলো ছোট হাতের অক্ষরে ম্যাচ করা হয়েছে -->
             <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
                 
                 <input type="hidden" name="products" id="sheet-product-name">
@@ -96,12 +95,23 @@
 
                 <div class="space-y-3 mb-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার নম্বর লিখুন *</label>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার যোগাযোগের নম্বর লিখুন *</label>
                         <input id="customer-phone" name="phone" type="tel" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="01XXXXXXXXX">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার এড্রেস লিখুন *</label>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার সম্পূর্ণ এড্রেস লিখুন *</label>
                         <textarea id="customer-address" name="address" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none h-16" placeholder="আপনার সম্পূর্ণ ঠিকানা দিন"></textarea>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2 border-t pt-3 mt-2">
+                        <div>
+                            <label class="block text-xs font-bold text-pink-600 mb-1">বিকাশ নম্বর (যেখান থেকে পাঠিয়েছেন) *</label>
+                            <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-pink-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-pink-500 outline-none bg-pink-50/30" placeholder="01XXXXXXXXX">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-pink-600 mb-1">ট্রানজেকশন আইডি (TxnID) *</label>
+                            <input id="txnid" name="txnid" type="text" required class="w-full border border-pink-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-pink-500 outline-none bg-pink-50/30" placeholder="যেমন: BLA12C3456">
+                        </div>
                     </div>
                 </div>
 
@@ -170,6 +180,19 @@
                     </ul>
                 </div>
             </div>
+            
+            <!-- ফাউন্ডার এবং কো-ফাউন্ডারদের তথ্য সম্বলিত নতুন সেকশন -->
+            <div class="mt-8 pt-6 border-t border-gray-800 text-center text-xs text-gray-500 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
+                <div class="bg-gray-800/30 p-2 rounded border border-gray-800/50">
+                    <p class="font-bold text-gray-400">Founder : Shoeb Ahmed</p>
+                    <p class="text-[10px] text-gray-600">NexCart BD</p>
+                </div>
+                <div class="bg-gray-800/30 p-2 rounded border border-gray-800/50">
+                    <p class="font-bold text-gray-400">Co founder : Md Rifat Amin</p>
+                    <p class="text-[10px] text-gray-600">NexCart BD</p>
+                </div>
+            </div>
+            
             <p class="text-center text-xs text-gray-600 mt-6">&copy; 2026 NexCart. All rights reserved.</p>
         </div>
     </footer>
