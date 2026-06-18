@@ -181,7 +181,6 @@
                 </div>
             </div>
             
-            <!-- ফাউন্ডার এবং কো-ফাউন্ডারদের তথ্য সম্বলিত নতুন সেকশন -->
             <div class="mt-8 pt-6 border-t border-gray-800 text-center text-xs text-gray-500 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
                 <div class="bg-gray-800/30 p-2 rounded border border-gray-800/50">
                     <p class="font-bold text-gray-400">Founder : Shoeb Ahmed</p>
@@ -204,6 +203,8 @@
                 name: "Ultra Smart Watch Series 9",
                 price: 1499,
                 originalPrice: 2499,
+                rating: 4.9,
+                reviews: 10,
                 description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ডিসপ্লে এবং হেলথ ট্র্যাকিং সুবিধা সহ স্টাইলিশ স্মার্ট ওয়াচ।",
                 images: [
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
@@ -217,6 +218,8 @@
                 name: "Pro TWS Earbuds Bass Edition",
                 price: 899,
                 originalPrice: 1499,
+                rating: 4.8,
+                reviews: 18,
                 description: "ক্রিস্টাল ক্লিয়ার সাউন্ড এবং হেভি বেস। একবার চার্জে একটানা ৫ ঘণ্টা ব্যাকআপ পাবেন।",
                 images: [
                     "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
@@ -230,6 +233,8 @@
                 name: "High Speed Turbo Desk Fan",
                 price: 1150,
                 originalPrice: 1915,
+                rating: 4.7,
+                reviews: 7,
                 description: "পোর্টেবল এবং রিচার্জেবল হাই স্পিড টার্বো ফ্যান। গরমে যেকোনো জায়গায় সহজে বহনযোগ্য।",
                 images: [
                     "https://images.unsplash.com/photo-1618945533005-79b13ed62282?w=500",
@@ -243,6 +248,8 @@
                 name: "20,000mAh Fast Charging Power Bank",
                 price: 1350,
                 originalPrice: 2250,
+                rating: 4.9,
+                reviews: 31,
                 description: "২২.৫ ওয়াট ফাস্ট চার্জিং ক্ষমতা সম্পন্ন পাওয়ার ব্যাংক। একসাথে ২টি ডিভাইস চার্জ হবে।",
                 images: [
                     "https://images.unsplash.com/photo-1609592424085-f6df46001004?w=500",
@@ -256,6 +263,8 @@
                 name: "RGB Portable Sound Box",
                 price: 1799,
                 originalPrice: 2999,
+                rating: 4.6,
+                reviews: 10,
                 description: "আকর্ষণীয় RGB লাইট এবং ৩৬০ ডিগ্রি সারাউন্ড সাউন্ড সিস্টেম সহ দুর্দান্ত ব্লুটুথ স্পিকার।",
                 images: [
                     "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
@@ -269,6 +278,8 @@
                 name: "Premium Wireless Gaming Neckband",
                 price: 690,
                 originalPrice: 1150,
+                rating: 4.8,
+                reviews: 18,
                 description: "লো-লেটেন্সি গেম মোড এবং নয়েজ ক্যান্সেলেশন সাপোর্ট সহ অসাধারণ নেকব্যান্ড।",
                 images: [
                     "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=500",
@@ -296,6 +307,11 @@
                     `).join('')}
                 </div>
                 <div class="p-5 flex-1 flex flex-col">
+                    <div class="flex items-center gap-1 text-amber-500 text-sm mb-1">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="font-bold text-gray-800">${product.rating}</span>
+                        <span class="text-gray-400 text-xs">(${product.reviews} রিভিউ)</span>
+                    </div>
                     <h3 class="font-bold text-lg text-gray-900 mb-2">${product.name}</h3>
                     <p class="text-gray-500 text-xs line-clamp-2 mb-4">${product.description}</p>
                     
