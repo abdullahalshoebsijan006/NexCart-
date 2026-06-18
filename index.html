@@ -66,16 +66,22 @@
                 <p class="text-xs text-red-500 mt-1">* ৪০% ডিসকাউন্ট অন্তর্ভুক্ত করা হয়েছে</p>
             </div>
 
-            <form id="order-form" onsubmit="submitOrder(event)">
+            <!-- গুগুল শিটের কানেকশনসহ নতুন ফর্ম শুরু -->
+            <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
+                
+                <!-- এই হিডেন ইনপুটগুলো অটোমেটিক ডেটা শিটে পাঠাবে -->
+                <input type="hidden" name="Product" id="sheet-product-name">
+                <input type="hidden" name="Payment" value="বিকাশ (Bkash)">
+
                 <div class="mb-4">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">ডেলিভারি লোকেশন সিলেক্ট করুন:</label>
                     <div class="grid grid-cols-2 gap-3">
                         <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50 border-indigo-200">
-                            <input type="radio" name="delivery" value="60" checked onclick="calculateTotal()">
-                            <span class="text-sm">ঢাকার ভিতরে (৳৬০)</span>
+                            <input type="radio" name="Location" value="ঢাকার ভেতরে (৳৬০)" checked onclick="calculateTotal()">
+                            <span class="text-sm">ঢাকার ভেতরে (৳৬০)</span>
                         </label>
                         <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50">
-                            <input type="radio" name="delivery" value="120" onclick="calculateTotal()">
+                            <input type="radio" name="Location" value="ঢাকার বাহিরে (৳১২০)" onclick="calculateTotal()">
                             <span class="text-sm">ঢাকার বাহিরে (৳১২০)</span>
                         </label>
                     </div>
@@ -92,11 +98,11 @@
                 <div class="space-y-3 mb-4">
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার নম্বর লিখুন *</label>
-                        <input id="customer-phone" type="tel" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="01XXXXXXXXX">
+                        <input id="customer-phone" name="Phone" type="tel" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="01XXXXXXXXX">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার এড্রেস লিখুন *</label>
-                        <textarea id="customer-address" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none h-16" placeholder="আপনার সম্পূর্ণ ঠিকানা দিন"></textarea>
+                        <textarea id="customer-address" name="Address" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none h-16" placeholder="আপনার সম্পূর্ণ ঠিকানা দিন"></textarea>
                     </div>
                 </div>
 
@@ -116,7 +122,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
-                    অর্ডার সম্পন্ন করুন
+                    অर्डर সম্পন্ন করুন
                 </button>
             </form>
         </div>
@@ -131,7 +137,7 @@
                     <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
                         <i class="fa-brands fa-facebook-f"></i> Facebook: NexCart
                     </a>
-                    <a href="https://wa.me/01601-761487" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
+                    <a href="https://wa.me/8801601761487" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp: 01601-761487
                     </a>
                 </div>
@@ -175,6 +181,7 @@
                 id: 1,
                 name: "Ultra Smart Watch Series 9",
                 price: 1499,
+                originalPrice: 2499,
                 description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ডিসপ্লে এবং হেলথ ট্র্যাকিং সুবিধা সহ স্টাইলিশ স্মার্ট ওয়াচ।",
                 images: [
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
@@ -187,6 +194,7 @@
                 id: 2,
                 name: "Pro TWS Earbuds Bass Edition",
                 price: 899,
+                originalPrice: 1499,
                 description: "ক্রিস্টাল ক্লিয়ার সাউন্ড এবং হেভি বেস। একবার চার্জে একটানা ৫ ঘণ্টা ব্যাকআপ পাবেন।",
                 images: [
                     "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
@@ -199,6 +207,7 @@
                 id: 3,
                 name: "High Speed Turbo Desk Fan",
                 price: 1150,
+                originalPrice: 1915,
                 description: "পোর্টেবল এবং রিচার্জেবল হাই স্পিড টার্বো ফ্যান। গরমে যেকোনো জায়গায় সহজে বহনযোগ্য।",
                 images: [
                     "https://images.unsplash.com/photo-1618945533005-79b13ed62282?w=500",
@@ -211,6 +220,7 @@
                 id: 4,
                 name: "20,000mAh Fast Charging Power Bank",
                 price: 1350,
+                originalPrice: 2250,
                 description: "২২.৫ ওয়াট ফাস্ট চার্জিং ক্ষমতা সম্পন্ন পাওয়ার ব্যাংক। একসাথে ২টি ডিভাইস চার্জ হবে।",
                 images: [
                     "https://images.unsplash.com/photo-1609592424085-f6df46001004?w=500",
@@ -223,7 +233,8 @@
                 id: 5,
                 name: "RGB Portable Sound Box",
                 price: 1799,
-                description: "আকর্ষণীয় RGB লাইট এবং ৩৬ো ডিগ্রি সারাউন্ড সাউন্ড সিস্টেম সহ দুর্দান্ত ব্লুটুথ স্পিকার।",
+                originalPrice: 2999,
+                description: "আকর্ষণীয় RGB লাইট এবং ৩৬০ ডিগ্রি সারাউন্ড সাউন্ড সিস্টেম সহ দুর্দান্ত ব্লুটুথ স্পিকার।",
                 images: [
                     "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
                     "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500",
@@ -235,6 +246,7 @@
                 id: 6,
                 name: "Premium Wireless Gaming Neckband",
                 price: 690,
+                originalPrice: 1150,
                 description: "লো-লেটেন্সি গেম মোড এবং নয়েজ ক্যান্সেলেশন সাপোর্ট সহ অসাধারণ নেকব্যান্ড।",
                 images: [
                     "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=500",
@@ -279,6 +291,7 @@
 
                     <div class="mt-auto pt-4 flex items-center justify-between border-t border-gray-100">
                         <div>
+                            <span class="line-through text-gray-400 text-sm block">৳${product.originalPrice}</span>
                             <span class="text-xl font-bold text-gray-900">৳${product.price}</span>
                         </div>
                         <div class="flex gap-2">
@@ -310,6 +323,9 @@
             document.getElementById('modal-product-name').innerText = selectedProduct.name;
             document.getElementById('modal-product-price').innerText = selectedProduct.price;
             
+            // শীটে প্রোডাক্টের নাম পাঠানোর জন্য এখানে নাম সেট করা হচ্ছে
+            document.getElementById('sheet-product-name').value = selectedProduct.name;
+            
             calculateTotal();
             
             document.getElementById('order-modal').classList.remove('hidden');
@@ -323,7 +339,12 @@
 
         function calculateTotal() {
             if (!selectedProduct) return;
-            const deliveryCharge = parseInt(document.querySelector('input[name="delivery"]:checked').value);
+            // এখানে চেক করা হচ্ছে সঠিক রেডিও বাটনের ভ্যালু (Location কলাম অনুযায়ী)
+            const deliveryElement = document.querySelector('input[name="Location"]:checked');
+            let deliveryCharge = 60;
+            if (deliveryElement && deliveryElement.value.includes('১২০')) {
+                deliveryCharge = 120;
+            }
             const total = selectedProduct.price + deliveryCharge;
             
             document.getElementById('modal-delivery-charge').innerText = deliveryCharge;
@@ -334,20 +355,41 @@
             e.preventDefault();
             if (!selectedProduct) return;
 
+            const form = document.getElementById('order-form');
+            
+            // ব্যাকএন্ডে গুগল শীটে ডেটা পাঠানোর আসল কোড
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+            })
+            .then(response => {
+                if(response.ok) {
+                    console.log('Data successfully sent to Google Sheet!');
+                }
+            })
+            .catch(error => console.error('Error sending to sheet:', error));
+
+            // আপনার আগের ওয়াটস্যাপে মেসেজ পাঠানোর কোড
             const totalAmount = document.getElementById('modal-total-price').innerText;
+            const deliveryLocation = document.querySelector('input[name="Location"]:checked').value;
             const phone = document.getElementById('customer-phone').value;
             const address = document.getElementById('customer-address').value;
             
             const selectedColorElement = document.querySelector(`input[name="color-${selectedProduct.id}"]:checked`);
             const chosenColor = selectedColorElement ? selectedColorElement.value : 'Default';
 
-            alert(`আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে!\n\n` +
-                  `পণ্যের নাম: ${selectedProduct.name}\n` +
-                  `পছন্দের কালার: ${chosenColor}\n` +
-                  `মোবাইল নম্বর: ${phone}\n` +
-                  `ঠিকানা: ${address}\n` +
-                  `সর্বমোট মূল্য (ডেলিভারি চার্জসহ): ৳${totalAmount}\n\n` +
-                  `আমাদের টিম শীঘ্রই আপনার সাথে যোগাযোগ করবে। ধন্যবাদ!`);
+            const message = `*নতুন অর্ডারের বিবরণ (NexCart)*\n\n` +
+                            `📦 *পণ্যের নাম:* ${selectedProduct.name}\n` +
+                            `🎨 *পছন্দের কালার:* ${chosenColor}\n` +
+                            `📞 *মো바일 নম্বর:* ${phone}\n` +
+                            `📍 *ঠিকানা:* ${address}\n\n` +
+                            `🚚 *ডেলিভারি লোকেশন:* ${deliveryLocation}\n` +
+                            `💰 *সর্বমোট মূল্য:* ৳${totalAmount}`;
+
+            alert(`আপনার অর্ডারটি গ্রহণ করা হয়েছে! কনফার্ম করার জন্য আপনাকে WhatsApp-এ রিডাইরেক্ট করা হচ্ছে।`);
+            
+            window.open(`https://wa.me/8801601761487?text=${encodeURIComponent(message)}`, '_blank');
+            
             closeModal();
         }
     </script>
