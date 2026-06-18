@@ -66,10 +66,8 @@
                 <p class="text-xs text-red-500 mt-1">* ৪০% ডিসকাউন্ট অন্তর্ভুক্ত করা হয়েছে</p>
             </div>
 
-            <!-- গুগুল শিটের কানেকশনসহ নতুন ফর্ম শুরু -->
             <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
                 
-                <!-- এই হিডেন ইনপুটগুলো অটোমেটিক ডেটা শিটে পাঠাবে -->
                 <input type="hidden" name="Product" id="sheet-product-name">
                 <input type="hidden" name="Payment" value="বিকাশ (Bkash)">
 
@@ -77,11 +75,11 @@
                     <label class="block text-sm font-semibold text-gray-700 mb-2">ডেলিভারি লোকেশন সিলেক্ট করুন:</label>
                     <div class="grid grid-cols-2 gap-3">
                         <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50 border-indigo-200">
-                            <input type="radio" name="Location" value="ঢাকার ভেতরে (৳৬০)" checked onclick="calculateTotal()">
+                            <input type="radio" name="Location" value="备份 - ঢাকার ভেতরে" checked onclick="calculateTotal()">
                             <span class="text-sm">ঢাকার ভেতরে (৳৬০)</span>
                         </label>
                         <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50">
-                            <input type="radio" name="Location" value="ঢাকার বাহিরে (৳১২০)" onclick="calculateTotal()">
+                            <input type="radio" name="Location" value="ঢাকার বাহিরে" onclick="calculateTotal()">
                             <span class="text-sm">ঢাকার বাহিরে (৳১২০)</span>
                         </label>
                     </div>
@@ -122,7 +120,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
-                    অर्डर সম্পন্ন করুন
+                    অর্ডার সম্পন্ন করুন
                 </button>
             </form>
         </div>
@@ -137,7 +135,7 @@
                     <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
                         <i class="fa-brands fa-facebook-f"></i> Facebook: NexCart
                     </a>
-                    <a href="https://" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
+                    <a href="https://wa.me/8801601761487" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp: 01601-761487
                     </a>
                 </div>
@@ -165,7 +163,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-bold text-white mb-3">সহায়তা</h5>
+                    <h5 class="font-bold text-white mb-3">सहायता</h5>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition">FAQ</a></li>
                     </ul>
@@ -323,11 +321,10 @@
             document.getElementById('modal-product-name').innerText = selectedProduct.name;
             document.getElementById('modal-product-price').innerText = selectedProduct.price;
             
-            // শীটে প্রোডাক্টের নাম পাঠানোর জন্য এখানে নাম সেট করা হচ্ছে
+            // গুগল শিটে নাম পাঠানোর জন্য ইনপুটে ভ্যালু সেট
             document.getElementById('sheet-product-name').value = selectedProduct.name;
             
             calculateTotal();
-            
             document.getElementById('order-modal').classList.remove('hidden');
         }
 
@@ -339,10 +336,9 @@
 
         function calculateTotal() {
             if (!selectedProduct) return;
-            // এখানে চেক করা হচ্ছে সঠিক রেডিও বাটনের ভ্যালু (Location কলাম অনুযায়ী)
             const deliveryElement = document.querySelector('input[name="Location"]:checked');
             let deliveryCharge = 60;
-            if (deliveryElement && deliveryElement.value.includes('১২০')) {
+            if (deliveryElement && deliveryElement.value.includes('বাহিরে')) {
                 deliveryCharge = 120;
             }
             const total = selectedProduct.price + deliveryCharge;
@@ -351,46 +347,31 @@
             document.getElementById('modal-total-price').innerText = total;
         }
 
+        // একদম নতুন সাবমিট কোড (কোনো হোয়াটস্যাপ বা পপ-আপ রিডাইরেক্ট নেই)
         function submitOrder(e) {
             e.preventDefault();
             if (!selectedProduct) return;
 
             const form = document.getElementById('order-form');
             
-            // ব্যাকএন্ডে গুগল শীটে ডেটা পাঠানোর আসল কোড
+            // গুগল শিটে ডেটা পাঠানো শুরু
             fetch(form.action, {
                 method: "POST",
                 body: new FormData(form),
             })
             .then(response => {
                 if(response.ok) {
-                    console.log('Data successfully sent to Google Sheet!');
+                    // সফল হলে কাস্টমারকে এই মেসেজ দেখাবে
+                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমাদের একজন প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন।');
+                    closeModal();
+                } else {
+                    alert('দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।');
                 }
             })
-            .catch(error => console.error('Error sending to sheet:', error));
-
-            // আপনার আগের ওয়াটস্যাপে মেসেজ পাঠানোর কোড
-            const totalAmount = document.getElementById('modal-total-price').innerText;
-            const deliveryLocation = document.querySelector('input[name="Location"]:checked').value;
-            const phone = document.getElementById('customer-phone').value;
-            const address = document.getElementById('customer-address').value;
-            
-            const selectedColorElement = document.querySelector(`input[name="color-${selectedProduct.id}"]:checked`);
-            const chosenColor = selectedColorElement ? selectedColorElement.value : 'Default';
-
-            const message = `*নতুন অর্ডারের বিবরণ (NexCart)*\n\n` +
-                            `📦 *পণ্যের নাম:* ${selectedProduct.name}\n` +
-                            `🎨 *পছন্দের কালার:* ${chosenColor}\n` +
-                            `📞 *মো바일 নম্বর:* ${phone}\n` +
-                            `📍 *ঠিকানা:* ${address}\n\n` +
-                            `🚚 *ডেলিভারি লোকেশন:* ${deliveryLocation}\n` +
-                            `💰 *সর্বমোট মূল্য:* ৳${totalAmount}`;
-
-            alert(`আপনার অর্ডারটি গ্রহণ করা হয়েছে! কনফার্ম করার জন্য আপনাকে WhatsApp-এ রিডাইরেক্ট করা হচ্ছে।`);
-            
-            window.open(`https://wa.me/8801601761487?text=${encodeURIComponent(message)}`, '_blank');
-            
-            closeModal();
+            .catch(error => {
+                console.error('Error:', error);
+                alert('নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন।');
+            });
         }
     </script>
 </body>
