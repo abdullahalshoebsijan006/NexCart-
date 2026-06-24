@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexCart - Premium E-Commerce</title>
+    <title>NexCart BD - Premium E-Commerce</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght=400;600;700&display=swap');
         body { font-family: 'Hind Siliguri', sans-serif; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
+    <!-- হেডার সেকশন -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-indigo-600 flex items-center gap-2">
-                <i class="fa-solid fa-bag-shopping"></i> NexCart
+                <i class="fa-solid fa-bag-shopping"></i> NexCart BD
             </a>
             <div class="relative cursor-pointer">
                 <i class="fa-solid fa-cart-shopping text-2xl text-gray-700 hover:text-indigo-600 transition"></i>
@@ -25,31 +26,20 @@
         </div>
     </header>
 
-    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8 px-4 text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe')] bg-cover bg-center"></div>
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <span class="bg-yellow-400 text-gray-900 font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wider">Mega Offer</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold my-3">প্রতিটা পণ্যে ৪০% ডিসকাউন্ট!</h1>
-            <p class="text-lg md:text-xl mb-6 text-indigo-100">স্মার্ট ওয়াচ, TWS, টার্বো ফ্যান, পাওয়ার ব্যাংক এবং সাউন্ড বক্সের সেরা কালেকশন।</p>
-            <p class="text-md font-semibold bg-white/20 inline-block px-6 py-2 rounded-lg backdrop-blur-sm">
-                আজই অর্ডার করুন আপনার পছন্দের প্রডাক্ট, ভিজিট করুন আমাদের অফিশিয়াল ফেসবুক পেজ অথবা ওয়েবসাইট ধন্যবাদ 
-            </p>
-            
-            <div class="grid grid-cols-5 gap-2 mt-8 max-w-2xl mx-auto opacity-80">
-                <div class="bg-white/10 p-2 rounded text-xs"><i class="fa-solid fa-clock text-lg block mb-1"></i> Smart Watch</div>
-                <div class="bg-white/10 p-2 rounded text-xs"><i class="fa-solid fa-headphones text-lg block mb-1"></i> TWS</div>
-                <div class="bg-white/10 p-2 rounded text-xs"><i class="fa-solid fa-fan text-lg block mb-1"></i> Turbo Fan</div>
-                <div class="bg-white/10 p-2 rounded text-xs"><i class="fa-solid fa-battery-full text-lg block mb-1"></i> Power Bank</div>
-                <div class="bg-white/10 p-2 rounded text-xs"><i class="fa-solid fa-volume-high text-lg block mb-1"></i> Sound Box</div>
-            </div>
+    <!-- কভার ব্যানার সেকশন -->
+    <div class="w-full bg-[#0a2e36]">
+        <div class="max-w-7xl mx-auto">
+            <img src="https://i.ibb.co/Y4M2YV6B/1781849437725.jpg" alt="NexCart BD Mega Sale Banner" class="w-full h-auto object-cover block">
         </div>
     </div>
 
+    <!-- প্রোডাক্ট গ্রিড -->
     <main class="container mx-auto px-4 py-12">
         <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">আমাদের আকর্ষণীয় প্রোডাক্টসমূহ</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid"></div>
     </main>
 
+    <!-- অর্ডার মডাল বা ফর্ম পপআপ -->
     <div id="order-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
@@ -63,12 +53,15 @@
             <div class="bg-indigo-50 p-3 rounded-xl mb-4">
                 <p class="text-sm text-gray-600">প্রোডাক্টের নাম:</p>
                 <p id="modal-product-name" class="font-bold text-gray-800 text-lg"></p>
+                <p class="text-sm text-gray-600 mt-1">নির্বাচিত কালার: <span id="modal-selected-color" class="font-bold text-indigo-600"></span></p>
                 <p class="text-xs text-red-500 mt-1">* ৪০% ডিসকাউন্ট অন্তর্ভুক্ত করা হয়েছে</p>
             </div>
 
             <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
                 
+                <!-- Google Sheet এ পাঠানোর জন্য ইনপুট ফিল্ড -->
                 <input type="hidden" name="products" id="sheet-product-name">
+                <input type="hidden" name="color" id="sheet-product-color">
                 <input type="hidden" name="payment" value="বিকাশ (Bkash)">
 
                 <div class="mb-4">
@@ -80,7 +73,7 @@
                         </label>
                         <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50">
                             <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()">
-                            <span class="text-sm">ঢাকার বাহিরে (৳১২০)</span>
+                            <span class="text-sm">ঢাকার বাহিরে (৳১২о)</span>
                         </label>
                     </div>
                 </div>
@@ -105,7 +98,7 @@
                     
                     <div class="grid grid-cols-2 gap-2 border-t pt-3 mt-2">
                         <div>
-                            <label class="block text-xs font-bold text-pink-600 mb-1">বিকাশ নম্বর (যেখান থেকে পাঠিয়েছেন) *</label>
+                            <label class="block text-xs font-bold text-pink-600 mb-1">বিকাশ নম্বর *</label>
                             <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-pink-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-pink-500 outline-none bg-pink-50/30" placeholder="01XXXXXXXXX">
                         </div>
                         <div>
@@ -137,6 +130,7 @@
         </div>
     </div>
 
+    <!-- ফুটার সেকশন -->
     <footer class="bg-gray-900 text-gray-300 mt-20 pt-12 pb-6 border-t-4 border-indigo-600">
         <div class="container mx-auto px-4">
             <div class="bg-gray-800 p-6 rounded-2xl max-w-3xl mx-auto text-center border border-gray-700 mb-10">
@@ -144,7 +138,7 @@
                 <p class="text-sm text-gray-400 mb-4">আমরা আপনাকে ২৪ ঘণ্টা সাপোর্ট দিতে প্রস্তুত।</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
-                        <i class="fa-brands fa-facebook-f"></i> Facebook: NexCart
+                        <i class="fa-brands fa-facebook-f"></i> Facebook: NexCart BD
                     </a>
                     <a href="https://wa.me/8801601761487" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp: 01601-761487
@@ -155,7 +149,7 @@
             <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-sm border-b border-gray-800 pb-8 text-center md:text-left">
                 <div class="col-span-2 flex flex-col items-center md:items-start">
                     <span class="text-2xl font-bold text-white flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-bag-shopping text-indigo-500"></i> NexCart
+                        <i class="fa-solid fa-bag-shopping text-indigo-500"></i> NexCart BD
                     </span>
                     <p class="text-xs text-gray-500">আপনার বিশ্বস্ত অনলাইন গ্যাজেট শপ।</p>
                 </div>
@@ -181,18 +175,7 @@
                 </div>
             </div>
             
-            <div class="mt-8 pt-6 border-t border-gray-800 text-center text-xs text-gray-500 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
-                <div class="bg-gray-800/30 p-2 rounded border border-gray-800/50">
-                    <p class="font-bold text-gray-400">Founder : Shoeb Ahmed</p>
-                    <p class="text-[10px] text-gray-600">NexCart BD</p>
-                </div>
-                <div class="bg-gray-800/30 p-2 rounded border border-gray-800/50">
-                    <p class="font-bold text-gray-400">Co founder : Md Rifat Amin</p>
-                    <p class="text-[10px] text-gray-600">NexCart BD</p>
-                </div>
-            </div>
-            
-            <p class="text-center text-xs text-gray-600 mt-6">&copy; 2026 NexCart. All rights reserved.</p>
+            <p class="text-center text-xs text-gray-600 mt-6">&copy; 2026 NexCart BD. All rights reserved.</p>
         </div>
     </footer>
 
@@ -205,7 +188,7 @@
                 originalPrice: 2499,
                 rating: 4.9,
                 reviews: 10,
-                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ডিসপ্লে এবং হেলথ ট্র্যাকিং সুবিধা সহ স্টাইলিশ স্মার্ট ওয়াচ।",
+                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং, ব্লাড অক্সিজেন মনিটরিং এবং একাধিক স্পোর্টস মোড সুবিধা সম্বলিত এই যুগের অন্যতম সেরাスマート ওয়াচ। এটি আপনার স্মার্ট লাইফস্টাইলকে আরো সহজ করে তুলবে।",
                 images: [
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
                     "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
@@ -220,7 +203,7 @@
                 originalPrice: 1499,
                 rating: 4.8,
                 reviews: 18,
-                description: "ক্রিস্টাল ক্লিয়ার সাউন্ড এবং হেভি বেস। একবার চার্জে একটানা ৫ ঘণ্টা ব্যাকআপ পাবেন।",
+                description: "স্মার্ট টাচ কন্ট্রোল, ক্রিস্টাল ক্লিয়ার অডিও আউটপুট এবং হেভি বেস পাঞ্চ। দীর্ঘস্থায়ী ব্যাটারি লাইফ নিশ্চিত করবে একবার ফুল চার্জে একটানা ৫ ঘণ্টা পর্যন্ত মিউজিক ব্যাকআপ এবং কেস সহ মোট ২৫ ঘণ্টার ব্যাকআপ সুবিধা।",
                 images: [
                     "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
                     "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=500",
@@ -235,7 +218,7 @@
                 originalPrice: 1915,
                 rating: 4.7,
                 reviews: 7,
-                description: "পোর্টেবল এবং রিচার্জেবল হাই স্পিড টার্বো ফ্যান। গরমে যেকোনো জায়গায় সহজে বহনযোগ্য।",
+                description: "পোর্টেবল এবং রিচার্জেবল হাই স্পিড টার্বো মিনি ডেক্স ফ্যান। তীব্র গরমে আরামদায়ক শক্তিশালী বাতাস দিতে এতে রয়েছে ৩টি স্পিড অ্যাডজাস্টমেন্ট লেভেল। কম শব্দে দীর্ঘক্ষণ ব্যাকআপের জন্য এটি টাইপ-সি পোর্টে চার্জ হয়।",
                 images: [
                     "https://images.unsplash.com/photo-1618945533005-79b13ed62282?w=500",
                     "https://images.unsplash.com/photo-1565151443-3259c47114ee?w=500",
@@ -250,7 +233,7 @@
                 originalPrice: 2250,
                 rating: 4.9,
                 reviews: 31,
-                description: "২২.৫ ওয়াট ফাস্ট চার্জিং ক্ষমতা সম্পন্ন পাওয়ার ব্যাংক। একসাথে ২টি ডিভাইস চার্জ হবে।",
+                description: "২২.৫ ওয়াট পিডি এবং কিউসি ফাস্ট চার্জিং ক্ষমতা সম্পন্ন ইন্টেলিজেন্ট পাওয়ার ব্যাংক। ডিজিটাল পার্সেন্টেজ ডিসপ্লে এবং একাধিক প্রোটেকশন লেয়ার সমৃদ্ধ সুরক্ষায় আপনার মোবাইল ফোন ও গ্যাজেট দ্রুত ও নিরাপদে চার্জ করতে পারবেন।",
                 images: [
                     "https://images.unsplash.com/photo-1609592424085-f6df46001004?w=500",
                     "https://images.unsplash.com/photo-1622445262461-c3b81b37a531?w=500",
@@ -265,7 +248,7 @@
                 originalPrice: 2999,
                 rating: 4.6,
                 reviews: 10,
-                description: "আকর্ষণীয় RGB লাইট এবং ৩৬০ ডিগ্রি সারাউন্ড সাউন্ড সিস্টেম সহ দুর্দান্ত ব্লুটুথ স্পিকার।",
+                description: "মিউজিকের তালে তালে জ্বলতে থাকা আকর্ষণীয় ডাইনামিক RGB লাইटिंग এবং ৩৬০ ডিগ্রি সারাউন্ড ট্রু-সাউন্ড সিস্টেম। যেকোনো ইনডোর বা আউটডোর পার্টিতে দুর্দান্ত বেস ও লাউড সাউন্ড উপভোগ করার জন্য বেস্ট চয়েস ব্লুটুথ স্পিকার।",
                 images: [
                     "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
                     "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500",
@@ -280,7 +263,7 @@
                 originalPrice: 1150,
                 rating: 4.8,
                 reviews: 18,
-                description: "লো-লেটেন্সি গেম মোড এবং নয়েজ ক্যান্সেলেশন সাপোর্ট সহ অসাধারণ নেকব্যান্ড।",
+                description: "আল্ট্রা লো-লেটেন্সি গেমিং মোড সম্পন্ন এই নেকব্যান্ডে কোনো ডিলে ছাড়াই নিখুঁত এনিমি সাউন্ড পাবেন। এনভায়রনমেন্টাল নয়েজ ক্যান্সেলেশন (ENC) প্রযুক্তির কারণে এইচডি কোয়ালিটি কলিং ও স্পষ্ট ভয়েস ডেলিভারি নিশ্চিত করে।",
                 images: [
                     "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=500",
                     "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500",
@@ -301,7 +284,7 @@
                 <div class="relative bg-gray-100 h-64 overflow-hidden">
                     <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover transition duration-300">
                 </div>
-                <div class="flex gap-2 p-3 bg-gray-50 border-b">
+                <div class="flex gap-2 p-3 bg-gray-50 border-b justify-center">
                     ${product.images.map((img) => `
                         <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-12 h-12 object-cover rounded border-2 border-transparent hover:border-indigo-600 cursor-pointer transition">
                     `).join('')}
@@ -313,14 +296,14 @@
                         <span class="text-gray-400 text-xs">(${product.reviews} রিভিউ)</span>
                     </div>
                     <h3 class="font-bold text-lg text-gray-900 mb-2">${product.name}</h3>
-                    <p class="text-gray-500 text-xs line-clamp-2 mb-4">${product.description}</p>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-4 flex-1">${product.description}</p>
                     
-                    <div class="mb-4">
-                        <span class="text-xs font-semibold text-gray-400 block mb-1">কালার চয়েস:</span>
+                    <div class="mb-5 border-t pt-3">
+                        <span class="text-xs font-bold text-gray-500 block mb-2">আপনার পছন্দের কালার সিলেক্ট করুন:</span>
                         <div class="flex gap-2">
                             ${product.colors.map((color, idx) => `
-                                <label class="text-xs bg-gray-100 px-2.5 py-1 rounded-md border border-gray-200 cursor-pointer hover:border-indigo-50 flex items-center gap-1">
-                                    <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="accent-indigo-600">
+                                <label class="text-xs bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-indigo-400 flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-indigo-600 cursor-pointer">
                                     <span>${color}</span>
                                 </label>
                             `).join('')}
@@ -330,10 +313,10 @@
                     <div class="mt-auto pt-4 flex items-center justify-between border-t border-gray-100">
                         <div>
                             <span class="line-through text-gray-400 text-sm block">৳${product.originalPrice}</span>
-                            <span class="text-xl font-bold text-gray-900">৳${product.price}</span>
+                            <span class="text-xl font-bold text-indigo-600">৳${product.price}</span>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="addToCart()" class="bg-gray-100 hover:bg-indigo-50 text-indigo-600 text-xs font-bold px-4 py-2.5 rounded-xl transition" title="Add to Cart">
+                            <button onclick="addToCart()" class="bg-gray-100 hover:bg-indigo-50 text-indigo-600 text-xs font-bold px-4 py-2.5 rounded-xl transition">
                                 এড টু কার্ট
                             </button>
                             <button onclick="openModal(${product.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
@@ -353,14 +336,20 @@
         function addToCart() {
             cartCount++;
             document.getElementById('cart-count').innerText = cartCount;
-            alert("প্রোডাক্টটি কার্টে যুক্ত করা হয়েছে!");
+            alert("প্রোডাক্টটি সফলভাবে কার্টে যুক্ত করা হয়েছে!");
         }
 
         function openModal(productId) {
             selectedProduct = products.find(p => p.id === productId);
+            const selectedColorElement = document.querySelector(`input[name="color-${productId}"]:checked`);
+            const chosenColor = selectedColorElement ? selectedColorElement.value : selectedProduct.colors[0];
+
             document.getElementById('modal-product-name').innerText = selectedProduct.name;
+            document.getElementById('modal-selected-color').innerText = chosenColor;
             document.getElementById('modal-product-price').innerText = selectedProduct.price;
+            
             document.getElementById('sheet-product-name').value = selectedProduct.name;
+            document.getElementById('sheet-product-color').value = chosenColor;
             
             calculateTotal();
             document.getElementById('order-modal').classList.remove('hidden');
@@ -397,7 +386,7 @@
             })
             .then(response => {
                 if(response.ok) {
-                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমাদের একজন প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন।');
+                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।');
                     closeModal();
                 } else {
                     alert('দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।');
@@ -405,7 +394,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন।');
+                alert('নেটওয়ার্ক সমস্যা! অনুগ্রহ করে আবার চেষ্টা করুন।');
             });
         }
     </script>
