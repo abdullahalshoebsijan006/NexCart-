@@ -18,7 +18,7 @@
                         brand: {
                             50: '#fff1f2',
                             100: '#ffe4e6',
-                            500: '#ff4e00', /* ছবির মতো আকর্ষণীয় প্রিমিয়াম ডাইনামিক অরেঞ্জ থিম */
+                            500: '#ff4e00', 
                             600: '#e03a00',
                             700: '#b82e00',
                         }
@@ -35,15 +35,22 @@
     </div>
 
     <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/95">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-            <a href="#" class="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
+        <div class="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center max-w-7xl gap-4">
+            <a href="#" class="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2 shrink-0">
                 <span class="bg-brand-500 text-white p-2 rounded-xl flex items-center justify-center shadow-md shadow-brand-500/30">
                     <i class="fa-solid fa-bolt text-xs"></i>
                 </span>
                 NEX<span class="text-brand-500">CART</span>
             </a>
             
-            <div class="flex items-center gap-6">
+            <div class="w-full max-w-md relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </div>
+                <input type="text" id="search-input" oninput="searchProducts()" placeholder="পছন্দের প্রোডাক্টটি এখানে সার্চ করুন..." class="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10 transition">
+            </div>
+            
+            <div class="flex items-center gap-6 shrink-0">
                 <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                     <a href="#" class="text-brand-500">Home</a>
                     <a href="#" class="hover:text-brand-500 transition">Best Sellers</a>
@@ -68,11 +75,16 @@
     <main class="container mx-auto px-4 py-12 max-w-7xl">
         <div class="flex flex-col items-center mb-12">
             <span class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full mb-2">Premium Collection</span>
-            <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight text-center">আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ</h2>
+            <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight text-center" id="section-title">আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ</h2>
             <div class="w-14 h-1 bg-brand-500 rounded-full mt-3"></div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid"></div>
+        
+        <div id="no-products" class="hidden text-center py-12 text-gray-500 font-medium">
+            <i class="fa-solid fa-box-open text-4xl block mb-3 text-gray-300"></i>
+            আপনার সার্চ করা নামে কোনো প্রোডাক্ট পাওয়া যায়নি!
+        </div>
     </main>
 
     <div id="order-modal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
@@ -111,7 +123,7 @@
                         </label>
                         <label class="border p-3.5 rounded-xl flex items-center gap-2.5 cursor-pointer bg-white hover:bg-gray-50 border-gray-200 transition">
                             <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()" class="accent-brand-500 w-4 h-4">
-                            <span class="text-sm font-semibold text-gray-700">ঢাকার বাহিরে (৳১২০)</span>
+                            <span class="text-sm font-semibold text-gray-700">ঢাকার বাহিরে (৳১২ো)</span>
                         </label>
                     </div>
                 </div>
@@ -215,7 +227,7 @@
     </footer>
 
     <script>
-        // ১৬টি প্রিমিয়াম প্রোডাক্টের অ্যারে ডেটা (প্রতিটিতে ৩টি ছবি, কালার ও ডেসক্রিপশন সেট করা)
+        // ১৬টি প্রিমিয়াম প্রোডাক্টের অ্যারে ডেটা
         const products = [
             {
                 id: 1,
@@ -224,7 +236,7 @@
                 originalPrice: 2499,
                 rating: 4.9,
                 reviews: 12,
-                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং এবং দীর্ঘস্থায়ী ব্যাটারি ব্যাকআপ সমৃদ্ধ স্মার্ট ওয়াচ।",
+                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং এবং দীর্ঘস্থায়ী ব্যাটারি ব্যাকআপ সমৃদ্ধ SMART WATCH।",
                 images: [
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
                     "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
@@ -461,59 +473,91 @@
 
         let cartCount = 0;
         let selectedProduct = null;
-
         const productGrid = document.getElementById('product-grid');
-        products.forEach(product => {
-            const card = document.createElement('div');
-            card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
-            card.innerHTML = `
-                <div class="relative bg-gray-50 h-64 overflow-hidden">
-                    <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="flex gap-2.5 p-3 bg-white justify-center border-b border-gray-50">
-                    ${product.images.map((img) => `
-                        <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-11 h-11 object-cover rounded-lg border border-gray-100 hover:border-brand-500 cursor-pointer transition p-0.5">
-                    `).join('')}
-                </div>
-                <div class="p-5 flex-1 flex flex-col">
-                    <div class="flex items-center gap-1 text-amber-500 text-xs font-bold mb-2">
-                        <i class="fa-solid fa-star"></i>
-                        <span class="text-gray-900">${product.rating}</span>
-                        <span class="text-gray-400 font-normal">(${product.reviews} Reviews)</span>
-                    </div>
-                    <h3 class="font-bold text-gray-950 text-base mb-1.5 group-hover:text-brand-500 transition">${product.name}</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed mb-4 flex-1">${product.description}</p>
-                    
-                    <div class="mb-4 border-t border-gray-50 pt-3.5">
-                        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Select Color</span>
-                        <div class="flex gap-2">
-                            ${product.colors.map((color, idx) => `
-                                <label class="text-xs bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-1.5 font-medium text-gray-700 transition">
-                                    <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-brand-500 cursor-pointer">
-                                    <span>${color}</span>
-                                </label>
-                            `).join('')}
-                        </div>
-                    </div>
+        const noProductsEl = document.getElementById('no-products');
 
-                    <div class="mt-auto pt-3.5 flex items-center justify-between border-t border-gray-100">
-                        <div>
-                            <span class="line-through text-gray-300 text-xs block font-medium">৳${product.originalPrice}</span>
-                            <span class="text-lg font-black text-gray-950">৳${product.price}</span>
+        // প্রোডাক্ট রেন্ডার করার জন্য ফাংশন
+        function renderProducts(productsList) {
+            productGrid.innerHTML = "";
+            if (productsList.length === 0) {
+                noProductsEl.classList.remove('hidden');
+                return;
+            }
+            noProductsEl.classList.add('hidden');
+
+            productsList.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
+                card.innerHTML = `
+                    <div class="relative bg-gray-50 h-64 overflow-hidden">
+                        <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="flex gap-2.5 p-3 bg-white justify-center border-b border-gray-50">
+                        ${product.images.map((img) => `
+                            <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-11 h-11 object-cover rounded-lg border border-gray-100 hover:border-brand-500 cursor-pointer transition p-0.5">
+                        `).join('')}
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-1 text-amber-500 text-xs font-bold mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-gray-900">${product.rating}</span>
+                            <span class="text-gray-400 font-normal">(${product.reviews} Reviews)</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold px-3 py-2.5 rounded-xl transition border border-gray-200/60" title="Add To Cart">
-                                <i class="fa-solid fa-cart-plus text-sm"></i>
-                            </button>
-                            <button onclick="openModal(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-brand-500/10">
-                                অর্ডার করুন
-                            </button>
+                        <h3 class="font-bold text-gray-950 text-base mb-1.5 group-hover:text-brand-500 transition">${product.name}</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed mb-4 flex-1">${product.description}</p>
+                        
+                        <div class="mb-4 border-t border-gray-50 pt-3.5">
+                            <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Select Color</span>
+                            <div class="flex gap-2">
+                                ${product.colors.map((color, idx) => `
+                                    <label class="text-xs bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-1.5 font-medium text-gray-700 transition">
+                                        <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-brand-500 cursor-pointer">
+                                        <span>${color}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="mt-auto pt-3.5 flex items-center justify-between border-t border-gray-100">
+                            <div>
+                                <span class="line-through text-gray-300 text-xs block font-medium">৳${product.originalPrice}</span>
+                                <span class="text-lg font-black text-gray-950">৳${product.price}</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold px-3 py-2.5 rounded-xl transition border border-gray-200/60" title="Add To Cart">
+                                    <i class="fa-solid fa-cart-plus text-sm"></i>
+                                </button>
+                                <button onclick="openModal(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-brand-500/10">
+                                    অর্ডার করুন
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-            productGrid.appendChild(card);
-        });
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // প্রথমে সব প্রোডাক্ট রেন্ডার করা
+        renderProducts(products);
+
+        // নতুন লাইভ সার্চ ফাংশন
+        function searchProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) || 
+                product.description.toLowerCase().includes(searchTerm)
+            );
+            renderProducts(filteredProducts);
+            
+            // সার্চ করলে টাইটেল ডাইনামিকালি চেঞ্জ হবে
+            const titleEl = document.getElementById('section-title');
+            if (searchTerm !== "") {
+                titleEl.innerText = `সার্চ রেজাল্ট ("${document.getElementById('search-input').value}")`;
+            } else {
+                titleEl.innerText = "আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ";
+            }
+        }
 
         function changeImage(productId, imgSrc) {
             document.getElementById(`main-img-${productId}`).src = imgSrc;
