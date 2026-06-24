@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexCart BD - Next-Gen Tech Shop</title>
+    <title>NexCart BD - Premium Gadget Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&display=swap');
-        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f9fafb; }
     </style>
     <script>
         tailwind.config = {
@@ -18,9 +18,9 @@
                         brand: {
                             50: '#fff1f2',
                             100: '#ffe4e6',
-                            500: '#f43f5e', /* প্রফেশনাল ও মডার্ন অরেঞ্জ-রেড ব্র্যান্ড কালার */
-                            600: '#e11d48',
-                            700: '#be123c',
+                            500: '#ff4e00', /* ছবির মতো আকর্ষণীয় প্রিমিয়াম ডাইনামিক অরেঞ্জ থিম */
+                            600: '#e03a00',
+                            700: '#b82e00',
                         }
                     }
                 }
@@ -28,38 +28,38 @@
         }
     </script>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 antialiased">
 
-    <div class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide">
-        ⚡ মেগা গ্যাজেট সেল! প্রতিটি অর্ডারে পাচ্ছেন আপ-টু ৪০% ইনস্ট্যান্ট ডিসকাউন্ট!
+    <div class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide shadow-sm">
+        ⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!
     </div>
 
-    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/95">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
             <a href="#" class="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-                <span class="bg-brand-500 text-white p-1.5 rounded-lg flex items-center justify-center shadow-md shadow-brand-500/20">
-                    <i class="fa-solid fa-bolt text-sm"></i>
+                <span class="bg-brand-500 text-white p-2 rounded-xl flex items-center justify-center shadow-md shadow-brand-500/30">
+                    <i class="fa-solid fa-bolt text-xs"></i>
                 </span>
                 NEX<span class="text-brand-500">CART</span>
             </a>
             
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-                    <a href="#" class="text-brand-500 font-semibold">Home</a>
-                    <a href="#" class="hover:text-brand-500 transition">Trending</a>
-                    <a href="#" class="hover:text-brand-500 transition">Policy</a>
+                <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
+                    <a href="#" class="text-brand-500">Home</a>
+                    <a href="#" class="hover:text-brand-500 transition">Best Sellers</a>
+                    <a href="#" class="hover:text-brand-500 transition">Contact Us</a>
                 </div>
-                <div class="relative cursor-pointer bg-gray-50 hover:bg-gray-100 p-2.5 rounded-xl transition border border-gray-100">
-                    <i class="fa-solid fa-bag-shopping text-xl text-gray-700"></i>
-                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-brand-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+                <div class="relative cursor-pointer bg-gray-50 hover:bg-gray-100 p-2.5 rounded-xl transition border border-gray-200/60">
+                    <i class="fa-solid fa-basket-shopping text-xl text-gray-700"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-brand-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md">0</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="w-full bg-white border-b border-gray-100 py-4">
+    <div class="w-full bg-white py-4">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-gray-50">
+            <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
                 <img src="https://i.ibb.co/Y4M2YV6B/1781849437725.jpg" alt="Mega Sale Banner" class="w-full h-auto object-cover block">
             </div>
         </div>
@@ -67,9 +67,9 @@
 
     <main class="container mx-auto px-4 py-12 max-w-7xl">
         <div class="flex flex-col items-center mb-12">
-            <span class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full mb-2">Trending Items</span>
-            <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight text-center">আমাদের সেরা কালেকশনসমূহ</h2>
-            <div class="w-12 h-1 bg-brand-500 rounded-full mt-4"></div>
+            <span class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full mb-2">Premium Collection</span>
+            <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight text-center">আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ</h2>
+            <div class="w-14 h-1 bg-brand-500 rounded-full mt-3"></div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid"></div>
@@ -82,17 +82,17 @@
             </button>
             
             <h3 class="text-xl font-bold text-gray-900 mb-5 flex items-center gap-2.5">
-                <span class="text-brand-500"><i class="fa-solid fa-circle-check"></i></span> অর্ডার কনফার্ম করুন
+                <span class="text-brand-500"><i class="fa-solid fa-square-check"></i></span> অর্ডার কনফার্ম করুন
             </h3>
             
-            <div class="bg-gray-50 border border-gray-100 p-4 rounded-xl mb-5">
+            <div class="bg-gray-50 border border-gray-200/60 p-4 rounded-xl mb-5">
                 <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Product Details</span>
                 <p id="modal-product-name" class="font-bold text-gray-900 text-base mb-1"></p>
                 <div class="flex items-center gap-2 mt-2">
                     <span class="text-xs bg-white border border-gray-200 px-2.5 py-1 rounded-md text-gray-600">
                         Color: <span id="modal-selected-color" class="font-bold text-brand-500"></span>
                     </span>
-                    <span class="text-xs bg-brand-50 text-brand-600 px-2.5 py-1 rounded-md font-medium">৪০% ডিসকাউন্ট ইনক্লুডেড</span>
+                    <span class="text-xs bg-brand-50 text-brand-600 px-2.5 py-1 rounded-md font-semibold">স্পেশাল অফার ইনক্লুডেড</span>
                 </div>
             </div>
 
@@ -103,15 +103,15 @@
                 <input type="hidden" name="payment" value="বিকাশ (Bkash)">
 
                 <div class="mb-5">
-                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">डেলিভারি লোকেশন:</label>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">ডেলিভারি লোকেশন সিলেক্ট করুন:</label>
                     <div class="grid grid-cols-2 gap-3">
                         <label class="border p-3.5 rounded-xl flex items-center gap-2.5 cursor-pointer bg-white hover:bg-gray-50 border-brand-500 ring-2 ring-brand-100 transition shadow-sm">
                             <input type="radio" name="location" value="ঢাকার ভেতরে" checked onclick="calculateTotal()" class="accent-brand-500 w-4 h-4">
-                            <span class="text-sm font-medium text-gray-800">ঢাকার ভেতরে (৳৬০)</span>
+                            <span class="text-sm font-semibold text-gray-800">ঢাকার ভেতরে (৳৬০)</span>
                         </label>
                         <label class="border p-3.5 rounded-xl flex items-center gap-2.5 cursor-pointer bg-white hover:bg-gray-50 border-gray-200 transition">
                             <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()" class="accent-brand-500 w-4 h-4">
-                            <span class="text-sm font-medium text-gray-700">ঢাকার বাহিরে (৳১২০)</span>
+                            <span class="text-sm font-semibold text-gray-700">ঢাকার বাহিরে (৳১২০)</span>
                         </label>
                     </div>
                 </div>
@@ -122,9 +122,9 @@
                         <span>বিকাশ (Bkash)</span>
                         <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                     </div>
-                    <div id="payment-instruction" class="bg-rose-50/50 text-rose-900 text-xs p-3.5 rounded-xl mt-2.5 border border-rose-100/70 leading-relaxed">
-                        দয়া করে নিচের নাম্বারে টাকা <b>সেন্ড মানি</b> করুন: 
-                        <span class="font-mono font-bold text-sm block mt-1 text-brand-600 bg-white border border-rose-100 p-1.5 rounded-md text-center" id="payment-number">01601-761487</span>
+                    <div id="payment-instruction" class="bg-orange-50/60 text-orange-900 text-xs p-3.5 rounded-xl mt-2.5 border border-orange-100 leading-relaxed">
+                        দয়া করে নিচের নাম্বারে টাকা <b>সেন্ড মানি (Send Money)</b> করুন: 
+                        <span class="font-mono font-bold text-sm block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded-md text-center" id="payment-number">01601-761487</span>
                     </div>
                 </div>
 
@@ -140,7 +140,7 @@
                     
                     <div class="grid grid-cols-2 gap-3 border-t border-gray-100 pt-4">
                         <div>
-                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">বিকাশ নম্বর (যেটি থেকে পাঠিয়েছেন) *</label>
+                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">বিকাশ নম্বর (কোথা থেকে পাঠিয়েছেন) *</label>
                             <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition" placeholder="01XXXXXXXXX">
                         </div>
                         <div>
@@ -153,20 +153,20 @@
                 <div class="border-t border-gray-100 pt-4 space-y-2 text-sm text-gray-600 mb-6">
                     <div class="flex justify-between">
                         <span>প্রোডাক্টের মূল্য:</span>
-                        <span class="font-medium text-gray-900">৳<span id="modal-product-price">0</span></span>
+                        <span class="font-semibold text-gray-900">৳<span id="modal-product-price">0</span></span>
                     </div>
                     <div class="flex justify-between">
                         <span>ডেলিভারি চার্জ:</span>
-                        <span class="font-medium text-gray-900">৳<span id="modal-delivery-charge">60</span></span>
+                        <span class="font-semibold text-gray-900">৳<span id="modal-delivery-charge">60</span></span>
                     </div>
                     <div class="flex justify-between text-base font-bold text-gray-950 border-t border-gray-100 pt-2.5">
                         <span>সর্বমোট বিল:</span>
-                        <span class="text-brand-600 text-lg">৳<span id="modal-total-price">0</span></span>
+                        <span class="text-brand-600 text-xl">৳<span id="modal-total-price">0</span></span>
                     </div>
                 </div>
 
                 <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-brand-500/20 active:scale-[0.99]">
-                    অর্ডার কনফার্ম করুন
+                    অর্ডার সম্পন্ন করুন
                 </button>
             </form>
         </div>
@@ -210,11 +210,12 @@
                 </div>
             </div>
             
-            <p class="text-center text-xs text-gray-400 mt-8">&copy; 2026 NexCart BD. Designed with premium aesthetics.</p>
+            <p class="text-center text-xs text-gray-400 mt-8">&copy; 2026 NexCart BD. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // ১৬টি প্রিমিয়াম প্রোডাক্টের অ্যারে ডেটা (প্রতিটিতে ৩টি ছবি, কালার ও ডেসক্রিপশন সেট করা)
         const products = [
             {
                 id: 1,
@@ -222,8 +223,8 @@
                 price: 1499,
                 originalPrice: 2499,
                 rating: 4.9,
-                reviews: 10,
-                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং এবং দীর্ঘস্থায়ী ব্যাটারি সমৃদ্ধ টপ-টিয়ার গ্যাজেট।",
+                reviews: 12,
+                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং এবং দীর্ঘস্থায়ী ব্যাটারি ব্যাকআপ সমৃদ্ধ স্মার্ট ওয়াচ।",
                 images: [
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
                     "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
@@ -238,7 +239,7 @@
                 originalPrice: 1499,
                 rating: 4.8,
                 reviews: 18,
-                description: "ক্রিস্টাল ক্লিয়ার অডিও এবং ডিপ বেস পাঞ্চ। একবার ফুল চার্জে কেস সহ মোট ২৫ ঘণ্টার দীর্ঘ ব্যাকআপ গ্যারান্টি।",
+                description: "ক্রিস্টাল ক্লিয়ার অডিও এবং ডিপ বেস পাঞ্চ। একবার ফুল চার্জে চার্জিং কেস সহ মোট ২৫ ঘণ্টার দীর্ঘ মিউজিক ব্যাকআপ গ্যারান্টি।",
                 images: [
                     "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
                     "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=500",
@@ -253,7 +254,7 @@
                 originalPrice: 1915,
                 rating: 4.7,
                 reviews: 7,
-                description: "রিচার্জেবল এবং পোর্টেবল টাইপ-সি ফাস্ট চার্জিং ডেস্ক ফ্যান। কম শব্দে শক্তিশালী বাতাসের জন্য ৩-স্পিড মোড অ্যাডজাস্টেবল।",
+                description: "রিচার্জেবল এবং পোর্টেবল টাইপ-সি ফাস্ট চার্জিং ডেস্ক ফ্যান। তীব্র গরমে আরামদায়ক বাতাসের জন্য রয়েছে ৩-স্পিড কন্ট্রোল মোড।",
                 images: [
                     "https://images.unsplash.com/photo-1618945533005-79b13ed62282?w=500",
                     "https://images.unsplash.com/photo-1565151443-3259c47114ee?w=500",
@@ -268,7 +269,7 @@
                 originalPrice: 2250,
                 rating: 4.9,
                 reviews: 31,
-                description: "২২.৫ ওয়াট পিডি ফাস্ট চার্জিং ক্ষমতা এবং ইন্টেলিজেন্ট প্রোটেকশন লেয়ার সমৃদ্ধ ডিজিটাল ডিসপ্লে পাওয়ার ব্যাংক।",
+                description: "২২.৫ ওয়াট পিডি ফাস্ট চার্জিং ক্ষমতা এবং ইন্টেলিজেন্ট সেফটি প্রোটেকশন লেয়ার সমৃদ্ধ রিয়েল ডিজিটাল ডিসপ্লে পাওয়ার ব্যাংক।",
                 images: [
                     "https://images.unsplash.com/photo-1609592424085-f6df46001004?w=500",
                     "https://images.unsplash.com/photo-1622445262461-c3b81b37a531?w=500",
@@ -283,7 +284,7 @@
                 originalPrice: 2999,
                 rating: 4.6,
                 reviews: 10,
-                description: "৩৬০ ডিগ্রি সারাউন্ড ট্রু-সাউন্ড সিস্টেম ও মিউজিকের রিদমে জ্বলতে থাকা চমৎকার ডাইনামিক RGB লাইটিং স্পিকার।",
+                description: "৩৬০ ডিগ্রি সারাউন্ড হাই-ফাই সাউন্ড সিস্টেম ও মিউজিকের বিটের সাথে জ্বলতে থাকা চমৎকার ডাইনামিক RGB লাইটিং স্পিকার।",
                 images: [
                     "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
                     "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500",
@@ -298,13 +299,163 @@
                 originalPrice: 1150,
                 rating: 4.8,
                 reviews: 18,
-                description: "আল্ট্রা লো-লেটেন্সি গেমিং মোড এবং ক্রিস্টাল ক্লিয়ার এনভায়রনমেন্টাল নয়েজ ক্যান্সেলেশন (ENC) যুক্ত নেকব্যান্ড।",
+                description: "আল্ট্রা লো-লেটেন্সি গেমিং মোড এবং ক্রিস্টাল ক্লিয়ার এনভায়রনমেন্টাল নয়েজ ক্যান্সেলেশন (ENC) যুক্ত ওয়্যারলেস নেকব্যান্ড।",
                 images: [
                     "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=500",
                     "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500",
                     "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=500"
                 ],
                 colors: ["Black", "Green", "Yellow"]
+            },
+            {
+                id: 7,
+                name: "Premium Wireless Gaming Mouse",
+                price: 1250,
+                originalPrice: 1999,
+                rating: 4.9,
+                reviews: 24,
+                description: "হাই ডিপিআই সেন্সর এবং রেসপনসিভ ক্লিকের সাথে আরজিবি ব্রিদিং লাইট ব্যাকলিট গেমিং মাউস। প্রফেশনাল গেমারদের প্রথম পছন্দ।",
+                images: [
+                    "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500",
+                    "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500",
+                    "https://images.unsplash.com/photo-1625842268584-8f3290455655?w=500"
+                ],
+                colors: ["Black", "White", "Pink"]
+            },
+            {
+                id: 8,
+                name: "Mechanical Backlit Keyboard",
+                price: 2450,
+                originalPrice: 3499,
+                rating: 4.8,
+                reviews: 15,
+                description: "প্রিমিয়াম ব্লু সুইচের ক্লিকি সাউন্ড এবং একাধিক কাস্টমাইজড RGB এফেক্ট সমৃদ্ধ মেকানিক্যাল তারযুক্ত কিবোর্ড।",
+                images: [
+                    "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+                    "https://images.unsplash.com/photo-1595225476474-87563907a212?w=500",
+                    "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500"
+                ],
+                colors: ["Black", "White", "Grey"]
+            },
+            {
+                id: 9,
+                name: "HD Smart Security IP Camera",
+                price: 1850,
+                originalPrice: 2800,
+                rating: 4.7,
+                reviews: 29,
+                description: "৩৬০ ডিগ্রি রোটেশন মোড, নাইট ভিশন এবং দ্বিমুখী অডিও চ্যাটিং সিস্টেম সহ ওয়াইফাই অ্যাপ কন্ট্রোল্ড সিকিউরিটি ক্যামেরা।",
+                images: [
+                    "https://images.unsplash.com/photo-1557862921-37829c790f19?w=500",
+                    "https://images.unsplash.com/photo-1524292332407-d86ec621ed04?w=500",
+                    "https://images.unsplash.com/photo-1549490349-8643362247b5?w=500"
+                ],
+                colors: ["White", "Black", "Grey"]
+            },
+            {
+                id: 10,
+                name: "Universal Fast Mobile Charger",
+                price: 650,
+                originalPrice: 999,
+                rating: 4.9,
+                reviews: 42,
+                description: "কোয়ালকম কুইক চার্জ ৩.০ ও গ্যান টেকনোলজি সমৃদ্ধ ফাস্ট চার্জিং মোবাইল অ্যাডাপ্টার, যা ফোন গরম হওয়া রোধ করে।",
+                images: [
+                    "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500",
+                    "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500",
+                    "https://images.unsplash.com/photo-1622445262461-c3b81b37a531?w=500"
+                ],
+                colors: ["White", "Black", "Red"]
+            },
+            {
+                id: 11,
+                name: "Premium Laptop Stand",
+                price: 790,
+                originalPrice: 1250,
+                rating: 4.6,
+                reviews: 11,
+                description: "অ্যালুমিনিয়াম অ্যালয় বডির ৭-লেভেল উচ্চতা অ্যাডজাস্টেবল ফোল্ডেবল ল্যাপটপ স্ট্যান্ড। ল্যাপটপ ঠান্ডা রাখতে সাহায্য করে।",
+                images: [
+                    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500",
+                    "https://images.unsplash.com/photo-1616440347437-b1c73416efc2?w=500",
+                    "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500"
+                ],
+                colors: ["Silver", "Grey", "Black"]
+            },
+            {
+                id: 12,
+                name: "Rechargeable LED Desk Light",
+                price: 950,
+                originalPrice: 1499,
+                rating: 4.8,
+                reviews: 16,
+                description: "চোখের সুরক্ষায় আই-প্রোটেক্টিভ ৩-লেভেল ব্রাইটনেস মোড সহ টাচ কন্ট্রোল ফ্লেক্সিবল রিচার্জেবল টেবিল ল্যাম্প।",
+                images: [
+                    "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500",
+                    "https://images.unsplash.com/photo-1532372320978-9b4d6a3a854c?w=500",
+                    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500"
+                ],
+                colors: ["White", "Pink", "Blue"]
+            },
+            {
+                id: 13,
+                name: "Bluetooth Selfie Stick Tripod",
+                price: 850,
+                originalPrice: 1350,
+                rating: 4.7,
+                reviews: 20,
+                description: "ওয়ারলেস রিমোট কন্ট্রোল ব্লুটুথ শাটার সহ ৩-ইন-১ এক্সটেন্ডেবল সেলফি স্টিক এবং স্টেবল ফ্লোর ট্রিপড স্ট্যান্ড।",
+                images: [
+                    "https://images.unsplash.com/photo-1584438784894-089d6a128f3e?w=500",
+                    "https://images.unsplash.com/photo-1600541519463-ee6741002389?w=500",
+                    "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500"
+                ],
+                colors: ["Black", "White", "Pink"]
+            },
+            {
+                id: 14,
+                name: "Professional Condenser Microphone",
+                price: 1990,
+                originalPrice: 2999,
+                rating: 4.8,
+                reviews: 14,
+                description: "ইউটিউব কনটেন্ট ক্রিয়েশন, পডকাস্ট এবং গেমিং লাইভ স্ট্রিমের জন্য ক্রিস্টাল ক্লিয়ার অডিও রেকর্ডিং ইউএসবি কন্ডেনসার মাইক।",
+                images: [
+                    "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=500",
+                    "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?w=500",
+                    "https://images.unsplash.com/photo-1484755560693-a4074577af3a?w=500"
+                ],
+                colors: ["Black", "Gold", "Pink"]
+            },
+            {
+                id: 15,
+                name: "Digital Smart Fitness Scale",
+                price: 1450,
+                originalPrice: 2200,
+                rating: 4.9,
+                reviews: 22,
+                description: "স্মার্টফোন অ্যাপ কানেক্টিভিটি সহ শরীরের ওজন, ফ্যাট পার্সেন্টেজ এবং বিএমআই ট্র্যাকিং ডিজিটাল ওয়েট মেশিন।",
+                images: [
+                    "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=500",
+                    "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500",
+                    "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=500"
+                ],
+                colors: ["Black", "White", "Pink"]
+            },
+            {
+                id: 16,
+                name: "Car Mobile Holder Mount",
+                price: 490,
+                originalPrice: 799,
+                rating: 4.6,
+                reviews: 9,
+                description: "ড্যাশবোর্ড এবং উইন্ডশিল্ডে সহজে মাউন্ট করার জন্য শক্তিশালী সাকশন কাপ যুক্ত ৩৬০° রোটেশনাল কার মেটাল মোবাইল হোল্ডার।",
+                images: [
+                    "https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500",
+                    "https://images.unsplash.com/photo-1610461888750-10bfc6019d74?w=500",
+                    "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=500"
+                ],
+                colors: ["Black", "Grey", "Blue"]
             }
         ];
 
@@ -314,7 +465,7 @@
         const productGrid = document.getElementById('product-grid');
         products.forEach(product => {
             const card = document.createElement('div');
-            card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-100 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
+            card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
             card.innerHTML = `
                 <div class="relative bg-gray-50 h-64 overflow-hidden">
                     <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -351,8 +502,8 @@
                             <span class="text-lg font-black text-gray-950">৳${product.price}</span>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold px-3 py-2.5 rounded-xl transition border border-gray-100">
-                                <i class="fa-solid fa-cart-plus"></i>
+                            <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold px-3 py-2.5 rounded-xl transition border border-gray-200/60" title="Add To Cart">
+                                <i class="fa-solid fa-cart-plus text-sm"></i>
                             </button>
                             <button onclick="openModal(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-brand-500/10">
                                 অর্ডার করুন
@@ -371,7 +522,7 @@
         function addToCart() {
             cartCount++;
             document.getElementById('cart-count').innerText = cartCount;
-            alert("প্রোডাক্টটি কার্টে যুক্ত করা হয়েছে!");
+            alert("প্রোডাক্টটি সফলভাবে কার্টে যুক্ত করা হয়েছে!");
         }
 
         function openModal(productId) {
@@ -423,7 +574,7 @@
             })
             .then(response => {
                 if(response.ok) {
-                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে।');
+                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। আমাদের রিপ্রেজেন্টেটিভ দ্রুত কল করবেন।');
                     closeModal();
                 } else {
                     alert('দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।');
