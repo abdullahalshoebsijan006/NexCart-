@@ -3,179 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexCart BD - Premium E-Commerce</title>
+    <title>NexCart BD - Next-Gen Tech Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght=400;600;700&display=swap');
-        body { font-family: 'Hind Siliguri', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&display=swap');
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8fafc; }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e', /* প্রফেশনাল ও মডার্ন অরেঞ্জ-রেড ব্র্যান্ড কালার */
+                            600: '#e11d48',
+                            700: '#be123c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
-    <!-- হেডার সেকশন -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-600 flex items-center gap-2">
-                <i class="fa-solid fa-bag-shopping"></i> NexCart BD
+    <div class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide">
+        ⚡ মেগা গ্যাজেট সেল! প্রতিটি অর্ডারে পাচ্ছেন আপ-টু ৪০% ইনস্ট্যান্ট ডিসকাউন্ট!
+    </div>
+
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+            <a href="#" class="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
+                <span class="bg-brand-500 text-white p-1.5 rounded-lg flex items-center justify-center shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-bolt text-sm"></i>
+                </span>
+                NEX<span class="text-brand-500">CART</span>
             </a>
-            <div class="relative cursor-pointer">
-                <i class="fa-solid fa-cart-shopping text-2xl text-gray-700 hover:text-indigo-600 transition"></i>
-                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+            
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+                    <a href="#" class="text-brand-500 font-semibold">Home</a>
+                    <a href="#" class="hover:text-brand-500 transition">Trending</a>
+                    <a href="#" class="hover:text-brand-500 transition">Policy</a>
+                </div>
+                <div class="relative cursor-pointer bg-gray-50 hover:bg-gray-100 p-2.5 rounded-xl transition border border-gray-100">
+                    <i class="fa-solid fa-bag-shopping text-xl text-gray-700"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-brand-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- কভার ব্যানার সেকশন -->
-    <div class="w-full bg-[#0a2e36]">
-        <div class="max-w-7xl mx-auto">
-            <img src="https://i.ibb.co/Y4M2YV6B/1781849437725.jpg" alt="NexCart BD Mega Sale Banner" class="w-full h-auto object-cover block">
+    <div class="w-full bg-white border-b border-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-gray-50">
+                <img src="https://i.ibb.co/Y4M2YV6B/1781849437725.jpg" alt="Mega Sale Banner" class="w-full h-auto object-cover block">
+            </div>
         </div>
     </div>
 
-    <!-- প্রোডাক্ট গ্রিড -->
-    <main class="container mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">আমাদের আকর্ষণীয় প্রোডাক্টসমূহ</h2>
+    <main class="container mx-auto px-4 py-12 max-w-7xl">
+        <div class="flex flex-col items-center mb-12">
+            <span class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full mb-2">Trending Items</span>
+            <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight text-center">আমাদের সেরা কালেকশনসমূহ</h2>
+            <div class="w-12 h-1 bg-brand-500 rounded-full mt-4"></div>
+        </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid"></div>
     </main>
 
-    <!-- অর্ডার মডাল বা ফর্ম পপআপ -->
-    <div id="order-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-xmark text-xl"></i>
+    <div id="order-modal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[92vh] overflow-y-auto border border-gray-100">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-700 p-2 rounded-full transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             
-            <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2 text-indigo-600">
-                <i class="fa-solid fa-truck-fast"></i> অর্ডার কনফার্ম করুন
+            <h3 class="text-xl font-bold text-gray-900 mb-5 flex items-center gap-2.5">
+                <span class="text-brand-500"><i class="fa-solid fa-circle-check"></i></span> অর্ডার কনফার্ম করুন
             </h3>
             
-            <div class="bg-indigo-50 p-3 rounded-xl mb-4">
-                <p class="text-sm text-gray-600">প্রোডাক্টের নাম:</p>
-                <p id="modal-product-name" class="font-bold text-gray-800 text-lg"></p>
-                <p class="text-sm text-gray-600 mt-1">নির্বাচিত কালার: <span id="modal-selected-color" class="font-bold text-indigo-600"></span></p>
-                <p class="text-xs text-red-500 mt-1">* ৪০% ডিসকাউন্ট অন্তর্ভুক্ত করা হয়েছে</p>
+            <div class="bg-gray-50 border border-gray-100 p-4 rounded-xl mb-5">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Product Details</span>
+                <p id="modal-product-name" class="font-bold text-gray-900 text-base mb-1"></p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-xs bg-white border border-gray-200 px-2.5 py-1 rounded-md text-gray-600">
+                        Color: <span id="modal-selected-color" class="font-bold text-brand-500"></span>
+                    </span>
+                    <span class="text-xs bg-brand-50 text-brand-600 px-2.5 py-1 rounded-md font-medium">৪০% ডিসকাউন্ট ইনক্লুডেড</span>
+                </div>
             </div>
 
             <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
                 
-                <!-- Google Sheet এ পাঠানোর জন্য ইনপুট ফিল্ড -->
                 <input type="hidden" name="products" id="sheet-product-name">
                 <input type="hidden" name="color" id="sheet-product-color">
                 <input type="hidden" name="payment" value="বিকাশ (Bkash)">
 
-                <div class="mb-4">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">ডেলিভারি লোকেশন সিলেক্ট করুন:</label>
+                <div class="mb-5">
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">डেলিভারি লোকেশন:</label>
                     <div class="grid grid-cols-2 gap-3">
-                        <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50 border-indigo-200">
-                            <input type="radio" name="location" value="ঢাকার ভেতরে" checked onclick="calculateTotal()">
-                            <span class="text-sm">ঢাকার ভেতরে (৳৬০)</span>
+                        <label class="border p-3.5 rounded-xl flex items-center gap-2.5 cursor-pointer bg-white hover:bg-gray-50 border-brand-500 ring-2 ring-brand-100 transition shadow-sm">
+                            <input type="radio" name="location" value="ঢাকার ভেতরে" checked onclick="calculateTotal()" class="accent-brand-500 w-4 h-4">
+                            <span class="text-sm font-medium text-gray-800">ঢাকার ভেতরে (৳৬০)</span>
                         </label>
-                        <label class="border p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-50">
-                            <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()">
-                            <span class="text-sm">ঢাকার বাহিরে (৳১২о)</span>
+                        <label class="border p-3.5 rounded-xl flex items-center gap-2.5 cursor-pointer bg-white hover:bg-gray-50 border-gray-200 transition">
+                            <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()" class="accent-brand-500 w-4 h-4">
+                            <span class="text-sm font-medium text-gray-700">ঢাকার বাহিরে (৳১২০)</span>
                         </label>
                     </div>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">পেমেন্ট মাধ্যম:</label>
-                    <div class="w-full border rounded-lg p-2.5 bg-gray-50 font-semibold text-sm text-gray-700">বিকাশ (Bkash)</div>
-                    <div id="payment-instruction" class="bg-pink-50 text-pink-800 text-xs p-3 rounded-lg mt-2 border border-pink-200">
-                        দয়া করে এই নাম্বারে টাকা <b>সেন্ড মানি (Send Money)</b> করুন: <span class="font-bold text-sm block mt-1" id="payment-number">01601-761487 (বিকাশ)</span>
+                <div class="mb-5">
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">পেমেন্ট মাধ্যম:</label>
+                    <div class="w-full border border-gray-200 rounded-xl p-3 bg-gray-50 font-bold text-sm text-gray-800 flex items-center justify-between">
+                        <span>বিকাশ (Bkash)</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    </div>
+                    <div id="payment-instruction" class="bg-rose-50/50 text-rose-900 text-xs p-3.5 rounded-xl mt-2.5 border border-rose-100/70 leading-relaxed">
+                        দয়া করে নিচের নাম্বারে টাকা <b>সেন্ড মানি</b> করুন: 
+                        <span class="font-mono font-bold text-sm block mt-1 text-brand-600 bg-white border border-rose-100 p-1.5 rounded-md text-center" id="payment-number">01601-761487</span>
                     </div>
                 </div>
 
-                <div class="space-y-3 mb-4">
+                <div class="space-y-4 mb-6">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার যোগাযোগের নম্বর লিখুন *</label>
-                        <input id="customer-phone" name="phone" type="tel" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="01XXXXXXXXX">
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">আপনার মোবাইল নম্বর *</label>
+                        <input id="customer-phone" name="phone" type="tel" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition" placeholder="01XXXXXXXXX">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">আপনার সম্পূর্ণ এড্রেস লিখুন *</label>
-                        <textarea id="customer-address" name="address" required class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none h-16" placeholder="আপনার সম্পূর্ণ ঠিকানা দিন"></textarea>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
+                        <textarea id="customer-address" name="address" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition h-20" placeholder="বাসা নং, রোড নং, থানা, জেলা..."></textarea>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-2 border-t pt-3 mt-2">
+                    <div class="grid grid-cols-2 gap-3 border-t border-gray-100 pt-4">
                         <div>
-                            <label class="block text-xs font-bold text-pink-600 mb-1">বিকাশ নম্বর *</label>
-                            <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-pink-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-pink-500 outline-none bg-pink-50/30" placeholder="01XXXXXXXXX">
+                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">বিকাশ নম্বর (যেটি থেকে পাঠিয়েছেন) *</label>
+                            <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition" placeholder="01XXXXXXXXX">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-pink-600 mb-1">ট্রানজেকশন আইডি (TxnID) *</label>
-                            <input id="txnid" name="txnid" type="text" required class="w-full border border-pink-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-pink-500 outline-none bg-pink-50/30" placeholder="যেমন: BLA12C3456">
+                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">ট্রানজেকশন আইডি (TxnID) *</label>
+                            <input id="txnid" name="txnid" type="text" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition" placeholder="যেমন: BLA12C3456">
                         </div>
                     </div>
                 </div>
 
-                <div class="border-t pt-3 space-y-1.5 text-sm text-gray-600 mb-4">
+                <div class="border-t border-gray-100 pt-4 space-y-2 text-sm text-gray-600 mb-6">
                     <div class="flex justify-between">
                         <span>প্রোডাক্টের মূল্য:</span>
-                        <span>৳<span id="modal-product-price">0</span></span>
+                        <span class="font-medium text-gray-900">৳<span id="modal-product-price">0</span></span>
                     </div>
                     <div class="flex justify-between">
                         <span>ডেলিভারি চার্জ:</span>
-                        <span>৳<span id="modal-delivery-charge">60</span></span>
+                        <span class="font-medium text-gray-900">৳<span id="modal-delivery-charge">60</span></span>
                     </div>
-                    <div class="flex justify-between text-base font-bold text-gray-900 border-t pt-1.5">
-                        <span>সর্বমোট টাকা:</span>
-                        <span class="text-indigo-600">৳<span id="modal-total-price">0</span></span>
+                    <div class="flex justify-between text-base font-bold text-gray-950 border-t border-gray-100 pt-2.5">
+                        <span>সর্বমোট বিল:</span>
+                        <span class="text-brand-600 text-lg">৳<span id="modal-total-price">0</span></span>
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
-                    অর্ডার সম্পন্ন করুন
+                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-brand-500/20 active:scale-[0.99]">
+                    অর্ডার কনফার্ম করুন
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- ফুটার সেকশন -->
-    <footer class="bg-gray-900 text-gray-300 mt-20 pt-12 pb-6 border-t-4 border-indigo-600">
-        <div class="container mx-auto px-4">
-            <div class="bg-gray-800 p-6 rounded-2xl max-w-3xl mx-auto text-center border border-gray-700 mb-10">
-                <h4 class="text-lg font-bold text-white mb-2">যেকোনো সমস্যায় আমাদের সাথে যোগাযোগ করুন</h4>
-                <p class="text-sm text-gray-400 mb-4">আমরা আপনাকে ২৪ ঘণ্টা সাপোর্ট দিতে প্রস্তুত।</p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
-                        <i class="fa-brands fa-facebook-f"></i> Facebook: NexCart BD
-                    </a>
-                    <a href="https://wa.me/8801601761487" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp: 01601-761487
-                    </a>
+    <footer class="bg-white border-t border-gray-100 mt-24 pt-16 pb-8">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="bg-gray-900 text-white p-8 rounded-2xl max-w-4xl mx-auto text-center shadow-xl mb-16 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h4 class="text-xl font-bold mb-2">যেকোনো দরকারে আমরা আছি আপনার পাশে</h4>
+                    <p class="text-sm text-gray-400 mb-6 max-w-md mx-auto">আমাদের সাপোর্ট টিম ২৪/৭ কাস্টমার সেবায় নিয়োজিত রয়েছে।</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
+                            <i class="fa-brands fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://wa.me/8801601761487" target="_blank" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp Line
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-sm border-b border-gray-800 pb-8 text-center md:text-left">
-                <div class="col-span-2 flex flex-col items-center md:items-start">
-                    <span class="text-2xl font-bold text-white flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-bag-shopping text-indigo-500"></i> NexCart BD
-                    </span>
-                    <p class="text-xs text-gray-500">আপনার বিশ্বস্ত অনলাইন গ্যাজেট শপ।</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-center md:text-left border-b border-gray-100 pb-12">
+                <div class="col-span-2 md:col-span-1 flex flex-col items-center md:items-start">
+                    <span class="text-xl font-black text-gray-900 mb-3">NEX<span class="text-brand-500">CART</span></span>
+                    <p class="text-xs text-gray-400 leading-relaxed">আপনার লাইফস্টাইল সহজ করতে সেরা কোয়ালিটির গ্যাজেট ও ইলেকট্রনিক্স নিয়ে আপনার পাশে সব সময়।</p>
                 </div>
                 <div>
-                    <h5 class="font-bold text-white mb-3">নেভিগেশন</h5>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Home</a></li>
-                        <li><a href="#" class="hover:text-white transition">About</a></li>
+                    <h5 class="font-bold text-gray-900 mb-4 uppercase tracking-wider text-xs">কোম্পানি</h5>
+                    <ul class="space-y-2.5 text-gray-500">
+                        <li><a href="#" class="hover:text-brand-500 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-bold text-white mb-3">পলিসি</h5>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Shipping and Return Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold text-white mb-3">সহায়তা</h5>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                    <h5 class="font-bold text-gray-900 mb-4 uppercase tracking-wider text-xs">পলিসি</h5>
+                    <ul class="space-y-2.5 text-gray-500">
+                        <li><a href="#" class="hover:text-brand-500 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition">Shipping & Returns</a></li>
                     </ul>
                 </div>
             </div>
             
-            <p class="text-center text-xs text-gray-600 mt-6">&copy; 2026 NexCart BD. All rights reserved.</p>
+            <p class="text-center text-xs text-gray-400 mt-8">&copy; 2026 NexCart BD. Designed with premium aesthetics.</p>
         </div>
     </footer>
 
@@ -188,7 +223,7 @@
                 originalPrice: 2499,
                 rating: 4.9,
                 reviews: 10,
-                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং, ব্লাড অক্সিজেন মনিটরিং এবং একাধিক স্পোর্টস মোড সুবিধা সম্বলিত এই যুগের অন্যতম সেরাスマート ওয়াচ। এটি আপনার স্মার্ট লাইফস্টাইলকে আরো সহজ করে তুলবে।",
+                description: "প্রিমিয়াম মেটাল বডি, অলওয়েজ-অন ব্রাইট অ্যামোলেড ডিসপ্লে, রিয়েল-টাইম হার্ট রেট ট্র্যাকিং এবং দীর্ঘস্থায়ী ব্যাটারি সমৃদ্ধ টপ-টিয়ার গ্যাজেট।",
                 images: [
                     "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
                     "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
@@ -203,7 +238,7 @@
                 originalPrice: 1499,
                 rating: 4.8,
                 reviews: 18,
-                description: "স্মার্ট টাচ কন্ট্রোল, ক্রিস্টাল ক্লিয়ার অডিও আউটপুট এবং হেভি বেস পাঞ্চ। দীর্ঘস্থায়ী ব্যাটারি লাইফ নিশ্চিত করবে একবার ফুল চার্জে একটানা ৫ ঘণ্টা পর্যন্ত মিউজিক ব্যাকআপ এবং কেস সহ মোট ২৫ ঘণ্টার ব্যাকআপ সুবিধা।",
+                description: "ক্রিস্টাল ক্লিয়ার অডিও এবং ডিপ বেস পাঞ্চ। একবার ফুল চার্জে কেস সহ মোট ২৫ ঘণ্টার দীর্ঘ ব্যাকআপ গ্যারান্টি।",
                 images: [
                     "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
                     "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=500",
@@ -218,7 +253,7 @@
                 originalPrice: 1915,
                 rating: 4.7,
                 reviews: 7,
-                description: "পোর্টেবল এবং রিচার্জেবল হাই স্পিড টার্বো মিনি ডেক্স ফ্যান। তীব্র গরমে আরামদায়ক শক্তিশালী বাতাস দিতে এতে রয়েছে ৩টি স্পিড অ্যাডজাস্টমেন্ট লেভেল। কম শব্দে দীর্ঘক্ষণ ব্যাকআপের জন্য এটি টাইপ-সি পোর্টে চার্জ হয়।",
+                description: "রিচার্জেবল এবং পোর্টেবল টাইপ-সি ফাস্ট চার্জিং ডেস্ক ফ্যান। কম শব্দে শক্তিশালী বাতাসের জন্য ৩-স্পিড মোড অ্যাডজাস্টেবল।",
                 images: [
                     "https://images.unsplash.com/photo-1618945533005-79b13ed62282?w=500",
                     "https://images.unsplash.com/photo-1565151443-3259c47114ee?w=500",
@@ -228,12 +263,12 @@
             },
             {
                 id: 4,
-                name: "20,000mAh Fast Charging Power Bank",
+                name: "20,000mAh Fast Power Bank",
                 price: 1350,
                 originalPrice: 2250,
                 rating: 4.9,
                 reviews: 31,
-                description: "২২.৫ ওয়াট পিডি এবং কিউসি ফাস্ট চার্জিং ক্ষমতা সম্পন্ন ইন্টেলিজেন্ট পাওয়ার ব্যাংক। ডিজিটাল পার্সেন্টেজ ডিসপ্লে এবং একাধিক প্রোটেকশন লেয়ার সমৃদ্ধ সুরক্ষায় আপনার মোবাইল ফোন ও গ্যাজেট দ্রুত ও নিরাপদে চার্জ করতে পারবেন।",
+                description: "২২.৫ ওয়াট পিডি ফাস্ট চার্জিং ক্ষমতা এবং ইন্টেলিজেন্ট প্রোটেকশন লেয়ার সমৃদ্ধ ডিজিটাল ডিসপ্লে পাওয়ার ব্যাংক।",
                 images: [
                     "https://images.unsplash.com/photo-1609592424085-f6df46001004?w=500",
                     "https://images.unsplash.com/photo-1622445262461-c3b81b37a531?w=500",
@@ -248,7 +283,7 @@
                 originalPrice: 2999,
                 rating: 4.6,
                 reviews: 10,
-                description: "মিউজিকের তালে তালে জ্বলতে থাকা আকর্ষণীয় ডাইনামিক RGB লাইटिंग এবং ৩৬০ ডিগ্রি সারাউন্ড ট্রু-সাউন্ড সিস্টেম। যেকোনো ইনডোর বা আউটডোর পার্টিতে দুর্দান্ত বেস ও লাউড সাউন্ড উপভোগ করার জন্য বেস্ট চয়েস ব্লুটুথ স্পিকার।",
+                description: "৩৬০ ডিগ্রি সারাউন্ড ট্রু-সাউন্ড সিস্টেম ও মিউজিকের রিদমে জ্বলতে থাকা চমৎকার ডাইনামিক RGB লাইটিং স্পিকার।",
                 images: [
                     "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
                     "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500",
@@ -263,7 +298,7 @@
                 originalPrice: 1150,
                 rating: 4.8,
                 reviews: 18,
-                description: "আল্ট্রা লো-লেটেন্সি গেমিং মোড সম্পন্ন এই নেকব্যান্ডে কোনো ডিলে ছাড়াই নিখুঁত এনিমি সাউন্ড পাবেন। এনভায়রনমেন্টাল নয়েজ ক্যান্সেলেশন (ENC) প্রযুক্তির কারণে এইচডি কোয়ালিটি কলিং ও স্পষ্ট ভয়েস ডেলিভারি নিশ্চিত করে।",
+                description: "আল্ট্রা লো-লেটেন্সি গেমিং মোড এবং ক্রিস্টাল ক্লিয়ার এনভায়রনমেন্টাল নয়েজ ক্যান্সেলেশন (ENC) যুক্ত নেকব্যান্ড।",
                 images: [
                     "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=500",
                     "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500",
@@ -279,47 +314,47 @@
         const productGrid = document.getElementById('product-grid');
         products.forEach(product => {
             const card = document.createElement('div');
-            card.className = "bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col border border-gray-100";
+            card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-100 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
             card.innerHTML = `
-                <div class="relative bg-gray-100 h-64 overflow-hidden">
-                    <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover transition duration-300">
+                <div class="relative bg-gray-50 h-64 overflow-hidden">
+                    <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
-                <div class="flex gap-2 p-3 bg-gray-50 border-b justify-center">
+                <div class="flex gap-2.5 p-3 bg-white justify-center border-b border-gray-50">
                     ${product.images.map((img) => `
-                        <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-12 h-12 object-cover rounded border-2 border-transparent hover:border-indigo-600 cursor-pointer transition">
+                        <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-11 h-11 object-cover rounded-lg border border-gray-100 hover:border-brand-500 cursor-pointer transition p-0.5">
                     `).join('')}
                 </div>
                 <div class="p-5 flex-1 flex flex-col">
-                    <div class="flex items-center gap-1 text-amber-500 text-sm mb-1">
+                    <div class="flex items-center gap-1 text-amber-500 text-xs font-bold mb-2">
                         <i class="fa-solid fa-star"></i>
-                        <span class="font-bold text-gray-800">${product.rating}</span>
-                        <span class="text-gray-400 text-xs">(${product.reviews} রিভিউ)</span>
+                        <span class="text-gray-900">${product.rating}</span>
+                        <span class="text-gray-400 font-normal">(${product.reviews} Reviews)</span>
                     </div>
-                    <h3 class="font-bold text-lg text-gray-900 mb-2">${product.name}</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed mb-4 flex-1">${product.description}</p>
+                    <h3 class="font-bold text-gray-950 text-base mb-1.5 group-hover:text-brand-500 transition">${product.name}</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed mb-4 flex-1">${product.description}</p>
                     
-                    <div class="mb-5 border-t pt-3">
-                        <span class="text-xs font-bold text-gray-500 block mb-2">আপনার পছন্দের কালার সিলেক্ট করুন:</span>
+                    <div class="mb-4 border-t border-gray-50 pt-3.5">
+                        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Select Color</span>
                         <div class="flex gap-2">
                             ${product.colors.map((color, idx) => `
-                                <label class="text-xs bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-indigo-400 flex items-center gap-1.5 font-semibold text-gray-700">
-                                    <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-indigo-600 cursor-pointer">
+                                <label class="text-xs bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-1.5 font-medium text-gray-700 transition">
+                                    <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-brand-500 cursor-pointer">
                                     <span>${color}</span>
                                 </label>
                             `).join('')}
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-4 flex items-center justify-between border-t border-gray-100">
+                    <div class="mt-auto pt-3.5 flex items-center justify-between border-t border-gray-100">
                         <div>
-                            <span class="line-through text-gray-400 text-sm block">৳${product.originalPrice}</span>
-                            <span class="text-xl font-bold text-indigo-600">৳${product.price}</span>
+                            <span class="line-through text-gray-300 text-xs block font-medium">৳${product.originalPrice}</span>
+                            <span class="text-lg font-black text-gray-950">৳${product.price}</span>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="addToCart()" class="bg-gray-100 hover:bg-indigo-50 text-indigo-600 text-xs font-bold px-4 py-2.5 rounded-xl transition">
-                                এড টু কার্ট
+                            <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold px-3 py-2.5 rounded-xl transition border border-gray-100">
+                                <i class="fa-solid fa-cart-plus"></i>
                             </button>
-                            <button onclick="openModal(${product.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
+                            <button onclick="openModal(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-brand-500/10">
                                 অর্ডার করুন
                             </button>
                         </div>
@@ -336,7 +371,7 @@
         function addToCart() {
             cartCount++;
             document.getElementById('cart-count').innerText = cartCount;
-            alert("প্রোডাক্টটি সফলভাবে কার্টে যুক্ত করা হয়েছে!");
+            alert("প্রোডাক্টটি কার্টে যুক্ত করা হয়েছে!");
         }
 
         function openModal(productId) {
@@ -353,12 +388,14 @@
             
             calculateTotal();
             document.getElementById('order-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             document.getElementById('order-modal').classList.add('hidden');
             document.getElementById('order-form').reset();
             selectedProduct = null;
+            document.body.style.overflow = 'auto';
         }
 
         function calculateTotal() {
@@ -386,7 +423,7 @@
             })
             .then(response => {
                 if(response.ok) {
-                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।');
+                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে।');
                     closeModal();
                 } else {
                     alert('দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।');
