@@ -35,9 +35,10 @@
         ⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!
     </div>
 
-    <!-- প্রিমিয়াম হেডার -->
+    <!-- প্রিমিয়াম হেডার (স্টোরের নাম, সার্চ অপশন এবং মেনু) -->
     <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/95">
         <div class="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center max-w-7xl gap-4">
+            <!-- স্টোরের নাম -->
             <a href="#" class="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2 shrink-0">
                 <span class="bg-brand-500 text-white p-2 rounded-xl flex items-center justify-center shadow-md shadow-brand-500/30">
                     <i class="fa-solid fa-bolt text-xs"></i>
@@ -45,6 +46,7 @@
                 NEX<span class="text-brand-500">CART</span>
             </a>
             
+            <!-- সার্চ অপশন -->
             <div class="w-full max-w-md relative">
                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                     <i class="fa-solid fa-magnifying-glass text-sm"></i>
@@ -52,6 +54,7 @@
                 <input type="text" id="search-input" oninput="searchProducts()" placeholder="পছন্দের প্রোডাক্টটি এখানে সার্চ করুন..." class="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10 transition">
             </div>
             
+            <!-- মেনু এবং কার্ট আইকন -->
             <div class="flex items-center gap-6 shrink-0">
                 <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                     <a href="#" class="text-brand-500">Home</a>
@@ -75,7 +78,7 @@
         </div>
     </div>
 
-    <!-- প্রোডাক্ট গ্রিড সেকশন -->
+    <!-- প্রোডাক্ট গ্রিড সেকশন (মোবাইলে ২ কলামে দেখাবে) -->
     <main class="container mx-auto px-2 sm:px-4 py-12 max-w-7xl">
         <div class="flex flex-col items-center mb-12">
             <span class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full mb-2">Premium Collection</span>
@@ -135,7 +138,7 @@
                         </label>
                         <label class="border p-3.5 rounded-xl flex items-center gap-2.5 cursor-pointer bg-white hover:bg-gray-50 border-gray-200 transition">
                             <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()" class="accent-brand-500 w-4 h-4">
-                            <span class="text-sm font-semibold text-gray-700">ঢাকার বাহিরে (৳১২০)</span>
+                            <span class="text-sm font-semibold text-gray-700">ঢাকার বাহিরে (৳১২ো)</span>
                         </label>
                     </div>
                 </div>
@@ -196,24 +199,9 @@
         </div>
     </div>
 
-    <!-- প্রিমিয়াম ফুটার সেকশন -->
+    <!-- পরিমার্জিত ফুটার সেকশন (ফেসবুক ও হোয়াটসঅ্যাপ বক্স রিমুভ করা হয়েছে) -->
     <footer class="bg-white border-t border-gray-100 mt-24 pt-16 pb-8">
         <div class="container mx-auto px-4 max-w-7xl">
-            <div class="bg-gray-900 text-white p-8 rounded-2xl max-w-4xl mx-auto text-center shadow-xl mb-16 relative overflow-hidden">
-                <div class="relative z-10">
-                    <h4 class="text-xl font-bold mb-2">যেকোনো দরকারে আমরা আছি আপনার পাশে</h4>
-                    <p class="text-sm text-gray-400 mb-6 max-w-md mx-auto">আমাদের সাপোর্ট টিম ২৪/৭ কাস্টমার সেবায় নিয়োজিত রয়েছে।</p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
-                            <i class="fa-brands fa-facebook-f"></i> Facebook
-                        </a>
-                        <a href="https://wa.me/8801601761487" target="_blank" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition text-sm">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp Line
-                        </a>
-                    </div>
-                </div>
-            </div>
-
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-center md:text-left border-b border-gray-100 pb-12">
                 <div class="col-span-2 md:col-span-1 flex flex-col items-center md:items-start">
                     <span class="text-xl font-black text-gray-900 mb-3">NEX<span class="text-brand-500">CART</span></span>
@@ -360,126 +348,6 @@
                     "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500"
                 ],
                 colors: ["Black", "White", "Grey"]
-            },
-            {
-                id: 9,
-                name: "HD Smart Security IP Camera",
-                price: 1850,
-                originalPrice: 2800,
-                rating: 4.7,
-                reviews: 29,
-                description: "৩৬০ ডিগ্রি রোটেশন মোড, নাইট ভিশন এবং দ্বিমুখী অডিও চ্যাটিং সিস্টেম সহ ওয়াইফাই অ্যাপ কন্ট্রোল্ড সিকিউরিটি ক্যামেরা।",
-                images: [
-                    "https://images.unsplash.com/photo-1557862921-37829c790f19?w=500",
-                    "https://images.unsplash.com/photo-1524292332407-d86ec621ed04?w=500",
-                    "https://images.unsplash.com/photo-1549490349-8643362247b5?w=500"
-                ],
-                colors: ["White", "Black", "Grey"]
-            },
-            {
-                id: 10,
-                name: "Universal Fast Mobile Charger",
-                price: 650,
-                originalPrice: 999,
-                rating: 4.9,
-                reviews: 42,
-                description: "কোয়ালকম কুইক চার্জ ৩.০ ও গ্যান টেকনোলজি সমৃদ্ধ ফাস্ট চার্জিং মোবাইল অ্যাডাপ্টার, যা ফোন গরম হওয়া রোধ করে।",
-                images: [
-                    "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500",
-                    "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500",
-                    "https://images.unsplash.com/photo-1622445262461-c3b81b37a531?w=500"
-                ],
-                colors: ["White", "Black", "Red"]
-            },
-            {
-                id: 11,
-                name: "Premium Laptop Stand",
-                price: 790,
-                originalPrice: 1250,
-                rating: 4.6,
-                reviews: 11,
-                description: "অ্যালুমিনিয়াম অ্যালয় বডির ৭-লেভেল উচ্চতা অ্যাডজাস্টেবল ফোল্ডেবল ল্যাপটপ স্ট্যান্ড। ল্যাপটপ ঠান্ডা রাখতে সাহায্য করে।",
-                images: [
-                    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500",
-                    "https://images.unsplash.com/photo-1616440347437-b1c73416efc2?w=500",
-                    "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500"
-                ],
-                colors: ["Silver", "Grey", "Black"]
-            },
-            {
-                id: 12,
-                name: "Rechargeable LED Desk Light",
-                price: 950,
-                originalPrice: 1499,
-                rating: 4.8,
-                reviews: 16,
-                description: "চোখের সুরক্ষায় আই-প্রোটেক্টিভ ৩-লেভেল ব্রایتনেস মোড সহ টাচ কন্ট্রোল ফ্লেক্সিবল রিচার্জেবল টেবিল ল্যাম্প।",
-                images: [
-                    "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500",
-                    "https://images.unsplash.com/photo-1532372320978-9b4d6a3a854c?w=500",
-                    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500"
-                ],
-                colors: ["White", "Pink", "Blue"]
-            },
-            {
-                id: 13,
-                name: "Bluetooth Selfie Stick Tripod",
-                price: 850,
-                originalPrice: 1350,
-                rating: 4.7,
-                reviews: 20,
-                description: "ওয়ারলেস রিমোট কন্ট্রোল ব্লুটুথ শাটার সহ ৩-ইন-১ এক্সটেন্ডেবল সেলফি স্টিক এবং স্টেবল ফ্লোর ট্রিপড স্ট্যান্ড।",
-                images: [
-                    "https://images.unsplash.com/photo-1584438784894-089d6a128f3e?w=500",
-                    "https://images.unsplash.com/photo-1600541519463-ee6741002389?w=500",
-                    "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500"
-                ],
-                colors: ["Black", "White", "Pink"]
-            },
-            {
-                id: 14,
-                name: "Professional Condenser Microphone",
-                price: 1990,
-                originalPrice: 2999,
-                rating: 4.8,
-                reviews: 14,
-                description: "ইউটিউব কনটেন্ট ক্রিয়েশন, পডকাস্ট এবং গেমিং লাইভ স্ট্রিমের জন্য ক্রিস্টাল ক্লিয়ার অডিও রেকর্ডিং ইউএসবি কন্ডেনসার মাইক।",
-                images: [
-                    "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=500",
-                    "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?w=500",
-                    "https://images.unsplash.com/photo-1484755560693-a4074577af3a?w=500"
-                ],
-                colors: ["Black", "Gold", "Pink"]
-            },
-            {
-                id: 15,
-                name: "Digital Smart Fitness Scale",
-                price: 1450,
-                originalPrice: 2200,
-                rating: 4.9,
-                reviews: 22,
-                description: "স্মার্টফোন অ্যাপ কানেক্টিভিটি সহ শরীরের ওজন, ফ্যাট পার্সেন্টেজ এবং বিএমআই ট্র্যাকিং ডিজিটাল ওয়েট মেশিন।",
-                images: [
-                    "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=500",
-                    "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500",
-                    "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=500"
-                ],
-                colors: ["Black", "White", "Pink"]
-            },
-            {
-                id: 16,
-                name: "Car Mobile Holder Mount",
-                price: 490,
-                originalPrice: 799,
-                rating: 4.6,
-                reviews: 9,
-                description: "ড্যাশবোর্ড এবং উইন্ডশিল্ডে সহজে মাউন্ট করার জন্য শক্তিশালী সাকশন কাপ যুক্ত ৩৬০° রোটেশনাল কার মেটাল মোবাইল হোল্ডার।",
-                images: [
-                    "https://images.unsplash.com/photo-1586105251261-72a756497a11?w=500",
-                    "https://images.unsplash.com/photo-1610461888750-10bfc6019d74?w=500",
-                    "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=500"
-                ],
-                colors: ["Black", "Grey", "Blue"]
             }
         ];
 
@@ -551,7 +419,6 @@
 
         renderProducts(products);
 
-        // লাইটবক্স মডাল কন্ট্রোল ফাংশন
         function openImageModal(imgSrc) {
             document.getElementById('popup-large-image').src = imgSrc;
             document.getElementById('image-modal').classList.remove('hidden');
