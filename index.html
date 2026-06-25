@@ -32,7 +32,7 @@
 </head>
 <body class="text-gray-800 antialiased lang-bn">
 
-    <div id="top-alert" class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide shadow-sm transition-all">
+    <div id="top-alert" class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide shadow-sm">
         ⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!
     </div>
 
@@ -57,7 +57,7 @@
             </div>
             
             <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-2 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-gray-700 transition shadow-sm" title="Change Language">
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-2 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-gray-700 transition shadow-sm">
                     <i class="fa-solid fa-globe text-brand-500 text-xs sm:text-sm"></i>
                     <span id="lang-label">EN</span>
                 </button>
@@ -132,7 +132,7 @@
                             <i class="fa-solid fa-star mr-1"></i><span id="details-rating" class="text-gray-700"></span>
                         </div>
                         <span class="text-gray-300 text-xs">|</span>
-                        <span id="details-discount" class="bg-brand-5 text-brand-600 text-[10px] font-bold px-2 py-0.5 rounded"></span>
+                        <span id="details-discount" class="bg-brand-50 text-brand-600 text-[10px] font-bold px-2 py-0.5 rounded"></span>
                     </div>
 
                     <div class="bg-gray-50 border border-gray-100 p-3 rounded-lg mb-5 flex items-baseline gap-2">
@@ -156,7 +156,7 @@
                         <i class="fa-solid fa-cart-plus"></i>
                     </button>
                     <button id="details-order-btn" class="flex-1 bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 px-6 rounded-xl transition shadow-md text-sm sm:text-base tracking-wide">
-                        অর্ডার করুন
+                        অर्डर করুন
                     </button>
                 </div>
             </div>
@@ -319,18 +319,16 @@
             }
         };
 
-        // পিচসাম ফটোজ এর লাইভ ইমেজ লিংক ব্যবহার করা হয়েছে
+        // পিচসাম ফটোজ এর অত্যন্ত ফাস্ট ইমেজ লিংক লোড করা হয়েছে
         const products = [
             { id: 1, name_bn: "Ultra Smart Watch Series 9", name_en: "Ultra Smart Watch Series 9 Pro", price: 1499, originalPrice: 2499, rating: 4.9, images: ["https://picsum.photos/500/500?random=1", "https://picsum.photos/500/500?random=11", "https://picsum.photos/500/500?random=21"], colors: ["Black", "Orange", "Silver"], desc_bn: "এটি একটি আল্ট্রা প্রিমিয়াম ওয়াচ। এতে রয়েছে ফুল ফিট অ্যামোলেড ডিসপ্লে, ব্লুটুথ কলিং সিস্টেম, হার্ট রেট ট্র্যাকিং এবং শক্তিশালী ব্যাটারি লাইফ। প্রতিদিনের ফ্যাশন ও ফিটনেসের জন্য পারফেক্ট চয়েস।", desc_en: "Premium AMOLED display smartwatch with features like Bluetooth calling, step counter, heart rate monitor, and exceptional battery backup." },
-            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইফ ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
+            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইф ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
             { id: 3, name_bn: "High Speed Turbo Desk Fan", name_en: "High Speed Turbo Desk Fan Rechargeable", price: 1150, originalPrice: 1915, rating: 4.7, images: ["https://picsum.photos/500/500?random=3", "https://picsum.photos/500/500?random=13", "https://picsum.photos/500/500?random=23"], colors: ["White", "Green", "Pink"], desc_bn: "লোডের সময়ও বাতাস দিবে একটানা! রিচার্জেবল এই ডেক্স ফ্যানটিতে রয়েছে ৩টি স্পিড মোড এবং ইউএসবি চার্জিং সুবিধা। খুব সহজে যেকোনো জায়গায় বহনযোগ্য।", desc_en: "Portable high-speed rechargeable desk fan. Perfect option for home or workspace during intense heat with multidirectional airflow." },
             { id: 4, name_bn: "20,000mAh Fast Power Bank", name_en: "20,000mAh Fast Power Bank 22.5W", price: 1350, originalPrice: 2250, rating: 4.9, images: ["https://picsum.photos/500/500?random=4", "https://picsum.photos/500/500?random=14", "https://picsum.photos/500/500?random=24"], colors: ["Black", "White", "Blue"], desc_bn: "২২.৫ ওয়াটের সুপার ফাস্ট চার্জিং সমৃদ্ধ বিশাল ২০০০০ মিলিঅ্যাম্পিয়ার পাওয়ার ব্যাংক। একসাথে একাধিক ডিভাইস দ্রুত চার্জ করার জন্য সেরা একটি গ্যাজেট।", desc_en: "High capacity 20,000mAh structural shell material power bank supporting 22.5W fast output charging protocols safely." },
             { id: 5, name_bn: "RGB Mechanical Gaming Keyboard", name_en: "RGB Mechanical Gaming Keyboard Blue Switch", price: 2450, originalPrice: 3800, rating: 4.9, images: ["https://picsum.photos/500/500?random=5", "https://picsum.photos/500/500?random=15", "https://picsum.photos/500/500?random=25"], colors: ["Black", "White"], desc_bn: "প্রো গেমারদের জন্য আরজিবি মেকানিক্যাল কিবোর্ড। ব্লু-সুইচের দারুণ ক্ল্যাকিং সাউন্ড ও মাল্টিপল কাস্টমাইজড লাইٹنگ ইফেক্ট আপনার টাইপিং ও গেমিং করবে রাজকীয়।", desc_en: "Tactile clicky blue switches, responsive mechanical keys, and beautiful custom RGB backlight animations to elevate setups." },
             { id: 6, name_bn: "Wireless Ergonomic Gaming Mouse", name_en: "Wireless Ergonomic Gaming Mouse Rechargeable", price: 799, originalPrice: 1299, rating: 4.8, images: ["https://picsum.photos/500/500?random=6", "https://picsum.photos/500/500?random=16", "https://picsum.photos/500/500?random=26"], colors: ["Black", "Grey"], desc_bn: "হাতের তালুর সাথে পুরোপুরি মানানসই এরগোনোমিক ডিজাইন। হাই ডিপিআই (DPI) সেন্সর সমৃদ্ধ যা গেম খেলার সময় দিবে অত্যন্ত নিখুঁত মুভমেন্ট কন্ট্রোল।", desc_en: "Ultra responsive adjustable DPI mouse designed to reduce hand fatigue during long desktop computing or gaming sessions." },
             { id: 7, name_bn: "4K Ultra HD Webcam with Mic", name_en: "4K Ultra HD Webcam with Built-in Mic", price: 1850, originalPrice: 2800, rating: 4.6, images: ["https://picsum.photos/500/500?random=7", "https://picsum.photos/500/500?random=17", "https://picsum.photos/500/500?random=27"], colors: ["Black"], desc_bn: "অনলাইন ক্লাস, মিটিং বা লাইভ স্ট্রিমিং এর জন্য সেরা ফোর-কে ওয়েবক্যাম। বিল্ট-ইন নয়েজ ক্যান্সেলেশন মাইক্রোফোন স্পষ্ট ভয়েস আউটপুট নিশ্চিত করে।", desc_en: "True 4k high definition clarity webcam, smooth frame rate rendering, clear audio microphone for seamless professional presentation streams." },
-            { id: 8, name_bn: "Portable Bluetooth Speaker Waterproof", name_en: "Portable Bluetooth Speaker Waterproof Bass+", price: 1250, originalPrice: 1999, rating: 4.7, images: ["https://picsum.photos/500/500?random=8", "https://picsum.photos/500/500?random=18", "https://picsum.photos/500/500?random=28"], colors: ["Black", "Red", "Blue"], desc_bn: "ছোট সাইজ কিন্তু বিশাল সাউন্ড। ওয়াটারপ্রুফ বডির কারণে পুলে কিংবা ট্রাভেলের সময় যেকোনো আউটডোরে গান উপভোগ করার উপযুক্ত সঙ্গী এটি।", desc_en: "Rugged waterproof build, dynamic acoustic bass sound profiles. Completely portable audio setup option for travelers." },
-            { id: 9, name_bn: "Smart LED Bedside Night Lamp", name_en: "Smart LED Bedside Night Lamp App Control", price: 990, originalPrice: 1599, rating: 4.5, images: ["https://picsum.photos/500/500?random=9", "https://picsum.photos/500/500?random=19", "https://picsum.photos/500/500?random=29"], colors: ["White"], desc_bn: "মোবাইল অ্যাপের মাধ্যমে ১৬ মিলিয়ন কালার কন্ট্রোল করার সুবিধা। আপনার বেডরুমের পরিবেশকে মায়াবী ও শান্তিময় করতে এই স্মার্ট ল্যাম্পের কোনো বিকল্প নেই।", desc_en: "Smart Wi-Fi enabled bedside lamp that features millions of color variations customized easily through user smartphones directly." },
-            { id: 10, name_bn: "Active Noise Cancelling Headphones", name_en: "Wireless Over-Ear ANC Headphones", price: 3200, originalPrice: 4999, rating: 4.9, images: ["https://picsum.photos/500/500?random=10", "https://picsum.photos/500/500?random=20", "https://picsum.photos/500/500?random=30"], colors: ["Black", "Silver", "Blue"], desc_bn: "বাইরের সমস্ত কোলাহলকে বিদায় জানান এক ক্লিকে। এর উন্নত অ্যাক্টিভ নয়েজ ক্যান্সেলেশন (ANC) প্রযুক্তি দেবে স্টুдио কোয়ালিটির মিউজিক শোনার অনুভূতি।", desc_en: "Premium hybrid over-ear noise-isolating headphones built for complete spatial immersion by blocking surrounding environment sounds." }
+            { id: 8, name_bn: "Portable Bluetooth Speaker Waterproof", name_en: "Portable Bluetooth Speaker Waterproof Bass+", price: 1250, originalPrice: 1999, rating: 4.7, images: ["https://picsum.photos/500/500?random=8", "https://picsum.photos/500/500?random=18", "https://picsum.photos/500/500?random=28"], colors: ["Black", "Red", "Blue"], desc_bn: "ছোট সাইজ কিন্তু বিশাল সাউন্ড। ওয়াটারপ্রুফ বডির কারণে পুলে কিংবা ট্রাভেলের সময় যেকোনো আউটডোরে গান উপভোগ করার উপযুক্ত সঙ্গী এটি।", desc_en: "Rugged waterproof build, dynamic acoustic bass sound profiles. Completely portable audio setup option for travelers." }
         ];
 
         let cartCount = 0;
