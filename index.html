@@ -32,13 +32,16 @@
 </head>
 <body class="text-gray-800 antialiased lang-bn">
 
+    <!-- টপ নোটিফিকেশন বার -->
     <div id="top-alert" class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide shadow-sm">
         ⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!
     </div>
 
+    <!-- হেডার সেকশন -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         <div class="container mx-auto px-3 py-3 flex items-center justify-between max-w-7xl gap-2 sm:gap-4">
             
+            <!-- হোম ও কার্ট আইকন -->
             <div class="flex items-center gap-2 sm:gap-4 shrink-0">
                 <button onclick="backToHome()" class="text-gray-600 hover:text-brand-500 p-1 text-xl" title="Home">
                     <i class="fa-solid fa-house text-base sm:text-lg"></i>
@@ -49,6 +52,7 @@
                 </div>
             </div>
 
+            <!-- সার্চবার -->
             <div class="flex-1 max-w-md relative mx-1 sm:mx-4">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <i class="fa-solid fa-magnifying-glass text-xs sm:text-sm"></i>
@@ -56,6 +60,7 @@
                 <input type="text" id="search-input" oninput="searchProducts()" placeholder="পছন্দের প্রোডাক্টটি এখানে সার্চ করুন..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-8 sm:pl-10 pr-3 py-2 text-xs sm:text-sm outline-none focus:border-brand-500 focus:bg-white transition">
             </div>
             
+            <!-- ল্যাঙ্গুয়েজ ও লোগো -->
             <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                 <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-2 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-gray-700 transition shadow-sm">
                     <i class="fa-solid fa-globe text-brand-500 text-xs sm:text-sm"></i>
@@ -72,7 +77,9 @@
         </div>
     </header>
 
+    <!-- ভিউ ১: হোমপেজ ভিউ -->
     <div id="home-view" class="block">
+        <!-- ব্যানার -->
         <div class="w-full py-4 bg-transparent">
             <div class="max-w-7xl mx-auto px-2 sm:px-4">
                 <div class="bg-orange-50 border border-orange-200 rounded-xl p-3 mb-3 text-center shadow-sm flex items-center justify-center gap-2">
@@ -94,6 +101,7 @@
             </div>
         </div>
 
+        <!-- প্রোডাক্ট গ্রিড -->
         <main class="container mx-auto px-2 sm:px-4 py-6 max-w-7xl">
             <div class="flex flex-col items-center mb-6">
                 <span id="section-tag" class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-orange-50 px-3 py-1 rounded-full mb-1">JUST FOR YOU</span>
@@ -110,12 +118,14 @@
         </main>
     </div>
 
+    <!-- ভিউ ২: প্রোডাক্ট ডিটেইলস পেজ ভিউ -->
     <div id="details-view" class="hidden container mx-auto px-2 sm:px-4 py-6 max-w-5xl">
         <button onclick="backToHome()" class="mb-4 text-xs font-bold text-gray-600 hover:text-brand-500 flex items-center gap-1.5 bg-white border border-gray-200 px-3 py-2 rounded-lg transition shadow-sm">
             <i class="fa-solid fa-arrow-left text-xs"></i> <span id="lbl-back">পেছনে যান</span>
         </button>
 
         <div class="bg-white border border-gray-200 rounded-xl p-3 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 shadow-sm">
+            <!-- ইমেজ গ্যালারি -->
             <div>
                 <div class="border border-gray-100 rounded-lg overflow-hidden aspect-square bg-white mb-3 shadow-inner">
                     <img id="details-main-img" src="" alt="Product Image" class="w-full h-full object-cover">
@@ -123,6 +133,7 @@
                 <div id="details-gallery" class="flex gap-2 justify-center"></div>
             </div>
 
+            <!-- প্রোডাক্ট ইনফো -->
             <div class="flex flex-col justify-between">
                 <div>
                     <h2 id="details-title" class="text-gray-900 text-base sm:text-2xl font-bold leading-snug mb-2"></h2>
@@ -163,6 +174,7 @@
         </div>
     </div>
 
+    <!-- অর্ডার ফর্ম মডাল -->
     <div id="order-modal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
         <div class="bg-white rounded-xl max-w-md w-full p-5 relative shadow-2xl max-h-[92vh] overflow-y-auto border border-gray-100">
             <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-700 p-2 rounded-full transition">
@@ -258,6 +270,7 @@
         </div>
     </div>
 
+    <!-- ফুটার সেকশন -->
     <footer class="bg-white border-t border-gray-200 mt-16 pt-10 pb-6">
         <div class="container mx-auto px-4 max-w-7xl">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs text-center md:text-left border-b border-gray-100 pb-8">
@@ -295,7 +308,8 @@
                 searchPlaceholder: "পছন্দের প্রোডাক্টটি এখানে সার্চ করুন...", megaBadge: "Mega Sell",
                 megaText: "🔥 মেগা অফার! আমাদের সব গ্যাজেটে পাচ্ছেন ফ্ল্যাট <span class='text-brand-500 text-base font-extrabold'>40% Discount!</span> অফারটি সীমিত সময়ের জন্য।",
                 bannerTag: "EXCLUSIVE CAMP", bannerTitle: "BIG GADGET SALE", bannerDesc: "দারুণ সব স্মার্টওয়াচ, ইয়ারবাডস এবং গেমিং অ্যাক্সেসরিজ কিনুন আকর্ষণীয় মূল্যে।", bannerCta: "শপ করুন",
-                sectionTag: "JUST FOR YOU", sectionTitle: "আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ", noProducts: "আপনার সার্চ করা নামে কোনো প্রোডাক্ট পাওয়া যায়নি!", orderBtn: "ভিউ প্রোডাক্ট",
+                sectionTag: "JUST FOR YOU", sectionTitle: "আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ", noProducts: "আপনার সার্চ করা নামে কোনো প্রোডাক্ট পাওয়া যায়নি!", 
+                btnAddToCart: "কার্টে যোগ করুন", btnOrderNow: "অর্ডার করুন",
                 modalHeading: "অর্ডার কনফার্ম করুন", modalPDetails: "Product Details", lblLocation: "ডেলিভারি লোকেশন:", optInside: "ঢাকার ভেতরে (৳৬০)", optOutside: "ঢাকার বাহিরে (৳১২০)",
                 lblPayment: "পেমেন্ট মাধ্যম:", optBkash: "বিকাশ (Bkash) - সেন্ড মানি", payInstruction: "দয়া করে নিচের নাম্বারে টাকা <b>Send Money</b> করুন: <span class='font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center'>01601-761487</span>",
                 lblPhone: "আপনার মোবাইল নম্বর *", lblAddress: "সম্পূর্ণ ঠিকানা *", lblBkNumber: "বিকাশ নম্বর *", lblTxnId: "ট্রানজেকশন আইডি *",
@@ -309,7 +323,8 @@
                 searchPlaceholder: "Search your favorite product here...", megaBadge: "Mega Sale",
                 megaText: "🔥 Mega Offer! Get Flat <span class='text-brand-500 text-base font-extrabold'>40% Discount</span> on all gadgets for a limited time.",
                 bannerTag: "EXCLUSIVE CAMP", bannerTitle: "BIG GADGET SALE", bannerDesc: "Buy amazing smartwatches, earbuds and gaming accessories at attractive prices.", bannerCta: "Shop Now",
-                sectionTag: "JUST FOR YOU", sectionTitle: "Our Trending Products", noProducts: "No products found matching your search term!", orderBtn: "View Product",
+                sectionTag: "JUST FOR YOU", sectionTitle: "Our Trending Products", noProducts: "No products found matching your search term!", 
+                btnAddToCart: "Add to Cart", btnOrderNow: "Order Now",
                 modalHeading: "Confirm Your Order", modalPDetails: "Product Details", lblLocation: "Delivery Location:", optInside: "Inside Dhaka (৳60)", optOutside: "Outside Dhaka (৳120)",
                 lblPayment: "Payment Method:", optBkash: "bKash (Bkash) - Send Money", payInstruction: "Please <b>Send Money</b> to the following number: <span class='font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center'>01601-761487</span>",
                 lblPhone: "Your Mobile Number *", lblAddress: "Full Address *", lblBkNumber: "bKash Number *", lblTxnId: "Transaction ID *",
@@ -319,15 +334,14 @@
             }
         };
 
-        // পিচসাম ফটোজ এর অত্যন্ত ফাস্ট ইমেজ লিংক লোড করা হয়েছে
         const products = [
-            { id: 1, name_bn: "Ultra Smart Watch Series 9", name_en: "Ultra Smart Watch Series 9 Pro", price: 1499, originalPrice: 2499, rating: 4.9, images: ["https://picsum.photos/500/500?random=1", "https://picsum.photos/500/500?random=11", "https://picsum.photos/500/500?random=21"], colors: ["Black", "Orange", "Silver"], desc_bn: "এটি একটি আল্ট্রা প্রিমিয়াম ওয়াচ। এতে রয়েছে ফুল ফিট অ্যামোলেড ডিসপ্লে, ব্লুটুথ কলিং সিস্টেম, হার্ট রেট ট্র্যাকিং এবং শক্তিশালী ব্যাটারি লাইফ। প্রতিদিনের ফ্যাশন ও ফিটনেসের জন্য পারফেক্ট চয়েস।", desc_en: "Premium AMOLED display smartwatch with features like Bluetooth calling, step counter, heart rate monitor, and exceptional battery backup." },
-            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইф ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
+            { id: 1, name_bn: "Ultra Smart Watch Series 9", name_en: "Ultra Smart Watch Series 9 Pro", price: 1499, originalPrice: 2499, rating: 4.9, images: ["https://picsum.photos/500/500?random=1", "https://picsum.photos/500/500?random=11", "https://picsum.photos/500/500?random=21"], colors: ["Black", "Orange", "Silver"], desc_bn: "এটি একটি আল্ট্রা প্রিমিয়াম ওয়াচ। এতে রয়েছে ফুল ফিট অ্যামোলেড ডিসপ্লে, ব্লুটুথ কলিং সিস্টেম, হার্ট রেট ট্র্যাকিং এবং শক্তিশালী ব্যাটারি লাইফ। প্রতিদিনের ফ্যাশন ও ফিটনেসের জন্য পারфেক্ট চয়েস।", desc_en: "Premium AMOLED display smartwatch with features like Bluetooth calling, step counter, heart rate monitor, and exceptional battery backup." },
+            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইফ ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
             { id: 3, name_bn: "High Speed Turbo Desk Fan", name_en: "High Speed Turbo Desk Fan Rechargeable", price: 1150, originalPrice: 1915, rating: 4.7, images: ["https://picsum.photos/500/500?random=3", "https://picsum.photos/500/500?random=13", "https://picsum.photos/500/500?random=23"], colors: ["White", "Green", "Pink"], desc_bn: "লোডের সময়ও বাতাস দিবে একটানা! রিচার্জেবল এই ডেক্স ফ্যানটিতে রয়েছে ৩টি স্পিড মোড এবং ইউএসবি চার্জিং সুবিধা। খুব সহজে যেকোনো জায়গায় বহনযোগ্য।", desc_en: "Portable high-speed rechargeable desk fan. Perfect option for home or workspace during intense heat with multidirectional airflow." },
             { id: 4, name_bn: "20,000mAh Fast Power Bank", name_en: "20,000mAh Fast Power Bank 22.5W", price: 1350, originalPrice: 2250, rating: 4.9, images: ["https://picsum.photos/500/500?random=4", "https://picsum.photos/500/500?random=14", "https://picsum.photos/500/500?random=24"], colors: ["Black", "White", "Blue"], desc_bn: "২২.৫ ওয়াটের সুপার ফাস্ট চার্জিং সমৃদ্ধ বিশাল ২০০০০ মিলিঅ্যাম্পিয়ার পাওয়ার ব্যাংক। একসাথে একাধিক ডিভাইস দ্রুত চার্জ করার জন্য সেরা একটি গ্যাজেট।", desc_en: "High capacity 20,000mAh structural shell material power bank supporting 22.5W fast output charging protocols safely." },
             { id: 5, name_bn: "RGB Mechanical Gaming Keyboard", name_en: "RGB Mechanical Gaming Keyboard Blue Switch", price: 2450, originalPrice: 3800, rating: 4.9, images: ["https://picsum.photos/500/500?random=5", "https://picsum.photos/500/500?random=15", "https://picsum.photos/500/500?random=25"], colors: ["Black", "White"], desc_bn: "প্রো গেমারদের জন্য আরজিবি মেকানিক্যাল কিবোর্ড। ব্লু-সুইচের দারুণ ক্ল্যাকিং সাউন্ড ও মাল্টিপল কাস্টমাইজড লাইٹنگ ইফেক্ট আপনার টাইপিং ও গেমিং করবে রাজকীয়।", desc_en: "Tactile clicky blue switches, responsive mechanical keys, and beautiful custom RGB backlight animations to elevate setups." },
             { id: 6, name_bn: "Wireless Ergonomic Gaming Mouse", name_en: "Wireless Ergonomic Gaming Mouse Rechargeable", price: 799, originalPrice: 1299, rating: 4.8, images: ["https://picsum.photos/500/500?random=6", "https://picsum.photos/500/500?random=16", "https://picsum.photos/500/500?random=26"], colors: ["Black", "Grey"], desc_bn: "হাতের তালুর সাথে পুরোপুরি মানানসই এরগোনোমিক ডিজাইন। হাই ডিপিআই (DPI) সেন্সর সমৃদ্ধ যা গেম খেলার সময় দিবে অত্যন্ত নিখুঁত মুভমেন্ট কন্ট্রোল।", desc_en: "Ultra responsive adjustable DPI mouse designed to reduce hand fatigue during long desktop computing or gaming sessions." },
-            { id: 7, name_bn: "4K Ultra HD Webcam with Mic", name_en: "4K Ultra HD Webcam with Built-in Mic", price: 1850, originalPrice: 2800, rating: 4.6, images: ["https://picsum.photos/500/500?random=7", "https://picsum.photos/500/500?random=17", "https://picsum.photos/500/500?random=27"], colors: ["Black"], desc_bn: "অনলাইন ক্লাস, মিটিং বা লাইভ স্ট্রিমিং এর জন্য সেরা ফোর-কে ওয়েবক্যাম। বিল্ট-ইন নয়েজ ক্যান্সেলেশন মাইক্রোফোন স্পষ্ট ভয়েস আউটপুট নিশ্চিত করে।", desc_en: "True 4k high definition clarity webcam, smooth frame rate rendering, clear audio microphone for seamless professional presentation streams." },
+            { id: 7, name_bn: "4K Ultra HD Webcam with Mic", name_en: "4K Ultra HD Webcam with Built-in Mic", price: 1850, originalPrice: 2800, rating: 4.6, images: ["https://picsum.photos/500/500?random=7", "https://picsum.photos/500/500?random=17", "https://picsum.photos/500/500?random=27"], colors: ["Black"], desc_bn: "অনлайн ক্লাস, মিটিং বা লাইভ স্ট্রিমিং এর জন্য সেরা ফোর-কে ওয়েবক্যাম। বিল্ট-ইন নয়েজ ক্যান্সেলেশন মাইক্রোফোন স্পষ্ট ভয়েস আউটপুট নিশ্চিত করে।", desc_en: "True 4k high definition clarity webcam, smooth frame rate rendering, clear audio microphone for seamless professional presentation streams." },
             { id: 8, name_bn: "Portable Bluetooth Speaker Waterproof", name_en: "Portable Bluetooth Speaker Waterproof Bass+", price: 1250, originalPrice: 1999, rating: 4.7, images: ["https://picsum.photos/500/500?random=8", "https://picsum.photos/500/500?random=18", "https://picsum.photos/500/500?random=28"], colors: ["Black", "Red", "Blue"], desc_bn: "ছোট সাইজ কিন্তু বিশাল সাউন্ড। ওয়াটারপ্রুফ বডির কারণে পুলে কিংবা ট্রাভেলের সময় যেকোনো আউটডোরে গান উপভোগ করার উপযুক্ত সঙ্গী এটি।", desc_en: "Rugged waterproof build, dynamic acoustic bass sound profiles. Completely portable audio setup option for travelers." }
         ];
 
@@ -402,18 +416,23 @@
                     <div class="p-2 sm:p-3 flex-1 flex flex-col justify-between">
                         <div>
                             <h3 onclick="showProductDetails(${product.id})" class="text-gray-800 text-[11px] sm:text-sm font-normal leading-tight line-clamp-2 h-7 sm:h-9 cursor-pointer hover:text-brand-500 transition mb-1">${pName}</h3>
-                            <div class="flex flex-col mb-2">
-                                <span class="text-brand-500 text-sm sm:text-base font-bold leading-none">৳${product.price}</span>
-                                <span class="line-through text-gray-400 text-[10px] mt-0.5">৳${product.originalPrice}</span>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex flex-col">
+                                    <span class="text-brand-500 text-sm sm:text-base font-bold leading-none">৳${product.price}</span>
+                                    <span class="line-through text-gray-400 text-[10px] mt-0.5">৳${product.originalPrice}</span>
+                                </div>
+                                <div class="flex items-center text-amber-500 text-[10px] sm:text-xs font-semibold">
+                                    <i class="fa-solid fa-star mr-0.5"></i><span class="text-gray-700">${product.rating}</span>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="flex items-center justify-between border-t border-gray-100 pt-1.5 gap-1">
-                                <div class="flex items-center text-amber-500 text-[9px] sm:text-xs font-semibold">
-                                    <i class="fa-solid fa-star text-[9px] mr-0.5"></i><span class="text-gray-700">${product.rating}</span>
-                                </div>
-                                <button onclick="showProductDetails(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-[10px] sm:text-xs font-bold py-1 px-2.5 rounded shadow-sm whitespace-nowrap">${langData[currentLang].orderBtn}</button>
-                            </div>
+                        <div class="border-t border-gray-100 pt-2 grid grid-cols-2 gap-1">
+                            <button onclick="addToCart()" class="bg-gray-100 hover:bg-orange-50 hover:text-brand-500 text-gray-700 text-[10px] sm:text-xs font-bold py-1.5 rounded transition shadow-sm text-center">
+                                ${langData[currentLang].btnAddToCart}
+                            </button>
+                            <button onclick="quickOrder(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-[10px] sm:text-xs font-bold py-1.5 rounded transition shadow-sm text-center">
+                                ${langData[currentLang].btnOrderNow}
+                            </button>
                         </div>
                     </div>
                 `;
@@ -485,6 +504,12 @@
             calculateTotal();
             document.getElementById('order-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+        }
+
+        function quickOrder(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            openOrderModalFromDetails(product);
         }
 
         function closeModal() {
