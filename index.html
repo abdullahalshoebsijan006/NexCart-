@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght=400;500;600;700&family=Inter:wght=400;600;700;800&display=swap');
         .lang-bn { font-family: 'Hind Siliguri', sans-serif; }
         .lang-en { font-family: 'Inter', sans-serif; }
         body { background-color: #f4f4f6; transition: all 0.3s ease; }
@@ -20,7 +20,7 @@
                         brand: {
                             50: '#fff1f2',
                             100: '#ffe4e6',
-                            500: '#f57224', /* দারাজ সিগনেচার অরেঞ্জ */
+                            500: '#f57224',
                             600: '#da5f19',
                             700: '#b84d10',
                         }
@@ -81,7 +81,7 @@
                 </div>
                 
                 <div class="rounded-xl overflow-hidden shadow-sm border border-gray-200 bg-gray-100 aspect-[21/9] relative">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80" alt="Mega Sale Banner" class="w-full h-full object-cover block">
+                    <img src="https://picsum.photos/1200/500?random=100" alt="Mega Sale Banner" class="w-full h-full object-cover block">
                     <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center p-4 sm:p-12">
                         <div class="text-white max-w-xs sm:max-w-md">
                             <span id="banner-tag" class="bg-brand-500 text-white text-[10px] font-bold px-2 py-1 rounded mb-2 inline-block">EXCLUSIVE CAMP</span>
@@ -132,7 +132,7 @@
                             <i class="fa-solid fa-star mr-1"></i><span id="details-rating" class="text-gray-700"></span>
                         </div>
                         <span class="text-gray-300 text-xs">|</span>
-                        <span id="details-discount" class="bg-brand-50 text-brand-600 text-[10px] font-bold px-2 py-0.5 rounded"></span>
+                        <span id="details-discount" class="bg-brand-5 text-brand-600 text-[10px] font-bold px-2 py-0.5 rounded"></span>
                     </div>
 
                     <div class="bg-gray-50 border border-gray-100 p-3 rounded-lg mb-5 flex items-baseline gap-2">
@@ -140,4 +140,413 @@
                         <span id="details-original-price" class="line-through text-gray-400 text-xs sm:text-sm"></span>
                     </div>
 
+                    <div class="mb-6">
+                        <span id="lbl-color-choice" class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2.5">কালার চয়েস সিলেক্ট করুন:</span>
+                        <div id="details-colors-container" class="flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <div class="border-t border-gray-100 pt-4 mb-6">
+                        <span id="lbl-desc-title" class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">প্রোডাক্ট ডিসক্রিপশন:</span>
+                        <p id="details-description" class="text-gray-600 text-xs sm:text-sm leading-relaxed whitespace-pre-line"></p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 border-t border-gray-100 pt-4">
+                    <button onclick="addToCart()" class="bg-gray-50 hover:bg-orange-50 text-gray-700 hover:text-brand-500 p-3.5 rounded-xl transition border border-gray-200 text-xl shadow-sm flex items-center justify-center" title="Add to Cart">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                    <button id="details-order-btn" class="flex-1 bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 px-6 rounded-xl transition shadow-md text-sm sm:text-base tracking-wide">
+                        অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-modal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
+        <div class="bg-white rounded-xl max-w-md w-full p-5 relative shadow-2xl max-h-[92vh] overflow-y-auto border border-gray-100">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-700 p-2 rounded-full transition">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+            
+            <h3 id="modal-heading" class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span class="text-brand-500"><i class="fa-solid fa-square-check"></i></span> অর্ডার কনফার্ম করুন
+            </h3>
+            
+            <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg mb-4">
+                <span id="modal-p-details" class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Product Details</span>
+                <p id="modal-product-name" class="font-bold text-gray-900 text-sm mb-1"></p>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="text-[11px] bg-white border border-gray-200 px-2 py-0.5 rounded text-gray-600">
+                        Color: <span id="modal-selected-color" class="font-bold text-brand-500"></span>
+                    </span>
+                </div>
+            </div>
+
+            <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
+                <input type="hidden" name="products" id="sheet-product-name">
+                <input type="hidden" name="color" id="sheet-product-color">
+                <input type="hidden" name="payment" value="বিকাশ (Bkash)">
+
+                <div class="mb-4">
+                    <label id="lbl-location" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">ডেলিভারি লোকেশন:</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="border p-2.5 rounded-lg flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-50 border-brand-500 ring-2 ring-brand-100 transition shadow-sm">
+                            <input type="radio" name="location" value="ঢাকার ভেতরে" checked onclick="calculateTotal()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span id="opt-inside" class="text-xs font-semibold text-gray-800">ঢাকার ভেতরে (৳৬০)</span>
+                        </label>
+                        <label class="border p-2.5 rounded-lg flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-50 border-gray-200 transition">
+                            <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span id="opt-outside" class="text-xs font-semibold text-gray-700">ঢাকার বাহিরে (৳১২о)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label id="lbl-payment" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">পেমেন্ট মাধ্যম:</label>
+                    <div class="w-full border border-gray-200 rounded-lg p-2.5 bg-gray-50 font-bold text-xs text-gray-800 flex items-center justify-between">
+                        <span id="opt-bkash">বিকাশ (Bkash) - সেন্ড মানি</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    </div>
+                    <div id="payment-instruction" class="bg-orange-50 text-orange-900 text-[11px] p-2.5 rounded-lg mt-2 border border-orange-100 leading-relaxed">
+                        দয়া করে নিচের নাম্বারে টাকা <b>Send Money</b> করুন: 
+                        <span class="font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center">01601-761487</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-4">
+                    <div>
+                        <label id="lbl-phone" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">আপনার মোবাইল নম্বর *</label>
+                        <input id="customer-phone" name="phone" type="tel" required class="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-brand-500 outline-none transition" placeholder="01XXXXXXXXX">
+                    </div>
+                    <div>
+                        <label id="lbl-address" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">সম্পূর্ণ ঠিকানা *</label>
+                        <textarea id="customer-address" name="address" required class="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-brand-500 outline-none transition h-16" placeholder="বাসা নং, রোড, থানা, জেলা..."></textarea>
+                    </div>
                     
+                    <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                        <div>
+                            <label id="lbl-bknumber" class="block text-[10px] font-bold text-brand-700 mb-1">বিকাশ নম্বর *</label>
+                            <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-gray-200 rounded-lg p-2 text-xs focus:border-brand-500 outline-none transition" placeholder="01XXXXXXXXX">
+                        </div>
+                        <div>
+                            <label id="lbl-txnid" class="block text-[10px] font-bold text-brand-700 mb-1">ট্রানজেকশন আইডি *</label>
+                            <input id="txnid" name="txnid" type="text" required class="w-full border border-gray-200 rounded-lg p-2 text-xs focus:border-brand-500 outline-none transition" placeholder="যেমন: BLA12C3456">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-100 pt-3 space-y-1 text-xs text-gray-600 mb-4">
+                    <div class="flex justify-between">
+                        <span id="lbl-price-txt">মূল্য:</span>
+                        <span class="font-semibold text-gray-900">৳<span id="modal-product-price">0</span></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span id="lbl-delivery-txt">ডেলিভারি চার্জ:</span>
+                        <span class="font-semibold text-gray-900">৳<span id="modal-delivery-charge">60</span></span>
+                    </div>
+                    <div class="flex justify-between text-sm font-bold text-gray-950 border-t border-gray-100 pt-2">
+                        <span id="lbl-total-txt">সর্বমোট বিল:</span>
+                        <span class="text-brand-600 text-lg">৳<span id="modal-total-price">0</span></span>
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-submit-order" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition shadow-md text-sm">
+                    অর্ডার সম্পন্ন করুন
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-gray-200 mt-16 pt-10 pb-6">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs text-center md:text-left border-b border-gray-100 pb-8">
+                <div class="col-span-2 md:col-span-1 flex flex-col items-center md:items-start">
+                    <span class="text-lg font-black text-gray-900 mb-2">NEX<span class="text-brand-500">CART</span></span>
+                    <p id="footer-desc" class="text-gray-400 leading-relaxed">আপনার লাইফস্টাইল সহজ করতে সেরা কোয়ালিটির গ্যাজেট ও ইলেকট্রনিক্স নিয়ে আপনার পাশে সব সময়।</p>
+                </div>
+                <div>
+                    <h5 id="foot-h-company" class="font-bold text-gray-900 mb-3 uppercase tracking-wider">কোম্পানি</h5>
+                    <ul class="space-y-1.5 text-gray-500">
+                        <li><a href="#" class="hover:text-brand-500 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 id="foot-h-policy" class="font-bold text-gray-900 mb-3 uppercase tracking-wider">পলিসি</h5>
+                    <ul class="space-y-1.5 text-gray-500">
+                        <li><a href="#" class="hover:text-brand-500 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-center text-[11px] text-gray-400 mt-6">&copy; 2026 NexCart BD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'bn';
+        let activeProductId = null;
+        
+        const langData = {
+            bn: {
+                label: "EN", bodyClass: "lang-bn", lblBack: "পেছনে যান", lblColorChoice: "কালার চয়েস সিলেক্ট করুন:", lblDescTitle: "প্রোডাক্ট ডিসক্রিপশন:",
+                topAlert: "⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!",
+                searchPlaceholder: "পছন্দের প্রোডাক্টটি এখানে সার্চ করুন...", megaBadge: "Mega Sell",
+                megaText: "🔥 মেগা অফার! আমাদের সব গ্যাজেটে পাচ্ছেন ফ্ল্যাট <span class='text-brand-500 text-base font-extrabold'>40% Discount!</span> অফারটি সীমিত সময়ের জন্য।",
+                bannerTag: "EXCLUSIVE CAMP", bannerTitle: "BIG GADGET SALE", bannerDesc: "দারুণ সব স্মার্টওয়াচ, ইয়ারবাডস এবং গেমিং অ্যাক্সেসরিজ কিনুন আকর্ষণীয় মূল্যে।", bannerCta: "শপ করুন",
+                sectionTag: "JUST FOR YOU", sectionTitle: "আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ", noProducts: "আপনার সার্চ করা নামে কোনো প্রোডাক্ট পাওয়া যায়নি!", orderBtn: "ভিউ প্রোডাক্ট",
+                modalHeading: "অর্ডার কনফার্ম করুন", modalPDetails: "Product Details", lblLocation: "ডেলিভারি লোকেশন:", optInside: "ঢাকার ভেতরে (৳৬০)", optOutside: "ঢাকার বাহিরে (৳১২০)",
+                lblPayment: "পেমেন্ট মাধ্যম:", optBkash: "বিকাশ (Bkash) - সেন্ড মানি", payInstruction: "দয়া করে নিচের নাম্বারে টাকা <b>Send Money</b> করুন: <span class='font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center'>01601-761487</span>",
+                lblPhone: "আপনার মোবাইল নম্বর *", lblAddress: "সম্পূর্ণ ঠিকানা *", lblBkNumber: "বিকাশ নম্বর *", lblTxnId: "ট্রানজেকশন আইডি *",
+                lblPriceTxt: "মূল্য:", lblDeliveryTxt: "ডেলিভারি চার্জ:", lblTotalTxt: "সর্বমোট বিল:", btnSubmitOrder: "অর্ডার সম্পন্ন করুন",
+                footerDesc: "আপনার লাইফস্টাইল সহজ করতে সেরা কোয়ালিটির গ্যাজেট ও ইলেকট্রনিক্স নিয়ে আপনার পাশে সব সময়।", footCompany: "কোম্পানি", footPolicy: "পলিসি",
+                alertCart: "কার্টে যুক্ত করা হয়েছে!", alertSuccess: "ধন্যবাদ! অর্ডারটি সফলভাবে সাবমিট হয়েছে।", alertFail: "দুঃখিত, আবার চেষ্টা করুন।", alertNet: "নেটওয়ার্ক সমস্যা!"
+            },
+            en: {
+                label: "বাং", bodyClass: "lang-en", lblBack: "Back to Home", lblColorChoice: "Select Color Choice:", lblDescTitle: "Product Description:",
+                topAlert: "⚡ Mega Dhamaka Sale! Get guaranteed discount & fast delivery on every gadget order!",
+                searchPlaceholder: "Search your favorite product here...", megaBadge: "Mega Sale",
+                megaText: "🔥 Mega Offer! Get Flat <span class='text-brand-500 text-base font-extrabold'>40% Discount</span> on all gadgets for a limited time.",
+                bannerTag: "EXCLUSIVE CAMP", bannerTitle: "BIG GADGET SALE", bannerDesc: "Buy amazing smartwatches, earbuds and gaming accessories at attractive prices.", bannerCta: "Shop Now",
+                sectionTag: "JUST FOR YOU", sectionTitle: "Our Trending Products", noProducts: "No products found matching your search term!", orderBtn: "View Product",
+                modalHeading: "Confirm Your Order", modalPDetails: "Product Details", lblLocation: "Delivery Location:", optInside: "Inside Dhaka (৳60)", optOutside: "Outside Dhaka (৳120)",
+                lblPayment: "Payment Method:", optBkash: "bKash (Bkash) - Send Money", payInstruction: "Please <b>Send Money</b> to the following number: <span class='font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center'>01601-761487</span>",
+                lblPhone: "Your Mobile Number *", lblAddress: "Full Address *", lblBkNumber: "bKash Number *", lblTxnId: "Transaction ID *",
+                lblPriceTxt: "Price:", lblDeliveryTxt: "Delivery Charge:", lblTotalTxt: "Total Bill:", btnSubmitOrder: "Complete Order",
+                footerDesc: "Always by your side with the best quality gadgets & electronics to make your lifestyle easier.", footCompany: "Company", footPolicy: "Policy",
+                alertCart: "Added to Cart!", alertSuccess: "Thank you! Your order has been successfully submitted.", alertFail: "Sorry, please try again.", alertNet: "Network Error!"
+            }
+        };
+
+        // পিচসাম ফটোজ এর লাইভ ইমেজ লিংক ব্যবহার করা হয়েছে
+        const products = [
+            { id: 1, name_bn: "Ultra Smart Watch Series 9", name_en: "Ultra Smart Watch Series 9 Pro", price: 1499, originalPrice: 2499, rating: 4.9, images: ["https://picsum.photos/500/500?random=1", "https://picsum.photos/500/500?random=11", "https://picsum.photos/500/500?random=21"], colors: ["Black", "Orange", "Silver"], desc_bn: "এটি একটি আল্ট্রা প্রিমিয়াম ওয়াচ। এতে রয়েছে ফুল ফিট অ্যামোলেড ডিসপ্লে, ব্লুটুথ কলিং সিস্টেম, হার্ট রেট ট্র্যাকিং এবং শক্তিশালী ব্যাটারি লাইফ। প্রতিদিনের ফ্যাশন ও ফিটনেসের জন্য পারফেক্ট চয়েস।", desc_en: "Premium AMOLED display smartwatch with features like Bluetooth calling, step counter, heart rate monitor, and exceptional battery backup." },
+            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইফ ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
+            { id: 3, name_bn: "High Speed Turbo Desk Fan", name_en: "High Speed Turbo Desk Fan Rechargeable", price: 1150, originalPrice: 1915, rating: 4.7, images: ["https://picsum.photos/500/500?random=3", "https://picsum.photos/500/500?random=13", "https://picsum.photos/500/500?random=23"], colors: ["White", "Green", "Pink"], desc_bn: "লোডের সময়ও বাতাস দিবে একটানা! রিচার্জেবল এই ডেক্স ফ্যানটিতে রয়েছে ৩টি স্পিড মোড এবং ইউএসবি চার্জিং সুবিধা। খুব সহজে যেকোনো জায়গায় বহনযোগ্য।", desc_en: "Portable high-speed rechargeable desk fan. Perfect option for home or workspace during intense heat with multidirectional airflow." },
+            { id: 4, name_bn: "20,000mAh Fast Power Bank", name_en: "20,000mAh Fast Power Bank 22.5W", price: 1350, originalPrice: 2250, rating: 4.9, images: ["https://picsum.photos/500/500?random=4", "https://picsum.photos/500/500?random=14", "https://picsum.photos/500/500?random=24"], colors: ["Black", "White", "Blue"], desc_bn: "২২.৫ ওয়াটের সুপার ফাস্ট চার্জিং সমৃদ্ধ বিশাল ২০০০০ মিলিঅ্যাম্পিয়ার পাওয়ার ব্যাংক। একসাথে একাধিক ডিভাইস দ্রুত চার্জ করার জন্য সেরা একটি গ্যাজেট।", desc_en: "High capacity 20,000mAh structural shell material power bank supporting 22.5W fast output charging protocols safely." },
+            { id: 5, name_bn: "RGB Mechanical Gaming Keyboard", name_en: "RGB Mechanical Gaming Keyboard Blue Switch", price: 2450, originalPrice: 3800, rating: 4.9, images: ["https://picsum.photos/500/500?random=5", "https://picsum.photos/500/500?random=15", "https://picsum.photos/500/500?random=25"], colors: ["Black", "White"], desc_bn: "প্রো গেমারদের জন্য আরজিবি মেকানিক্যাল কিবোর্ড। ব্লু-সুইচের দারুণ ক্ল্যাকিং সাউন্ড ও মাল্টিপল কাস্টমাইজড লাইٹنگ ইফেক্ট আপনার টাইপিং ও গেমিং করবে রাজকীয়।", desc_en: "Tactile clicky blue switches, responsive mechanical keys, and beautiful custom RGB backlight animations to elevate setups." },
+            { id: 6, name_bn: "Wireless Ergonomic Gaming Mouse", name_en: "Wireless Ergonomic Gaming Mouse Rechargeable", price: 799, originalPrice: 1299, rating: 4.8, images: ["https://picsum.photos/500/500?random=6", "https://picsum.photos/500/500?random=16", "https://picsum.photos/500/500?random=26"], colors: ["Black", "Grey"], desc_bn: "হাতের তালুর সাথে পুরোপুরি মানানসই এরগোনোমিক ডিজাইন। হাই ডিপিআই (DPI) সেন্সর সমৃদ্ধ যা গেম খেলার সময় দিবে অত্যন্ত নিখুঁত মুভমেন্ট কন্ট্রোল।", desc_en: "Ultra responsive adjustable DPI mouse designed to reduce hand fatigue during long desktop computing or gaming sessions." },
+            { id: 7, name_bn: "4K Ultra HD Webcam with Mic", name_en: "4K Ultra HD Webcam with Built-in Mic", price: 1850, originalPrice: 2800, rating: 4.6, images: ["https://picsum.photos/500/500?random=7", "https://picsum.photos/500/500?random=17", "https://picsum.photos/500/500?random=27"], colors: ["Black"], desc_bn: "অনলাইন ক্লাস, মিটিং বা লাইভ স্ট্রিমিং এর জন্য সেরা ফোর-কে ওয়েবক্যাম। বিল্ট-ইন নয়েজ ক্যান্সেলেশন মাইক্রোফোন স্পষ্ট ভয়েস আউটপুট নিশ্চিত করে।", desc_en: "True 4k high definition clarity webcam, smooth frame rate rendering, clear audio microphone for seamless professional presentation streams." },
+            { id: 8, name_bn: "Portable Bluetooth Speaker Waterproof", name_en: "Portable Bluetooth Speaker Waterproof Bass+", price: 1250, originalPrice: 1999, rating: 4.7, images: ["https://picsum.photos/500/500?random=8", "https://picsum.photos/500/500?random=18", "https://picsum.photos/500/500?random=28"], colors: ["Black", "Red", "Blue"], desc_bn: "ছোট সাইজ কিন্তু বিশাল সাউন্ড। ওয়াটারপ্রুফ বডির কারণে পুলে কিংবা ট্রাভেলের সময় যেকোনো আউটডোরে গান উপভোগ করার উপযুক্ত সঙ্গী এটি।", desc_en: "Rugged waterproof build, dynamic acoustic bass sound profiles. Completely portable audio setup option for travelers." },
+            { id: 9, name_bn: "Smart LED Bedside Night Lamp", name_en: "Smart LED Bedside Night Lamp App Control", price: 990, originalPrice: 1599, rating: 4.5, images: ["https://picsum.photos/500/500?random=9", "https://picsum.photos/500/500?random=19", "https://picsum.photos/500/500?random=29"], colors: ["White"], desc_bn: "মোবাইল অ্যাপের মাধ্যমে ১৬ মিলিয়ন কালার কন্ট্রোল করার সুবিধা। আপনার বেডরুমের পরিবেশকে মায়াবী ও শান্তিময় করতে এই স্মার্ট ল্যাম্পের কোনো বিকল্প নেই।", desc_en: "Smart Wi-Fi enabled bedside lamp that features millions of color variations customized easily through user smartphones directly." },
+            { id: 10, name_bn: "Active Noise Cancelling Headphones", name_en: "Wireless Over-Ear ANC Headphones", price: 3200, originalPrice: 4999, rating: 4.9, images: ["https://picsum.photos/500/500?random=10", "https://picsum.photos/500/500?random=20", "https://picsum.photos/500/500?random=30"], colors: ["Black", "Silver", "Blue"], desc_bn: "বাইরের সমস্ত কোলাহলকে বিদায় জানান এক ক্লিকে। এর উন্নত অ্যাক্টিভ নয়েজ ক্যান্সেলেশন (ANC) প্রযুক্তি দেবে স্টুдио কোয়ালিটির মিউজিক শোনার অনুভূতি।", desc_en: "Premium hybrid over-ear noise-isolating headphones built for complete spatial immersion by blocking surrounding environment sounds." }
+        ];
+
+        let cartCount = 0;
+        let selectedProduct = null;
+        const productGrid = document.getElementById('product-grid');
+        const noProductsEl = document.getElementById('no-products');
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'bn' ? 'en' : 'bn';
+            const data = langData[currentLang];
+            
+            document.body.className = `text-gray-800 antialiased ${data.bodyClass}`;
+            document.getElementById('lang-label').innerText = data.label;
+            document.getElementById('top-alert').innerText = data.topAlert;
+            document.getElementById('search-input').placeholder = data.searchPlaceholder;
+            document.getElementById('mega-badge').innerText = data.megaBadge;
+            document.getElementById('mega-text').innerHTML = data.megaText;
+            document.getElementById('banner-tag').innerText = data.bannerTag;
+            document.getElementById('banner-title').innerText = data.bannerTitle;
+            document.getElementById('banner-desc').innerText = data.bannerDesc;
+            document.getElementById('banner-cta').innerText = data.bannerCta;
+            document.getElementById('section-tag').innerText = data.sectionTag;
+            document.getElementById('section-title').innerText = data.sectionTitle;
+            document.getElementById('no-products-text').innerText = data.noProducts;
+            document.getElementById('lbl-back').innerText = data.lblBack;
+            document.getElementById('lbl-color-choice').innerText = data.lblColorChoice;
+            document.getElementById('lbl-desc-title').innerText = data.lblDescTitle;
+            
+            document.getElementById('modal-heading').innerHTML = `<span class="text-brand-500"><i class="fa-solid fa-square-check"></i></span> ${data.modalHeading}`;
+            document.getElementById('modal-p-details').innerText = data.modalPDetails;
+            document.getElementById('lbl-location').innerText = data.lblLocation;
+            document.getElementById('opt-inside').innerText = data.optInside;
+            document.getElementById('opt-outside').innerText = data.optOutside;
+            document.getElementById('lbl-payment').innerText = data.lblPayment;
+            document.getElementById('opt-bkash').innerText = data.optBkash;
+            document.getElementById('payment-instruction').innerHTML = data.payInstruction;
+            document.getElementById('lbl-phone').innerText = data.lblPhone;
+            document.getElementById('lbl-address').innerText = data.lblAddress;
+            document.getElementById('lbl-bknumber').innerText = data.lblBkNumber;
+            document.getElementById('lbl-txnid').innerText = data.lblTxnId;
+            document.getElementById('lbl-price-txt').innerText = data.lblPriceTxt;
+            document.getElementById('lbl-delivery-txt').innerText = data.lblDeliveryTxt;
+            document.getElementById('lbl-total-txt').innerText = data.lblTotalTxt;
+            document.getElementById('btn-submit-order').innerText = data.btnSubmitOrder;
+            document.getElementById('footer-desc').innerText = data.footerDesc;
+            document.getElementById('foot-h-company').innerText = data.footCompany;
+            document.getElementById('foot-h-policy').innerText = data.footPolicy;
+
+            if (activeProductId) { showProductDetails(activeProductId); }
+            searchProducts();
+        }
+
+        function renderProducts(productsList) {
+            productGrid.innerHTML = "";
+            if (productsList.length === 0) {
+                noProductsEl.classList.remove('hidden');
+                return;
+            }
+            noProductsEl.classList.add('hidden');
+
+            productsList.forEach(product => {
+                const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+                const pName = currentLang === 'bn' ? product.name_bn : product.name_en;
+                const card = document.createElement('div');
+                card.className = "bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-md transition duration-200 flex flex-col relative group";
+                card.innerHTML = `
+                    <div class="absolute top-1.5 left-1.5 bg-brand-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded z-10">-${discountPercent}%</div>
+                    <div onclick="showProductDetails(${product.id})" class="relative bg-white aspect-square overflow-hidden border-b border-gray-100 cursor-pointer">
+                        <img src="${product.images[0]}" alt="${pName}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-2 sm:p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 onclick="showProductDetails(${product.id})" class="text-gray-800 text-[11px] sm:text-sm font-normal leading-tight line-clamp-2 h-7 sm:h-9 cursor-pointer hover:text-brand-500 transition mb-1">${pName}</h3>
+                            <div class="flex flex-col mb-2">
+                                <span class="text-brand-500 text-sm sm:text-base font-bold leading-none">৳${product.price}</span>
+                                <span class="line-through text-gray-400 text-[10px] mt-0.5">৳${product.originalPrice}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between border-t border-gray-100 pt-1.5 gap-1">
+                                <div class="flex items-center text-amber-500 text-[9px] sm:text-xs font-semibold">
+                                    <i class="fa-solid fa-star text-[9px] mr-0.5"></i><span class="text-gray-700">${product.rating}</span>
+                                </div>
+                                <button onclick="showProductDetails(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-[10px] sm:text-xs font-bold py-1 px-2.5 rounded shadow-sm whitespace-nowrap">${langData[currentLang].orderBtn}</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        function showProductDetails(productId) {
+            activeProductId = productId;
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const pName = currentLang === 'bn' ? product.name_bn : product.name_en;
+            const pDesc = currentLang === 'bn' ? product.desc_bn : product.desc_en;
+            const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+
+            document.getElementById('details-title').innerText = pName;
+            document.getElementById('details-rating').innerText = product.rating;
+            document.getElementById('details-discount').innerText = `-${discountPercent}% OFF`;
+            document.getElementById('details-price').innerText = `৳${product.price}`;
+            document.getElementById('details-original-price').innerText = `৳${product.originalPrice}`;
+            document.getElementById('details-description').innerText = pDesc;
+
+            const mainImgContainer = document.getElementById('details-main-img');
+            mainImgContainer.src = product.images[0];
+
+            const galleryContainer = document.getElementById('details-gallery');
+            galleryContainer.innerHTML = product.images.map((img) => `
+                <img src="${img}" onclick="document.getElementById('details-main-img').src='${img}'" class="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg border-2 border-gray-200 hover:border-brand-500 cursor-pointer p-0.5 transition shadow-sm">
+            `).join('');
+
+            const colorsContainer = document.getElementById('details-colors-container');
+            colorsContainer.innerHTML = product.colors.map((color, idx) => `
+                <label class="text-xs sm:text-sm bg-gray-50 hover:bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-2 text-gray-700 transition shadow-sm">
+                    <input type="radio" name="details-color" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-brand-500 cursor-pointer">
+                    <span class="font-medium">${color}</span>
+                </label>
+            `).join('');
+
+            document.getElementById('details-order-btn').onclick = function() {
+                openOrderModalFromDetails(product);
+            };
+
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('details-view').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function backToHome() {
+            activeProductId = null;
+            document.getElementById('details-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'auto'});
+        }
+
+        function openOrderModalFromDetails(product) {
+            selectedProduct = product;
+            const selectedColorElement = document.querySelector('input[name="details-color"]:checked');
+            const chosenColor = selectedColorElement ? selectedColorElement.value : product.colors[0];
+            const pName = currentLang === 'bn' ? product.name_bn : product.name_en;
+
+            document.getElementById('modal-product-name').innerText = pName;
+            document.getElementById('modal-selected-color').innerText = chosenColor;
+            document.getElementById('modal-product-price').innerText = product.price;
+            
+            document.getElementById('sheet-product-name').value = pName;
+            document.getElementById('sheet-product-color').value = chosenColor;
+            
+            calculateTotal();
+            document.getElementById('order-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+            document.getElementById('order-form').reset();
+            selectedProduct = null;
+            document.body.style.overflow = 'auto';
+        }
+
+        function calculateTotal() {
+            if (!selectedProduct) return;
+            const deliveryElement = document.querySelector('input[name="location"]:checked');
+            let deliveryCharge = 60;
+            if (deliveryElement && deliveryElement.value.includes('বাহিরে')) {
+                deliveryCharge = 120;
+            }
+            const total = selectedProduct.price + deliveryCharge;
+            document.getElementById('modal-delivery-charge').innerText = deliveryCharge;
+            document.getElementById('modal-total-price').innerText = total;
+        }
+
+        function searchProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const filteredProducts = products.filter(product => {
+                const name = currentLang === 'bn' ? product.name_bn : product.name_en;
+                return name.toLowerCase().includes(searchTerm);
+            });
+            renderProducts(filteredProducts);
+            if (searchTerm !== "") { backToHome(); }
+        }
+
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+            alert(langData[currentLang].alertCart);
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            if (!selectedProduct) return;
+
+            const form = document.getElementById('order-form');
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+            })
+            .then(response => {
+                if(response.ok) {
+                    alert(langData[currentLang].alertSuccess);
+                    closeModal();
+                } else {
+                    alert(langData[currentLang].alertFail);
+                }
+            })
+            .catch(error => {
+                alert(langData[currentLang].alertNet);
+            });
+        }
+
+        renderProducts(products);
+    </script>
+</body>
+</html>
