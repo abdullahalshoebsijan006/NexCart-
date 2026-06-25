@@ -72,14 +72,14 @@
         </div>
     </div>
 
-    <main class="container mx-auto px-4 py-12 max-w-7xl">
+    <main class="container mx-auto px-2 sm:px-4 py-12 max-w-7xl">
         <div class="flex flex-col items-center mb-12">
             <span class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-full mb-2">Premium Collection</span>
-            <h2 class="text-3xl font-extrabold text-gray-950 tracking-tight text-center" id="section-title">আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ</h2>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-950 tracking-tight text-center" id="section-title">আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ</h2>
             <div class="w-14 h-1 bg-brand-500 rounded-full mt-3"></div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid"></div>
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8" id="product-grid"></div>
         
         <div id="no-products" class="hidden text-center py-12 text-gray-500 font-medium">
             <i class="fa-solid fa-box-open text-4xl block mb-3 text-gray-300"></i>
@@ -109,7 +109,6 @@
             </div>
 
             <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
-                
                 <input type="hidden" name="products" id="sheet-product-name">
                 <input type="hidden" name="color" id="sheet-product-color">
                 <input type="hidden" name="payment" value="বিকাশ (Bkash)">
@@ -152,11 +151,11 @@
                     
                     <div class="grid grid-cols-2 gap-3 border-t border-gray-100 pt-4">
                         <div>
-                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">বিকাশ নম্বর (কোথা থেকে পাঠিয়েছেন) *</label>
+                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">বিকাশ নম্বর *</label>
                             <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition" placeholder="01XXXXXXXXX">
                         </div>
                         <div>
-                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">ট্রানজেকশন আইডি (TxnID) *</label>
+                            <label class="block text-[11px] font-bold text-brand-700 mb-1.5">ট্রানজেকশন আইডি *</label>
                             <input id="txnid" name="txnid" type="text" required class="w-full border border-gray-200 rounded-xl p-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition" placeholder="যেমন: BLA12C3456">
                         </div>
                     </div>
@@ -227,7 +226,6 @@
     </footer>
 
     <script>
-        // ১৬টি প্রিমিয়াম প্রোডাক্টের অ্যারে ডেটা
         const products = [
             {
                 id: 1,
@@ -296,7 +294,7 @@
                 originalPrice: 2999,
                 rating: 4.6,
                 reviews: 10,
-                description: "৩৬০ ডিগ্রি সারাউন্ড হাই-ফাই সাউন্ড সিস্টেম ও মিউজিকের বিটের সাথে জ্বলতে থাকা চমৎকার ডাইনামিক RGB লাইটিং স্পিকার।",
+                description: "৩৬০ ডিগ্রি সারাউন্ড হাই-ফাই সাউন্ড সিস্টেম ও মিউজিকের বিটের সাথে জ্বলতে থাকা চমৎকার ডাইনামিক RGB লাইটিং领।",
                 images: [
                     "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
                     "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500",
@@ -371,7 +369,7 @@
                 originalPrice: 999,
                 rating: 4.9,
                 reviews: 42,
-                description: "কোয়ালকম কুইক চার্জ ৩.০ ও গ্যান টেকনোলজি সমৃদ্ধ ফাস্ট চার্জিং মোবাইল অ্যাডাপ্টার, যা ফোন গরম হওয়া রোধ করে।",
+                description: "কোয়ালকম কুইক চার্জ ৩.০ ও গ্যান টেকনোলজি সমৃদ্ধ ফাস্ট充电 মোবাইল অ্যাডাপ্টার, যা ফোন গরম হওয়া রোধ করে।",
                 images: [
                     "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500",
                     "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500",
@@ -476,7 +474,6 @@
         const productGrid = document.getElementById('product-grid');
         const noProductsEl = document.getElementById('no-products');
 
-        // প্রোডাক্ট রেন্ডার করার জন্য ফাংশন
         function renderProducts(productsList) {
             productGrid.innerHTML = "";
             if (productsList.length === 0) {
@@ -487,47 +484,48 @@
 
             productsList.forEach(product => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
+                // ২ কলামের জন্য প্যাডিং এবং কার্ডের ভেতরের টেক্সট সাইজ মোবাইলে কিছুটা কমানো হয়েছে যেন সুন্দর দেখায়
+                card.className = "bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 hover:border-brand-200 shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition duration-300 flex flex-col group";
                 card.innerHTML = `
-                    <div class="relative bg-gray-50 h-64 overflow-hidden">
+                    <div class="relative bg-gray-50 h-36 sm:h-64 overflow-hidden">
                         <img id="main-img-${product.id}" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="flex gap-2.5 p-3 bg-white justify-center border-b border-gray-50">
+                    <div class="flex gap-1.5 sm:gap-2.5 p-2 sm:p-3 bg-white justify-center border-b border-gray-50">
                         ${product.images.map((img) => `
-                            <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-11 h-11 object-cover rounded-lg border border-gray-100 hover:border-brand-500 cursor-pointer transition p-0.5">
+                            <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-7 h-7 sm:w-11 sm:h-11 object-cover rounded-md sm:rounded-lg border border-gray-100 hover:border-brand-500 cursor-pointer transition p-0.5">
                         `).join('')}
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <div class="flex items-center gap-1 text-amber-500 text-xs font-bold mb-2">
+                    <div class="p-3 sm:p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-1 text-amber-500 text-[10px] sm:text-xs font-bold mb-1 sm:mb-2">
                             <i class="fa-solid fa-star"></i>
                             <span class="text-gray-900">${product.rating}</span>
-                            <span class="text-gray-400 font-normal">(${product.reviews} Reviews)</span>
+                            <span class="text-gray-400 font-normal hidden sm:inline">(${product.reviews} Reviews)</span>
                         </div>
-                        <h3 class="font-bold text-gray-950 text-base mb-1.5 group-hover:text-brand-500 transition">${product.name}</h3>
-                        <p class="text-gray-500 text-xs leading-relaxed mb-4 flex-1">${product.description}</p>
+                        <h3 class="font-bold text-gray-950 text-xs sm:text-base mb-1 line-clamp-1 group-hover:text-brand-500 transition">${product.name}</h3>
+                        <p class="text-gray-500 text-[11px] sm:text-xs leading-relaxed mb-3 sm:mb-4 flex-1 line-clamp-2 sm:line-clamp-none">${product.description}</p>
                         
-                        <div class="mb-4 border-t border-gray-50 pt-3.5">
-                            <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Select Color</span>
-                            <div class="flex gap-2">
+                        <div class="mb-3 sm:mb-4 border-t border-gray-50 pt-2 sm:pt-3.5">
+                            <span class="text-[9px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">Select Color</span>
+                            <div class="flex flex-wrap gap-1 sm:gap-2">
                                 ${product.colors.map((color, idx) => `
-                                    <label class="text-xs bg-white px-3 py-1.5 rounded-lg border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-1.5 font-medium text-gray-700 transition">
-                                        <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3.5 h-3.5 accent-brand-500 cursor-pointer">
+                                    <label class="text-[10px] sm:text-xs bg-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-1 sm:gap-1.5 font-medium text-gray-700 transition">
+                                        <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-3 sm:w-3.5 h-3 sm:h-3.5 accent-brand-500 cursor-pointer">
                                         <span>${color}</span>
                                     </label>
                                 `).join('')}
                             </div>
                         </div>
 
-                        <div class="mt-auto pt-3.5 flex items-center justify-between border-t border-gray-100">
+                        <div class="mt-auto pt-2 sm:pt-3.5 flex flex-col sm:flex-row sm:items-center justify-between border-t border-gray-100 gap-2">
                             <div>
-                                <span class="line-through text-gray-300 text-xs block font-medium">৳${product.originalPrice}</span>
-                                <span class="text-lg font-black text-gray-950">৳${product.price}</span>
+                                <span class="line-through text-gray-300 text-[10px] sm:text-xs block font-medium">৳${product.originalPrice}</span>
+                                <span class="text-sm sm:text-lg font-black text-gray-950">৳${product.price}</span>
                             </div>
-                            <div class="flex gap-2">
-                                <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold px-3 py-2.5 rounded-xl transition border border-gray-200/60" title="Add To Cart">
-                                    <i class="fa-solid fa-cart-plus text-sm"></i>
+                            <div class="flex gap-1.5 w-full sm:w-auto">
+                                <button onclick="addToCart()" class="bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-600 text-xs font-bold p-2 sm:px-3 sm:py-2.5 rounded-lg sm:rounded-xl transition border border-gray-200/60 flex items-center justify-center" title="Add To Cart">
+                                    <i class="fa-solid fa-cart-plus text-xs sm:text-sm"></i>
                                 </button>
-                                <button onclick="openModal(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-md shadow-brand-500/10">
+                                <button onclick="openModal(${product.id})" class="flex-1 sm:flex-none bg-brand-500 hover:bg-brand-600 text-white text-[11px] sm:text-xs font-bold py-2 sm:px-4 sm:py-2.5 rounded-lg sm:rounded-xl transition shadow-md shadow-brand-500/10 text-center whitespace-nowrap">
                                     অর্ডার করুন
                                 </button>
                             </div>
@@ -538,10 +536,8 @@
             });
         }
 
-        // প্রথমে সব প্রোডাক্ট রেন্ডার করা
         renderProducts(products);
 
-        // নতুন লাইভ সার্চ ফাংশন
         function searchProducts() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
             const filteredProducts = products.filter(product => 
@@ -550,7 +546,6 @@
             );
             renderProducts(filteredProducts);
             
-            // সার্চ করলে টাইটেল ডাইনামিকালি চেঞ্জ হবে
             const titleEl = document.getElementById('section-title');
             if (searchTerm !== "") {
                 titleEl.innerText = `সার্চ রেজাল্ট ("${document.getElementById('search-input').value}")`;
@@ -618,7 +613,7 @@
             })
             .then(response => {
                 if(response.ok) {
-                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। আমাদের রিপ্রেজেন্টেটিভ দ্রুত কল করবেন।');
+                    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। আমাদের রিপ্রেজেন্টেティブ দ্রুত কল করবেন।');
                     closeModal();
                 } else {
                     alert('দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।');
