@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexCart BD - Premium Gadget Shop</title>
+    <title>NexCart BD - 16 Premium Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,587 +13,101 @@
         body { background-color: #f4f4f6; transition: all 0.3s ease; }
     </style>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#fff1f2',
-                            100: '#ffe4e6',
-                            500: '#f57224', /* দারাজ সিগনেচার কালার */
-                            600: '#da5f19',
-                            700: '#b84d10',
-                        }
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { brand: { 500: '#f57224', 600: '#da5f19' } } } } }
     </script>
 </head>
 <body class="text-gray-800 antialiased lang-bn">
 
-    <!-- টপ নোটিফিকেশন বার -->
-    <div id="top-alert" class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide shadow-sm transition-all">
-        ⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!
-    </div>
-
-    <!-- প্রিমিয়াম হেডার (বাম দিকে মেনু-কার্ট, মাঝে সার্চ, ডানে ল্যাঙ্গুয়েজ ও শপ নাম) -->
+    <!-- হেডার -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div class="container mx-auto px-3 py-3 flex items-center justify-between max-w-7xl gap-2 sm:gap-4">
-            
-            <!-- বাম দিকে: 3dot menu ও কার্ট এর আইকন -->
-            <div class="flex items-center gap-2 sm:gap-4 shrink-0">
-                <button class="text-gray-600 hover:text-brand-500 p-1 text-xl" title="Menu">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-                <div class="relative cursor-pointer bg-gray-50 hover:bg-gray-100 p-2 rounded-lg transition border border-gray-200">
-                    <i class="fa-solid fa-basket-shopping text-lg sm:text-xl text-gray-700"></i>
-                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-brand-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
-                </div>
+        <div class="container mx-auto px-3 py-3 flex items-center justify-between max-w-7xl">
+            <div class="flex items-center gap-2 shrink-0">
+                <button class="text-gray-600 text-xl"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
-
-            <!-- মাঝে: সার্চ অপশন -->
-            <div class="flex-1 max-w-md relative mx-1 sm:mx-4">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                    <i class="fa-solid fa-magnifying-glass text-xs sm:text-sm"></i>
-                </div>
-                <input type="text" id="search-input" oninput="searchProducts()" placeholder="পছন্দের প্রোডাক্টটি এখানে সার্চ করুন..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-8 sm:pl-10 pr-3 py-2 text-xs sm:text-sm outline-none focus:border-brand-500 focus:bg-white transition">
+            <div class="flex-1 max-w-md mx-2">
+                <input type="text" id="search-input" oninput="searchProducts()" placeholder="পছন্দের প্রোডাক্ট সার্চ করুন..." class="w-full bg-gray-50 border rounded-lg pl-3 py-2 text-sm outline-none">
             </div>
-            
-            <!-- ডান পাশে: ল্যাঙ্গুয়েজ সুইচার আইকন এবং শপ নাম -->
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                <!-- ল্যাঙ্গুয়েজ আইকন বাটন (BN/EN) -->
-                <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-2 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-gray-700 transition shadow-sm" title="Change Language">
-                    <i class="fa-solid fa-globe text-brand-500 text-xs sm:text-sm"></i>
-                    <span id="lang-label">EN</span>
-                </button>
-
-                <a href="#" class="text-lg sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-1.5">
-                    <span class="hidden sm:flex bg-brand-500 text-white p-1.5 rounded-lg items-center justify-center shadow-md">
-                        <i class="fa-solid fa-bolt text-[10px]"></i>
-                    </span>
-                    NEX<span class="text-brand-500">CART</span>
-                </a>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleLanguage()" class="text-[11px] font-bold bg-gray-100 px-2 py-1 rounded">EN</button>
+                <a href="#" class="text-xl font-black">NEX<span class="text-brand-500">CART</span></a>
             </div>
-
         </div>
     </header>
 
-    <!-- ব্যানার ও প্রোমোশনাল সেকশন -->
-    <div class="w-full py-4 bg-transparent">
-        <div class="max-w-7xl mx-auto px-2 sm:px-4">
-            
-            <!-- ব্যানারের উপরে মেগা সেল টেক্সট -->
-            <div class="bg-orange-50 border border-orange-200 rounded-xl p-3 mb-3 text-center shadow-sm flex items-center justify-center gap-2">
-                <span id="mega-badge" class="bg-brand-500 text-white text-[10px] uppercase px-2 py-0.5 rounded font-bold animate-pulse">Mega Sell</span>
-                <p id="mega-text" class="text-xs sm:text-sm font-bold text-gray-800">🔥 মেগা অফার! আমাদের সব গ্যাজেটে পাচ্ছেন ফ্ল্যাট <span class="text-brand-500 text-base font-extrabold">40% Discount!</span> অফারটি সীমিত সময়ের জন্য।</p>
-            </div>
-            
-            <!-- মূল প্রিমিয়াম ব্যানার হিরো -->
-            <div class="rounded-xl overflow-hidden shadow-sm border border-gray-200 bg-gray-100 aspect-[21/9] relative">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80" alt="Mega Sale Banner" class="w-full h-full object-cover block">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center p-4 sm:p-12">
-                    <div class="text-white max-w-xs sm:max-w-md">
-                        <span id="banner-tag" class="bg-brand-500 text-white text-[10px] font-bold px-2 py-1 rounded mb-2 inline-block">EXCLUSIVE CAMP</span>
-                        <h3 id="banner-title" class="text-base sm:text-3xl font-black mb-1 sm:mb-2 text-orange-400">BIG GADGET SALE</h3>
-                        <p id="banner-desc" class="text-[10px] sm:text-sm text-gray-200 mb-3 hidden sm:block">দারুণ সব স্মার্টওয়াচ, ইয়ারবাডস এবং গেমিং অ্যাক্সেসরিজ কিনুন আকর্ষণীয় মূল্যে।</p>
-                        <span id="banner-cta" class="bg-white text-brand-600 text-[11px] sm:text-xs font-bold px-3 py-1.5 rounded shadow-lg inline-block cursor-pointer">অর্ডার করুন</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- প্রোডাক্ট গ্রিড সেকশন (দারাজ লুক) -->
-    <main class="container mx-auto px-2 sm:px-4 py-6 max-w-7xl">
-        <div class="flex flex-col items-center mb-6">
-            <span id="section-tag" class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-orange-50 px-3 py-1 rounded-full mb-1">JUST FOR YOU</span>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-gray-950 tracking-tight text-center" id="section-title">আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ</h2>
-            <div class="w-12 h-0.5 bg-brand-500 rounded-full mt-2"></div>
-        </div>
-        
-        <!-- গ্রিড লেআউট মোবাইলে ২ কলামের বক্স -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4" id="product-grid"></div>
-        
-        <div id="no-products" class="hidden text-center py-12 text-gray-500 font-medium">
-            <i class="fa-solid fa-box-open text-4xl block mb-3 text-gray-300"></i>
-            <span id="no-products-text">আপনার সার্চ করা নামে কোনো প্রোডাক্ট পাওয়া যায়নি!</span>
-        </div>
+    <!-- মেইন কন্টেন্ট -->
+    <main class="container mx-auto px-2 py-6 max-w-7xl">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="product-grid"></div>
     </main>
 
-    <!-- ইমেজ বড় করে দেখার জন্য মডাল -->
-    <div id="image-modal" class="fixed inset-0 bg-black/90 z-[60] flex items-center justify-center hidden p-4" onclick="closeImageModal()">
-        <button class="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl transition">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <img id="popup-large-image" src="" alt="Large View" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" onclick="event.stopPropagation()">
-    </div>
-
-    <!-- অর্ডার ফর্ম মডাল -->
-    <div id="order-modal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
-        <div class="bg-white rounded-xl max-w-md w-full p-5 relative shadow-2xl max-h-[92vh] overflow-y-auto border border-gray-100">
-            <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-700 p-2 rounded-full transition">
-                <i class="fa-solid fa-xmark text-base"></i>
-            </button>
-            
-            <h3 id="modal-heading" class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span class="text-brand-500"><i class="fa-solid fa-square-check"></i></span> অর্ডার কনফার্ম করুন
-            </h3>
-            
-            <div class="bg-gray-50 border border-gray-200 p-3 rounded-lg mb-4">
-                <span id="modal-p-details" class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Product Details</span>
-                <p id="modal-product-name" class="font-bold text-gray-900 text-sm mb-1"></p>
-                <div class="flex items-center gap-2 mt-1">
-                    <span class="text-[11px] bg-white border border-gray-200 px-2 py-0.5 rounded text-gray-600">
-                        Color: <span id="modal-selected-color" class="font-bold text-brand-500"></span>
-                    </span>
-                </div>
+    <!-- গ্যালারি মোডাল (৩টি ছবি একসাথে দেখার জন্য) -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center hidden p-4" onclick="closeGallery()">
+        <div class="bg-white p-4 rounded-xl max-w-2xl w-full" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold">Product Gallery</h3>
+                <button onclick="closeGallery()" class="text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <form id="order-form" action="https://sheetdb.io/api/v1/85jmnjdw3kud6" method="POST" onsubmit="submitOrder(event)">
-                <input type="hidden" name="products" id="sheet-product-name">
-                <input type="hidden" name="color" id="sheet-product-color">
-                <input type="hidden" name="payment" value="বিকাশ (Bkash)">
-
-                <div class="mb-4">
-                    <label id="lbl-location" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">ডেলিভারি লোকেশন:</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="border p-2.5 rounded-lg flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-50 border-brand-500 ring-2 ring-brand-100 transition shadow-sm">
-                            <input type="radio" name="location" value="ঢাকার ভেতরে" checked onclick="calculateTotal()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span id="opt-inside" class="text-xs font-semibold text-gray-800">ঢাকার ভেতরে (৳৬০)</span>
-                        </label>
-                        <label class="border p-2.5 rounded-lg flex items-center gap-2 cursor-pointer bg-white hover:bg-gray-50 border-gray-200 transition">
-                            <input type="radio" name="location" value="ঢাকার বাহিরে" onclick="calculateTotal()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span id="opt-outside" class="text-xs font-semibold text-gray-700">ঢাকার বাহিরে (৳১২о)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <label id="lbl-payment" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">পেমেন্ট মাধ্যম:</label>
-                    <div class="w-full border border-gray-200 rounded-lg p-2.5 bg-gray-50 font-bold text-xs text-gray-800 flex items-center justify-between">
-                        <span id="opt-bkash">বিকাশ (Bkash) - সেন্ড মানি</span>
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    </div>
-                    <div id="payment-instruction" class="bg-orange-50 text-orange-900 text-[11px] p-2.5 rounded-lg mt-2 border border-orange-100 leading-relaxed">
-                        দয়া করে নিচের নাম্বারে টাকা <b>Send Money</b> করুন: 
-                        <span class="font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center">01601-761487</span>
-                    </div>
-                </div>
-
-                <div class="space-y-3 mb-4">
-                    <div>
-                        <label id="lbl-phone" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">আপনার মোবাইল নম্বর *</label>
-                        <input id="customer-phone" name="phone" type="tel" required class="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-brand-500 outline-none transition" placeholder="01XXXXXXXXX">
-                    </div>
-                    <div>
-                        <label id="lbl-address" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">সম্পূর্ণ ঠিকানা *</label>
-                        <textarea id="customer-address" name="address" required class="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-brand-500 outline-none transition h-16" placeholder="বাসা নং, রোড, থানা, জেলা..."></textarea>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
-                        <div>
-                            <label id="lbl-bknumber" class="block text-[10px] font-bold text-brand-700 mb-1">বিকাশ নম্বর *</label>
-                            <input id="bkash-number" name="bkash_number" type="tel" required class="w-full border border-gray-200 rounded-lg p-2 text-xs focus:border-brand-500 outline-none transition" placeholder="01XXXXXXXXX">
-                        </div>
-                        <div>
-                            <label id="lbl-txnid" class="block text-[10px] font-bold text-brand-700 mb-1">ট্রানজেকশন আইডি *</label>
-                            <input id="txnid" name="txnid" type="text" required class="w-full border border-gray-200 rounded-lg p-2 text-xs focus:border-brand-500 outline-none transition" placeholder="যেমন: BLA12C3456">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-t border-gray-100 pt-3 space-y-1 text-xs text-gray-600 mb-4">
-                    <div class="flex justify-between">
-                        <span id="lbl-price-txt">মূল্য:</span>
-                        <span class="font-semibold text-gray-900">৳<span id="modal-product-price">0</span></span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span id="lbl-delivery-txt">ডেলিভারি চার্জ:</span>
-                        <span class="font-semibold text-gray-900">৳<span id="modal-delivery-charge">60</span></span>
-                    </div>
-                    <div class="flex justify-between text-sm font-bold text-gray-950 border-t border-gray-100 pt-2">
-                        <span id="lbl-total-txt">সর্বমোট বিল:</span>
-                        <span class="text-brand-600 text-lg">৳<span id="modal-total-price">0</span></span>
-                    </div>
-                </div>
-
-                <button type="submit" id="btn-submit-order" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition shadow-md text-sm">
-                    অর্ডার সম্পন্ন করুন
-                </button>
-            </form>
+            <div id="gallery-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- ইমেজ এখানে লোড হবে -->
+            </div>
         </div>
     </div>
-
-    <!-- ফুটার সেকশন -->
-    <footer class="bg-white border-t border-gray-200 mt-16 pt-10 pb-6">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs text-center md:text-left border-b border-gray-100 pb-8">
-                <div class="col-span-2 md:col-span-1 flex flex-col items-center md:items-start">
-                    <span class="text-lg font-black text-gray-900 mb-2">NEX<span class="text-brand-500">CART</span></span>
-                    <p id="footer-desc" class="text-gray-400 leading-relaxed">আপনার লাইফস্টাইল সহজ করতে সেরা কোয়ালিটির গ্যাজেট ও ইলেকট্রনিক্স নিয়ে আপনার পাশে সব সময়।</p>
-                </div>
-                <div>
-                    <h5 id="foot-h-company" class="font-bold text-gray-900 mb-3 uppercase tracking-wider">কোম্পানি</h5>
-                    <ul class="space-y-1.5 text-gray-500">
-                        <li><a href="#" class="hover:text-brand-500 transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-brand-500 transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 id="foot-h-policy" class="font-bold text-gray-900 mb-3 uppercase tracking-wider">পলিসি</h5>
-                    <ul class="space-y-1.5 text-gray-500">
-                        <li><a href="#" class="hover:text-brand-500 transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-brand-500 transition">Shipping & Returns</a></li>
-                    </ul>
-                </div>
-            </div>
-            <p class="text-center text-[11px] text-gray-400 mt-6">&copy; 2026 NexCart BD. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script>
-        // ভাষা পরিবর্তনের ডাটা ডিকশনারি
+        // ১৬টি প্রোডাক্টের ডাটা (প্রতিটিতে ৩টি করে ছবি)
+        const products = Array.from({ length: 16 }, (_, i) => ({
+            id: i + 1,
+            name_bn: `প্রোডাক্ট নাম ${i + 1}`,
+            name_en: `Product Name ${i + 1}`,
+            price: 500 + (i * 100),
+            originalPrice: 1000 + (i * 100),
+            images: [
+                `https://picsum.photos/id/${10 + i}/400/400`,
+                `https://picsum.photos/id/${20 + i}/400/400`,
+                `https://picsum.photos/id/${30 + i}/400/400`
+            ],
+            rating: 4.5
+        }));
+
         let currentLang = 'bn';
-        const langData = {
-            bn: {
-                label: "EN",
-                bodyClass: "lang-bn",
-                topAlert: "⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!",
-                searchPlaceholder: "পছন্দের প্রোডাক্টটি এখানে সার্চ করুন...",
-                megaBadge: "Mega Sell",
-                megaText: "🔥 মেগা অফার! আমাদের সব গ্যাজেটে পাচ্ছেন ফ্ল্যাট <span class='text-brand-500 text-base font-extrabold'>40% Discount!</span> অফারটি সীমিত সময়ের জন্য।",
-                bannerTag: "EXCLUSIVE CAMP",
-                bannerTitle: "BIG GADGET SALE",
-                bannerDesc: "দারুণ সব স্মার্টওয়াচ, ইয়ারবাডস এবং গেমিং অ্যাক্সেসরিজ কিনুন আকর্ষণীয় মূল্যে।",
-                bannerCta: "অর্ডার করুন",
-                sectionTag: "JUST FOR YOU",
-                sectionTitle: "আমাদের ট্রেন্ডিং প্রোডাক্টসমূহ",
-                noProducts: "আপনার সার্চ করা নামে কোনো প্রোডাক্ট পাওয়া যায়নি!",
-                orderBtn: "অর্ডার",
-                modalHeading: "অর্ডার কনফার্ম করুন",
-                modalPDetails: "Product Details",
-                lblLocation: "ডেলিভারি লোকেশন:",
-                optInside: "ঢাকার ভেতরে (৳৬০)",
-                optOutside: "ঢাকার বাহিরে (৳১২০)",
-                lblPayment: "পেমেন্ট মাধ্যম:",
-                optBkash: "বিকাশ (Bkash) - সেন্ড মানি",
-                payInstruction: "দয়া করে নিচের নাম্বারে টাকা <b>Send Money</b> করুন: <span class='font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center'>01601-761487</span>",
-                lblPhone: "আপনার মোবাইল নম্বর *",
-                lblAddress: "সম্পূর্ণ ঠিকানা *",
-                lblBkNumber: "বিকাশ নম্বর *",
-                lblTxnId: "ট্রানজেকশন আইডি *",
-                lblPriceTxt: "মূল্য:",
-                lblDeliveryTxt: "ডেলিভারি চার্জ:",
-                lblTotalTxt: "সর্বমোট বিল:",
-                btnSubmitOrder: "অর্ডার সম্পন্ন করুন",
-                footerDesc: "আপনার লাইফস্টাইল সহজ করতে সেরা কোয়ালিটির গ্যাজেট ও ইলেকট্রনিক্স নিয়ে আপনার পাশে সব সময়।",
-                footCompany: "কোম্পানি",
-                footPolicy: "পলিসি",
-                alertCart: "কার্টে যুক্ত করা হয়েছে!",
-                alertSuccess: "ধন্যবাদ! অর্ডারটি সফলভাবে সাবমিট হয়েছে।",
-                alertFail: "দুঃখিত, আবার চেষ্টা করুন।",
-                alertNet: "নেটওয়ার্ক সমস্যা!"
-            },
-            en: {
-                label: "বাং",
-                bodyClass: "lang-en",
-                topAlert: "⚡ Mega Dhamaka Sale! Get guaranteed discount & fast delivery on every gadget order!",
-                searchPlaceholder: "Search your favorite product here...",
-                megaBadge: "Mega Sale",
-                megaText: "🔥 Mega Offer! Get Flat <span class='text-brand-500 text-base font-extrabold'>40% Discount</span> on all gadgets for a limited time.",
-                bannerTag: "EXCLUSIVE CAMP",
-                bannerTitle: "BIG GADGET SALE",
-                bannerDesc: "Buy amazing smartwatches, earbuds and gaming accessories at attractive prices.",
-                bannerCta: "Order Now",
-                sectionTag: "JUST FOR YOU",
-                sectionTitle: "Our Trending Products",
-                noProducts: "No products found matching your search term!",
-                orderBtn: "Order",
-                modalHeading: "Confirm Your Order",
-                modalPDetails: "Product Details",
-                lblLocation: "Delivery Location:",
-                optInside: "Inside Dhaka (৳60)",
-                optOutside: "Outside Dhaka (৳120)",
-                lblPayment: "Payment Method:",
-                optBkash: "bKash (Bkash) - Send Money",
-                payInstruction: "Please <b>Send Money</b> to the following number: <span class='font-mono font-bold text-xs block mt-1 text-brand-600 bg-white border border-orange-100 p-1.5 rounded text-center'>01601-761487</span>",
-                lblPhone: "Your Mobile Number *",
-                lblAddress: "Full Address *",
-                lblBkNumber: "bKash Number *",
-                lblTxnId: "Transaction ID *",
-                lblPriceTxt: "Price:",
-                lblDeliveryTxt: "Delivery Charge:",
-                lblTotalTxt: "Total Bill:",
-                btnSubmitOrder: "Complete Order",
-                footerDesc: "Always by your side with the best quality gadgets & electronics to make your lifestyle easier.",
-                footCompany: "Company",
-                footPolicy: "Policy",
-                alertCart: "Added to Cart!",
-                alertSuccess: "Thank you! Your order has been successfully submitted.",
-                alertFail: "Sorry, please try again.",
-                alertNet: "Network Error!"
-            }
-        };
 
-        const products = [
-            {
-                id: 1,
-                name_bn: "Ultra Smart Watch Series 9",
-                name_en: "Ultra Smart Watch Series 9 Pro",
-                price: 1499,
-                originalPrice: 2499,
-                rating: 4.9,
-                images: [
-                    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
-                    "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500"
-                ],
-                colors: ["Black", "Orange", "Silver"]
-            },
-            {
-                id: 2,
-                name_bn: "Pro TWS Earbuds Bass Edition",
-                name_en: "Pro TWS Earbuds Bass Edition",
-                price: 899,
-                originalPrice: 1499,
-                rating: 4.8,
-                images: [
-                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
-                    "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=500"
-                ],
-                colors: ["White", "Black", "Blue"]
-            },
-            {
-                id: 3,
-                name_bn: "High Speed Turbo Desk Fan",
-                name_en: "High Speed Turbo Desk Fan Rechargeable",
-                price: 1150,
-                originalPrice: 1915,
-                rating: 4.7,
-                images: [
-                    "https://images.unsplash.com/photo-1618945533005-79b13ed62282?w=500",
-                    "https://images.unsplash.com/photo-1565151443-3259c47114ee?w=500"
-                ],
-                colors: ["White", "Green", "Pink"]
-            },
-            {
-                id: 4,
-                name_bn: "20,000mAh Fast Power Bank",
-                name_en: "20,000mAh Fast Power Bank 22.5W",
-                price: 1350,
-                originalPrice: 2250,
-                rating: 4.9,
-                images: [
-                    "https://images.unsplash.com/photo-1609592424085-f6df46001004?w=500",
-                    "https://images.unsplash.com/photo-1622445262461-c3b81b37a531?w=500"
-                ],
-                colors: ["Black", "White", "Blue"]
-            }
-        ];
+        function renderProducts(list) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = list.map(p => `
+                <div class="bg-white border rounded shadow-sm hover:shadow-md transition p-2">
+                    <img src="${p.images[0]}" onclick="openGallery(${JSON.stringify(p.images).replace(/"/g, '&quot;')})" class="w-full aspect-square object-cover cursor-pointer rounded mb-2">
+                    <h3 class="text-sm font-bold">${currentLang === 'bn' ? p.name_bn : p.name_en}</h3>
+                    <div class="text-brand-500 font-bold">৳${p.price}</div>
+                    <button onclick="alert('Added to cart')" class="w-full mt-2 bg-brand-500 text-white text-xs py-1.5 rounded">অর্ডার করুন</button>
+                </div>
+            `).join('');
+        }
 
-        let cartCount = 0;
-        let selectedProduct = null;
-        const productGrid = document.getElementById('product-grid');
-        const noProductsEl = document.getElementById('no-products');
+        // গ্যালারি ওপেন করার ফাংশন
+        function openGallery(imagesArray) {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = imagesArray.map(img => `
+                <img src="${img}" class="w-full h-48 object-cover rounded shadow">
+            `).join('');
+            document.getElementById('gallery-modal').classList.remove('hidden');
+        }
 
-        // ভাষা পরিবর্তন করার কোর ফাংশন
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.add('hidden');
+        }
+
         function toggleLanguage() {
             currentLang = currentLang === 'bn' ? 'en' : 'bn';
-            const data = langData[currentLang];
-            
-            // বডি ক্লাস টগল (ফন্ট পরিবর্তনের জন্য)
-            document.body.className = `text-gray-800 antialiased ${data.bodyClass}`;
-            
-            // স্ট্যাটিক টেক্সট আপডেট
-            document.getElementById('lang-label').innerText = data.label;
-            document.getElementById('top-alert').innerText = data.topAlert;
-            document.getElementById('search-input').placeholder = data.searchPlaceholder;
-            document.getElementById('mega-badge').innerText = data.megaBadge;
-            document.getElementById('mega-text').innerHTML = data.megaText;
-            document.getElementById('banner-tag').innerText = data.bannerTag;
-            document.getElementById('banner-title').innerText = data.bannerTitle;
-            document.getElementById('banner-desc').innerText = data.bannerDesc;
-            document.getElementById('banner-cta').innerText = data.bannerCta;
-            document.getElementById('section-tag').innerText = data.sectionTag;
-            document.getElementById('section-title').innerText = data.sectionTitle;
-            document.getElementById('no-products-text').innerText = data.noProducts;
-            
-            // মডাল টেক্সট আপডেট
-            document.getElementById('modal-heading').innerHTML = `<span class="text-brand-500"><i class="fa-solid fa-square-check"></i></span> ${data.modalHeading}`;
-            document.getElementById('modal-p-details').innerText = data.modalPDetails;
-            document.getElementById('lbl-location').innerText = data.lblLocation;
-            document.getElementById('opt-inside').innerText = data.optInside;
-            document.getElementById('opt-outside').innerText = data.optOutside;
-            document.getElementById('lbl-payment').innerText = data.lblPayment;
-            document.getElementById('opt-bkash').innerText = data.optBkash;
-            document.getElementById('payment-instruction').innerHTML = data.payInstruction;
-            document.getElementById('lbl-phone').innerText = data.lblPhone;
-            document.getElementById('lbl-address').innerText = data.lblAddress;
-            document.getElementById('lbl-bknumber').innerText = data.lblBkNumber;
-            document.getElementById('lbl-txnid').innerText = data.lblTxnId;
-            document.getElementById('lbl-price-txt').innerText = data.lblPriceTxt;
-            document.getElementById('lbl-delivery-txt').innerText = data.lblDeliveryTxt;
-            document.getElementById('lbl-total-txt').innerText = data.lblTotalTxt;
-            document.getElementById('btn-submit-order').innerText = data.btnSubmitOrder;
-            
-            // ফুটার টেক্সট আপডেট
-            document.getElementById('footer-desc').innerText = data.footerDesc;
-            document.getElementById('foot-h-company').innerText = data.footCompany;
-            document.getElementById('foot-h-policy').innerText = data.footPolicy;
-
-            // প্রোডাক্ট রি-রেন্ডার
-            searchProducts();
-        }
-
-        // দারাজ স্টাইল প্রোডাক্ট গ্রিড রেন্ডার
-        function renderProducts(productsList) {
-            productGrid.innerHTML = "";
-            if (productsList.length === 0) {
-                noProductsEl.classList.remove('hidden');
-                return;
-            }
-            noProductsEl.classList.add('hidden');
-
-            productsList.forEach(product => {
-                const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-                const pName = currentLang === 'bn' ? product.name_bn : product.name_en;
-                const card = document.createElement('div');
-                card.className = "bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-md transition duration-200 flex flex-col relative group";
-                card.innerHTML = `
-                    <div class="absolute top-1.5 left-1.5 bg-brand-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded z-10">-${discountPercent}%</div>
-                    <div class="relative bg-white aspect-square overflow-hidden cursor-zoom-in border-b border-gray-100">
-                        <img id="main-img-${product.id}" src="${product.images[0]}" alt="${pName}" onclick="openImageModal(this.src)" class="w-full h-full object-cover group-hover:scale-102 transition duration-300">
-                    </div>
-                    <div class="flex gap-1 p-1 bg-gray-50 justify-center border-b border-gray-100">
-                        ${product.images.map((img) => `
-                            <img src="${img}" onclick="changeImage(${product.id}, '${img}')" class="w-6 h-6 object-cover rounded border border-gray-200 hover:border-brand-500 cursor-pointer p-0.5 transition">
-                        `).join('')}
-                    </div>
-                    <div class="p-2 sm:p-3 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-gray-800 text-[11px] sm:text-sm font-normal leading-tight line-clamp-2 h-7 sm:h-9 group-hover:text-brand-500 transition mb-1">${pName}</h3>
-                            <div class="flex flex-col mb-2">
-                                <span class="text-brand-500 text-sm sm:text-base font-bold leading-none">৳${product.price}</span>
-                                <span class="line-through text-gray-400 text-[10px] mt-0.5">৳${product.originalPrice}</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="mb-2">
-                                <div class="flex flex-wrap gap-1">
-                                    ${product.colors.map((color, idx) => `
-                                        <label class="text-[9px] bg-white px-1.5 py-0.5 rounded border border-gray-200 cursor-pointer hover:border-brand-500 flex items-center gap-1 text-gray-600 transition">
-                                            <input type="radio" name="color-${product.id}" value="${color}" ${idx === 0 ? 'checked' : ''} class="w-2.5 h-2.5 accent-brand-500 cursor-pointer">
-                                            <span>${color}</span>
-                                        </label>
-                                    `).join('')}
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-gray-100 pt-1.5 gap-1">
-                                <div class="flex items-center text-amber-500 text-[9px] sm:text-xs font-semibold">
-                                    <i class="fa-solid fa-star text-[9px] mr-0.5"></i><span class="text-gray-700">${product.rating}</span>
-                                </div>
-                                <div class="flex gap-1 items-center">
-                                    <button onclick="addToCart()" class="bg-gray-50 hover:bg-orange-50 text-gray-600 hover:text-brand-500 text-[10px] p-1.5 rounded transition border border-gray-200"><i class="fa-solid fa-cart-plus"></i></button>
-                                    <button onclick="openModal(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-[10px] sm:text-xs font-bold py-1 px-2 rounded shadow-sm whitespace-nowrap">${langData[currentLang].orderBtn}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                productGrid.appendChild(card);
-            });
-        }
-
-        renderProducts(products);
-
-        function openImageModal(imgSrc) {
-            document.getElementById('popup-large-image').src = imgSrc;
-            document.getElementById('image-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeImageModal() {
-            document.getElementById('image-modal').classList.add('hidden');
-            if(!selectedProduct) document.body.style.overflow = 'auto';
+            document.body.className = `text-gray-800 ${currentLang === 'bn' ? 'lang-bn' : 'lang-en'}`;
+            renderProducts(products);
         }
 
         function searchProducts() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
-            const filteredProducts = products.filter(product => {
-                const name = currentLang === 'bn' ? product.name_bn : product.name_en;
-                return name.toLowerCase().includes(searchTerm);
-            });
-            renderProducts(filteredProducts);
+            const term = document.getElementById('search-input').value.toLowerCase();
+            const filtered = products.filter(p => p.name_bn.toLowerCase().includes(term) || p.name_en.toLowerCase().includes(term));
+            renderProducts(filtered);
         }
 
-        function changeImage(productId, imgSrc) {
-            document.getElementById(`main-img-${productId}`).src = imgSrc;
-        }
-
-        function addToCart() {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-            alert(langData[currentLang].alertCart);
-        }
-
-        function openModal(productId) {
-            selectedProduct = products.find(p => p.id === productId);
-            const selectedColorElement = document.querySelector(`input[name="color-${productId}"]:checked`);
-            const chosenColor = selectedColorElement ? selectedColorElement.value : selectedProduct.colors[0];
-            const pName = currentLang === 'bn' ? selectedProduct.name_bn : selectedProduct.name_en;
-
-            document.getElementById('modal-product-name').innerText = pName;
-            document.getElementById('modal-selected-color').innerText = chosenColor;
-            document.getElementById('modal-product-price').innerText = selectedProduct.price;
-            
-            document.getElementById('sheet-product-name').value = pName;
-            document.getElementById('sheet-product-color').value = chosenColor;
-            
-            calculateTotal();
-            document.getElementById('order-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('order-modal').classList.add('hidden');
-            document.getElementById('order-form').reset();
-            selectedProduct = null;
-            document.body.style.overflow = 'auto';
-        }
-
-        function calculateTotal() {
-            if (!selectedProduct) return;
-            const deliveryElement = document.querySelector('input[name="location"]:checked');
-            let deliveryCharge = 60;
-            if (deliveryElement && deliveryElement.value.includes('বাহিরে')) {
-                deliveryCharge = 120;
-            }
-            const total = selectedProduct.price + deliveryCharge;
-            document.getElementById('modal-delivery-charge').innerText = deliveryCharge;
-            document.getElementById('modal-total-price').innerText = total;
-        }
-
-        function submitOrder(e) {
-            e.preventDefault();
-            if (!selectedProduct) return;
-
-            const form = document.getElementById('order-form');
-            fetch(form.action, {
-                method: "POST",
-                body: new FormData(form),
-            })
-            .then(response => {
-                if(response.ok) {
-                    alert(langData[currentLang].alertSuccess);
-                    closeModal();
-                } else {
-                    alert(langData[currentLang].alertFail);
-                }
-            })
-            .catch(error => {
-                alert(langData[currentLang].alertNet);
-            });
-        }
+        renderProducts(products);
     </script>
 </body>
 </html>
