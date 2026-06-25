@@ -32,16 +32,13 @@
 </head>
 <body class="text-gray-800 antialiased lang-bn">
 
-    <!-- টপ নোটিফিকেশন বার -->
     <div id="top-alert" class="bg-brand-600 text-white text-center py-2 text-xs font-semibold tracking-wide shadow-sm">
         ⚡ মেগা ধামাকা সেল! প্রতিটি গ্যাজেট অর্ডারে পাচ্ছেন নিশ্চিত ডিসকাউন্ট ও ফাস্ট ডেলিভারি!
     </div>
 
-    <!-- হেডার সেকশন -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         <div class="container mx-auto px-3 py-3 flex items-center justify-between max-w-7xl gap-2 sm:gap-4">
             
-            <!-- হোম ও কার্ট আইকন -->
             <div class="flex items-center gap-2 sm:gap-4 shrink-0">
                 <button onclick="backToHome()" class="text-gray-600 hover:text-brand-500 p-1 text-xl" title="Home">
                     <i class="fa-solid fa-house text-base sm:text-lg"></i>
@@ -52,7 +49,6 @@
                 </div>
             </div>
 
-            <!-- সার্চবার -->
             <div class="flex-1 max-w-md relative mx-1 sm:mx-4">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <i class="fa-solid fa-magnifying-glass text-xs sm:text-sm"></i>
@@ -60,7 +56,6 @@
                 <input type="text" id="search-input" oninput="searchProducts()" placeholder="পছন্দের প্রোডাক্টটি এখানে সার্চ করুন..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-8 sm:pl-10 pr-3 py-2 text-xs sm:text-sm outline-none focus:border-brand-500 focus:bg-white transition">
             </div>
             
-            <!-- ল্যাঙ্গুয়েজ ও লোগো -->
             <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                 <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-2 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-gray-700 transition shadow-sm">
                     <i class="fa-solid fa-globe text-brand-500 text-xs sm:text-sm"></i>
@@ -77,9 +72,7 @@
         </div>
     </header>
 
-    <!-- ভিউ ১: হোমপেজ ভিউ -->
     <div id="home-view" class="block">
-        <!-- ব্যানার -->
         <div class="w-full py-4 bg-transparent">
             <div class="max-w-7xl mx-auto px-2 sm:px-4">
                 <div class="bg-orange-50 border border-orange-200 rounded-xl p-3 mb-3 text-center shadow-sm flex items-center justify-center gap-2">
@@ -101,7 +94,6 @@
             </div>
         </div>
 
-        <!-- প্রোডাক্ট গ্রিড -->
         <main class="container mx-auto px-2 sm:px-4 py-6 max-w-7xl">
             <div class="flex flex-col items-center mb-6">
                 <span id="section-tag" class="text-xs font-bold text-brand-500 uppercase tracking-widest bg-orange-50 px-3 py-1 rounded-full mb-1">JUST FOR YOU</span>
@@ -109,7 +101,7 @@
                 <div class="w-12 h-0.5 bg-brand-500 rounded-full mt-2"></div>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4" id="product-grid"></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" id="product-grid"></div>
             
             <div id="no-products" class="hidden text-center py-12 text-gray-500 font-medium">
                 <i class="fa-solid fa-box-open text-4xl block mb-3 text-gray-300"></i>
@@ -118,14 +110,12 @@
         </main>
     </div>
 
-    <!-- ভিউ ২: প্রোডাক্ট ডিটেইলস পেজ ভিউ -->
     <div id="details-view" class="hidden container mx-auto px-2 sm:px-4 py-6 max-w-5xl">
         <button onclick="backToHome()" class="mb-4 text-xs font-bold text-gray-600 hover:text-brand-500 flex items-center gap-1.5 bg-white border border-gray-200 px-3 py-2 rounded-lg transition shadow-sm">
             <i class="fa-solid fa-arrow-left text-xs"></i> <span id="lbl-back">পেছনে যান</span>
         </button>
 
         <div class="bg-white border border-gray-200 rounded-xl p-3 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 shadow-sm">
-            <!-- ইমেজ গ্যালারি -->
             <div>
                 <div class="border border-gray-100 rounded-lg overflow-hidden aspect-square bg-white mb-3 shadow-inner">
                     <img id="details-main-img" src="" alt="Product Image" class="w-full h-full object-cover">
@@ -133,7 +123,6 @@
                 <div id="details-gallery" class="flex gap-2 justify-center"></div>
             </div>
 
-            <!-- প্রোডাক্ট ইনফো -->
             <div class="flex flex-col justify-between">
                 <div>
                     <h2 id="details-title" class="text-gray-900 text-base sm:text-2xl font-bold leading-snug mb-2"></h2>
@@ -174,7 +163,6 @@
         </div>
     </div>
 
-    <!-- অর্ডার ফর্ম মডাল -->
     <div id="order-modal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
         <div class="bg-white rounded-xl max-w-md w-full p-5 relative shadow-2xl max-h-[92vh] overflow-y-auto border border-gray-100">
             <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-700 p-2 rounded-full transition">
@@ -264,13 +252,12 @@
                 </div>
 
                 <button type="submit" id="btn-submit-order" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition shadow-md text-sm">
-                    অর্ডার সম্পন্ন করুন
+                    অर्डर সম্পন্ন করুন
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- ফুটার সেকশন -->
     <footer class="bg-white border-t border-gray-200 mt-16 pt-10 pb-6">
         <div class="container mx-auto px-4 max-w-7xl">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs text-center md:text-left border-b border-gray-100 pb-8">
@@ -336,7 +323,7 @@
 
         const products = [
             { id: 1, name_bn: "Ultra Smart Watch Series 9", name_en: "Ultra Smart Watch Series 9 Pro", price: 1499, originalPrice: 2499, rating: 4.9, images: ["https://picsum.photos/500/500?random=1", "https://picsum.photos/500/500?random=11", "https://picsum.photos/500/500?random=21"], colors: ["Black", "Orange", "Silver"], desc_bn: "এটি একটি আল্ট্রা প্রিমিয়াম ওয়াচ। এতে রয়েছে ফুল ফিট অ্যামোলেড ডিসপ্লে, ব্লুটুথ কলিং সিস্টেম, হার্ট রেট ট্র্যাকিং এবং শক্তিশালী ব্যাটারি লাইফ। প্রতিদিনের ফ্যাশন ও ফিটনেসের জন্য পারфেক্ট চয়েস।", desc_en: "Premium AMOLED display smartwatch with features like Bluetooth calling, step counter, heart rate monitor, and exceptional battery backup." },
-            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইফ ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
+            { id: 2, name_bn: "Pro TWS Earbuds Bass Edition", name_en: "Pro TWS Earbuds Bass Edition", price: 899, originalPrice: 1499, rating: 4.8, images: ["https://picsum.photos/500/500?random=2", "https://picsum.photos/500/500?random=12", "https://picsum.photos/500/500?random=22"], colors: ["White", "Black", "Blue"], desc_bn: "ক্রিস্টাল ক্লিয়ার সাউন্ড ও ডিপ বেইস এর অনন্য সমন্বয়। লং ব্যাটারি লাইф ও স্মার্ট টাচ কন্ট্রোল ফিচার সমৃদ্ধ এই ইয়ারবাডস গান শোনা এবং গেম খেলার অভিজ্ঞতা বাড়িয়ে দেবে বহুগুণ।", desc_en: "Deep bass, crystal clear sound clarity with intelligent noise reduction, smart touch features, and high battery life capability." },
             { id: 3, name_bn: "High Speed Turbo Desk Fan", name_en: "High Speed Turbo Desk Fan Rechargeable", price: 1150, originalPrice: 1915, rating: 4.7, images: ["https://picsum.photos/500/500?random=3", "https://picsum.photos/500/500?random=13", "https://picsum.photos/500/500?random=23"], colors: ["White", "Green", "Pink"], desc_bn: "লোডের সময়ও বাতাস দিবে একটানা! রিচার্জেবল এই ডেক্স ফ্যানটিতে রয়েছে ৩টি স্পিড মোড এবং ইউএসবি চার্জিং সুবিধা। খুব সহজে যেকোনো জায়গায় বহনযোগ্য।", desc_en: "Portable high-speed rechargeable desk fan. Perfect option for home or workspace during intense heat with multidirectional airflow." },
             { id: 4, name_bn: "20,000mAh Fast Power Bank", name_en: "20,000mAh Fast Power Bank 22.5W", price: 1350, originalPrice: 2250, rating: 4.9, images: ["https://picsum.photos/500/500?random=4", "https://picsum.photos/500/500?random=14", "https://picsum.photos/500/500?random=24"], colors: ["Black", "White", "Blue"], desc_bn: "২২.৫ ওয়াটের সুপার ফাস্ট চার্জিং সমৃদ্ধ বিশাল ২০০০০ মিলিঅ্যাম্পিয়ার পাওয়ার ব্যাংক। একসাথে একাধিক ডিভাইস দ্রুত চার্জ করার জন্য সেরা একটি গ্যাজেট।", desc_en: "High capacity 20,000mAh structural shell material power bank supporting 22.5W fast output charging protocols safely." },
             { id: 5, name_bn: "RGB Mechanical Gaming Keyboard", name_en: "RGB Mechanical Gaming Keyboard Blue Switch", price: 2450, originalPrice: 3800, rating: 4.9, images: ["https://picsum.photos/500/500?random=5", "https://picsum.photos/500/500?random=15", "https://picsum.photos/500/500?random=25"], colors: ["Black", "White"], desc_bn: "প্রো গেমারদের জন্য আরজিবি মেকানিক্যাল কিবোর্ড। ব্লু-সুইচের দারুণ ক্ল্যাকিং সাউন্ড ও মাল্টিপল কাস্টমাইজড লাইٹنگ ইফেক্ট আপনার টাইপিং ও গেমিং করবে রাজকীয়।", desc_en: "Tactile clicky blue switches, responsive mechanical keys, and beautiful custom RGB backlight animations to elevate setups." },
@@ -407,30 +394,33 @@
                 const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
                 const pName = currentLang === 'bn' ? product.name_bn : product.name_en;
                 const card = document.createElement('div');
-                card.className = "bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-md transition duration-200 flex flex-col relative group";
+                card.className = "bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition duration-300 flex flex-col relative group";
                 card.innerHTML = `
-                    <div class="absolute top-1.5 left-1.5 bg-brand-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded z-10">-${discountPercent}%</div>
-                    <div onclick="showProductDetails(${product.id})" class="relative bg-white aspect-square overflow-hidden border-b border-gray-100 cursor-pointer">
-                        <img src="${product.images[0]}" alt="${pName}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute top-2 left-2 bg-brand-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded z-10">-${discountPercent}%</div>
+                    
+                    <div onclick="showProductDetails(${product.id})" class="relative bg-white aspect-[3/4] overflow-hidden border-b border-gray-100 cursor-pointer">
+                        <img src="${product.images[0]}" alt="${pName}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="p-2 sm:p-3 flex-1 flex flex-col justify-between">
+                    
+                    <div class="p-3 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 onclick="showProductDetails(${product.id})" class="text-gray-800 text-[11px] sm:text-sm font-normal leading-tight line-clamp-2 h-7 sm:h-9 cursor-pointer hover:text-brand-500 transition mb-1">${pName}</h3>
-                            <div class="flex justify-between items-center mb-2">
+                            <h3 onclick="showProductDetails(${product.id})" class="text-gray-800 text-xs sm:text-sm font-bold leading-tight line-clamp-2 h-8 sm:h-10 cursor-pointer hover:text-brand-500 transition mb-2">${pName}</h3>
+                            <div class="flex justify-between items-center mb-3">
                                 <div class="flex flex-col">
-                                    <span class="text-brand-500 text-sm sm:text-base font-bold leading-none">৳${product.price}</span>
-                                    <span class="line-through text-gray-400 text-[10px] mt-0.5">৳${product.originalPrice}</span>
+                                    <span class="text-brand-500 text-base font-black leading-none">৳${product.price}</span>
+                                    <span class="line-through text-gray-400 text-[10px] mt-1">৳${product.originalPrice}</span>
                                 </div>
-                                <div class="flex items-center text-amber-500 text-[10px] sm:text-xs font-semibold">
+                                <div class="flex items-center text-amber-500 text-xs font-semibold">
                                     <i class="fa-solid fa-star mr-0.5"></i><span class="text-gray-700">${product.rating}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="border-t border-gray-100 pt-2 grid grid-cols-2 gap-1">
-                            <button onclick="addToCart()" class="bg-gray-100 hover:bg-orange-50 hover:text-brand-500 text-gray-700 text-[10px] sm:text-xs font-bold py-1.5 rounded transition shadow-sm text-center">
+                        
+                        <div class="border-t border-gray-100 pt-3 grid grid-cols-2 gap-1.5">
+                            <button onclick="addToCart()" class="bg-gray-100 hover:bg-orange-50 hover:text-brand-500 text-gray-700 text-[11px] sm:text-xs font-bold py-2 rounded transition shadow-sm text-center">
                                 ${langData[currentLang].btnAddToCart}
                             </button>
-                            <button onclick="quickOrder(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-[10px] sm:text-xs font-bold py-1.5 rounded transition shadow-sm text-center">
+                            <button onclick="quickOrder(${product.id})" class="bg-brand-500 hover:bg-brand-600 text-white text-[11px] sm:text-xs font-bold py-2 rounded transition shadow-sm text-center">
                                 ${langData[currentLang].btnOrderNow}
                             </button>
                         </div>
